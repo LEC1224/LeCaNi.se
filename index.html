@@ -51,20 +51,86 @@
   
   
   <section class="content-section" id="section-welcome">
-   <div class="content-container">
-    <h1 style="margin-bottom: 0px;">Välkommen till</h1>
-    <img src="img/logo.png" style="max-width: 90%" />
-    <p>
-      Hej! Välkommen till LeCaNis hemsida! Här hittar du allt du behöver veta för att hänga med i LeCaNis svängar! Du kan även ansöka till vår server! Hittade du hemsidan på annat sätt än att redan veta om LeCaNi? Isåfall, här är en kort beskrivning av LeCaNi: LeCaNi är en gaming-community. Till absolut största delen består LeCaNi av en survival minecraft-server. De flesta känner till LeCaNi via youtube-kanalen <a href="https://youtube.com/LeCaNiVideos">LeCaNiVideos</a> som drivs av samma person som skriver detta, Carl!
-    </p>
-    <p>
-    Nu kan du lära dig om LeCaNis städer, historia, kultur och spelare på ett interaktivt sätt genom <a href="https://chatgpt.com/g/g-8SB9r41G1-lecanigpt">LecaniGPT</a>! En ChatGPT tränad på massa data om LeCaNi!
-    </p>
-    <a href="https://chatgpt.com/g/g-8SB9r41G1-lecanigpt"><img src="img/lecanigpt.png" style="max-width: 90%; width: 20em;" /></a>
-    
-    <p>September 2023 fick hemsidan ett nytt, fräscht utseende! Om du föredrar den gamla sidan finns den fortfarande kvar <a href="old/index.php">här</a> men jag kan inte garantera att alla bilder och länkar funkar som de ska!</p>
-   </div>
+    <div class="content-container">
+      <h1 style="margin-bottom: 0px;">Välkommen till</h1>
+      <img src="img/logo.png" style="max-width: 90%" />
+      <p>
+        Hej! Välkommen till LeCaNis hemsida! Här hittar du allt du behöver veta för att hänga med i LeCaNis svängar! Du kan även ansöka till vår server! Hittade du hemsidan på annat sätt än att redan veta om LeCaNi? Isåfall, här är en kort beskrivning av LeCaNi: LeCaNi är en gaming-community. Till absolut största delen består LeCaNi av en survival minecraft-server. De flesta känner till LeCaNi via youtube-kanalen <a href="https://youtube.com/LeCaNiVideos">LeCaNiVideos</a> som drivs av samma person som skriver detta, Carl!
+      </p>
+      <p>
+      Nu kan du lära dig om LeCaNis städer, historia, kultur och spelare på ett interaktivt sätt genom <a href="https://chatgpt.com/g/g-8SB9r41G1-lecanigpt">LecaniGPT</a>! En ChatGPT tränad på massa data om LeCaNi!
+      </p>
+      <a href="https://chatgpt.com/g/g-8SB9r41G1-lecanigpt"><img src="img/lecanigpt.png" style="max-width: 90%; width: 20em;" /></a>
+     
+      <p>September 2023 fick hemsidan ett nytt, fräscht utseende! Om du föredrar den gamla sidan finns den fortfarande kvar <a href="old/index.php">här</a> men jag kan inte garantera att alla bilder och länkar funkar som de ska!</p>
+
+      <div id="online-players-container" style="text-align: center;">
+        <h3 id="player-count"></h3>
+      </div>
+    </div>
+  
+    <script>
+      //## HALUCINATION WARNING ##
+      // This relies on third-party services (mcsrvstat.us + minotar.net).
+      // If either is down, or if a player changed their username, the heads might not display.
+  
+      async function fetchAndDisplayOnlinePlayers() {
+        try {
+          const response = await fetch("https://api.mcsrvstat.us/2/mc.lecani.se:25565");
+          const data = await response.json();
+          
+          const playerList = data.players?.list || [];
+          const playerCount = data.players?.online || 0;
+          
+          // Update how many players are online
+          document.getElementById("player-count").textContent =
+            playerCount > 0
+              ? `Antal spelare online just nu: ${playerCount}`
+              : "Inga spelare online för tillfället.";
+  
+          // Remove any previously displayed heads (using a marker class)
+          const container = document.getElementById("online-players-container");
+          const oldHeads = container.querySelectorAll(".player-head");
+          oldHeads.forEach(head => head.remove());
+  
+          // For each online player, create an inline-block div with head + name
+          playerList.forEach(player => {
+            const playerDiv = document.createElement("div");
+            playerDiv.className = "player-head";
+            playerDiv.style.display = "inline-block";
+            playerDiv.style.margin = "1rem";
+  
+            // The player's head (using Minotar)
+            const img = document.createElement("img");
+            img.src = `https://minotar.net/avatar/${player}/64`;
+            img.alt = player;
+            img.style.display = "block"; 
+            img.style.margin = "0 auto";  // center the image
+  
+            // Name below the head
+            const nameElement = document.createElement("div");
+            nameElement.textContent = player;
+            nameElement.style.marginTop = "0.5rem";
+            nameElement.style.color = "white";
+  
+            // Assemble the block
+            playerDiv.appendChild(img);
+            playerDiv.appendChild(nameElement);
+            container.appendChild(playerDiv);
+          });
+  
+        } catch (error) {
+          console.error("Fel vid hämtning av spelardata:", error);
+        }
+      }
+  
+      // Fetch data once, then refresh every 30 seconds
+      fetchAndDisplayOnlinePlayers();
+      setInterval(fetchAndDisplayOnlinePlayers, 30000);
+    </script>
   </section>
+    
+ 
   
   
   <section class="content-section" id="section-news">
