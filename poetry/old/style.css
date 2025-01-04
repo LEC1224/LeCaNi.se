@@ -1,0 +1,123 @@
+body, html {
+	width: 100%;
+	height: 100vh;
+	background-color: #FFE;
+	font-family: arial;
+	text-align: center;
+	position: relative;
+	margin: 0;
+
+}
+#wrapper {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	box-sizing: border-box;
+}
+#header {
+	display: flex;
+	position: fixed;
+	width: 100%;
+	height: 80px;
+	background-color: #FEC;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #720;
+	border-right: none;
+	border-left: none;
+	border-top: none;
+}
+#header h1 {
+	width: 20%;
+}
+#header a {
+	text-decoration: none;
+	color: #000;
+}
+#nav {
+	width: 80%;
+	height: 50px;
+	position: absolute;
+	margin-left: 20%;
+    top: 20%;
+	text-align: left;
+}
+#nav a {
+	text-decoration: none;
+	color: black;
+	padding: 20px;
+	font-size: 20px;
+	position: relative;
+	top: 30%;	
+}
+#nav a:hover {
+	text-decoration: underline;
+	font-size: 21px;
+}
+.page {
+	display: inline-block;
+	margin-top: 80px;
+	width: 100%;
+	position: absloute;
+	height: 80%;
+	text-align: center;
+	font-size: 0.5cm;
+}
+.page ul, li, a {
+	list-style-position: inside;
+	list-style: none;
+	color: #000;
+	line-height: 1.8;
+}
+.page h1 {
+	font-size: 0.75cm;
+}
+#poem {
+	font-family: Times;
+	font-style: italic;
+	padding-bottom: 130px;
+}
+/*----Footer-----*/
+#footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  border-radius: 10px;
+  width: 100%;
+  height: 100px;
+  background-color: #999;
+  display: inline-block;
+  border: 1px solid #aac;
+  box-sizing: border-box;
+  text-align: center;
+  float: center;
+  justify-content: center;
+}
+.footer-list-outline {
+  width: 24%;
+  min-width: 174px;
+  float: left;
+  padding: 2px;
+  margin: auto;
+}
+.footer-list {
+  padding: 5px !important;
+  list-style: none;
+  border: solid 1px #aaa;
+  border-radius: 2px;
+  box-sizing: border-box;
+  background-color: #ccc;
+  border-radius: 10px;
+  height: 70px;
+}
+.footer-list a {
+  text-decoration: underline;
+  color: #000;
+}
+.footer-list a:hover {
+  text-decoration: underline;
+  color: #666;
+}

@@ -1,0 +1,507 @@
+:root {
+  --max-phone-height: 1280px;
+  --min-desktop-width: 1281px;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------------------------- */
+/* -------- Navigation -------- */
+/* ---------------------------- */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1280px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+nav li {
+    position: relative;
+    margin: 0 20px;
+    top: -13px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #e0e0e0;
+}
+
+/* ---------------------------- */
+/* --------- Sections --------- */
+/* ---------------------------- */
+
+.content-section {
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+	width: 100%;
+}
+
+#section-welcome {
+    background-image: url('img/bg/fabulania_halvmane.jpg');
+}
+#section-download {
+    background-image: url('img/bg/bergavik.jpg');
+}
+#section-news {
+    background-image: url('img/bg/odopta_fortet_norrsken.jpg');
+}
+#section-info {
+    background-image: url('img/bg/ottohallen_mansken.jpg');
+}
+#section-rules {
+    background-image: url('img/bg/dopta_fortet_fonster.jpg');
+}
+#section-map {
+    background-image: url('img/bg/karta.jpg');
+}
+#section-cities {
+    background-image: url('img/bg/vildtmarken_jappoo.jpg');
+}
+#section-emblem {
+    background-image: url('img/bg/dopta_fortet_takring.jpg');
+}
+#section-foundcity {
+    background-image: url('img/bg/oakwood_town.jpg');
+}
+#section-apply {
+    background-image: url('img/bg/vildtmarken_bondgard.jpg');
+}
+
+/* ---------------------------- */
+/* ----------- Page ----------- */
+/* ---------------------------- */
+
+.content-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 10px;
+	margin: 10em 0em;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	max-width: 1280px;
+  width: 90%;
+}
+h1, h2, h3, h4, h5, h6 {
+	color: white;
+}
+h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+h2 {
+  font-size:2rem;
+}
+
+p, li {
+	font-size: 1.25em;
+	color: white;
+	margin: 0 5;
+}
+ol {
+  list-style-position: inside;
+}
+
+p a {
+	color: deepskyblue;
+}
+
+p img {
+  border-style: solid;
+  border-width: 2px;
+  border-top-color: #79F;
+  border-left-color: #79F;
+  border-bottom-color: #57F;
+  border-right-color: #57F;
+  border-radius: 5px;
+}
+
+/* ---------------------------- */
+/* ----------- News ----------- */
+/* ---------------------------- */
+
+#news {
+	overflow-y:scroll;
+	max-height: 60vh;
+	width: 100%;
+}
+#news h3 {
+	font-size: 0.5cm;
+	/*position: absolute;
+	right: 0px;
+	top: -13px;*/
+}
+#news img {
+	width: 33%;
+}
+
+/* ---------------------------- */
+/* -------- Download ---------- */
+/* ---------------------------- */
+
+.download-container {
+  width: 100%;
+  clear: both;
+  float: left;
+}
+
+.download-texture, .download-wallpaper {
+  clear: none;
+  float: left;
+  overflow-y: hidden;
+}
+.download-texture {
+  height: 30em;
+  width: 25%;
+}
+.download-wallpaper {
+  height: 14em;
+  width: 20%;
+}
+  
+.download-texture img, .download-wallpaper img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 1280px) {
+  .download-texture, .download-wallpaper  {
+    width: 50%;
+  }
+  .download-wallpaper p {
+    display: none;
+  }
+  .download-wallpaper {
+    height: auto;
+  }
+}
+
+/* ---------------------------- */
+/* ----------- Info ----------- */
+/* ---------------------------- */
+
+.player-class {
+	color: black;
+	font-weight: bold;
+	width: 20%;
+	min-width: 10em;
+	margin: auto;
+}
+#player-class-new {
+	background-color: white;
+}
+#player-class-all {
+	background-color: lightgreen;
+}
+#player-class-ops {
+	background-color: lightblue;
+}
+#player-class-afk {
+	background-color: lightgray;
+}
+#player-class-ban {
+	background-color: lightcoral;
+}
+
+/* ---------------------------- */
+/* ----------- Map ------------ */
+/* ---------------------------- */
+
+.iframe-section {
+  overflow: hidden;
+}
+
+.iframe-section iframe {
+  border: none;
+  width: 100%;
+  height: 70vh;
+	background-image: url('img/karta-unavailable.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+/* ---------------------------- */
+/* ---------- Cities ---------- */
+/* ---------------------------- */
+
+.city-container {
+  width: 100%;
+  clear: both;
+  text-align: left;
+  margin-bottom: 2em;
+  border-top-style: solid;
+  border-width: 2px;
+  border-color: white;
+}
+.city-container h2 {
+  text-align: center;
+}
+
+.city-container ul {
+  position: relative;
+  font-size: 1.25em;
+  list-style-position: inside;
+  left: -20px;
+}
+
+.city-container .slideshow-container {
+  margin-left: 10px;
+  z-index: 10;
+}
+
+@media only screen and (min-width: 1280px) {
+  #section-cities .slideshow-container {
+    float: right;
+    width: 50%;
+    height: auto;
+  }
+}
+/* ---------------------------- */
+/* ------- City Emblems ------- */
+/* ---------------------------- */
+
+.flag {
+  width: 4em;
+  height: 4em;
+  padding: 1em;
+  border-width: 0px;
+  border-radius: 1em;
+  background-color: rgba(255, 255, 255, 0.33);
+}
+
+/* ---------------------------- */
+/* ---------- Footer ---------- */
+/* ---------------------------- */
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.footer-logo h2 {
+    font-size: 1.5rem;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #e0e0e0;
+}
+
+.footer-social .social-icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.footer-social .social-icon:hover {
+    color: #e0e0e0;
+}
+
+/* ---------------------------- */
+/* ----- Responsive Styles ---- */
+/* ---------------------------- */
+@media only screen and (max-width: 1280px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-links ul {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .footer-social {
+        margin-top: 20px;
+    }
+}
+
+/* ---------------------------- */
+/* -------- Hamburger --------- */
+/* ---------------------------- */
+
+.hamburger {
+    display: none; /* Hide by default and only show on smaller screens */
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+}
+
+.nav-links {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-links ul {
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 1281px) {
+  .hamburger {
+    display: none;
+  }
+
+  .nav-links {
+    display: flex;
+  }
+  
+  .nav-links ul {
+    flex-direction: row;
+  }
+  .nav-links li {
+    font-size: 0.9em !important;
+  }
+  nav {
+    height: 20px;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ---------------------------- */
+/* -------- Slideshow --------- */
+/* ---------------------------- */
+
+.slideshow-container {
+  position: relative;
+  max-width: 750px;
+  margin: auto;
+}
+
+.main-image img {
+  width: 100%;
+  height: auto;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 35%;  /* Centers the button vertically */
+  width: auto;
+  height: 20%;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.3);  /* Optional: Adds a semi-transparent background for better visibility */
+}
+@media only screen and (max-width: 1280px) {
+  .prev, .next {
+    top: 30%;
+    height: 40%;
+  }
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.image-previews img {
+  cursor: pointer;
+  width: 64px;
+  height: 64px;
+  margin: 5px;
+  border: 2px solid transparent;
+  transition: border 0.2s ease;
+  filter: brightness(1) saturate(25%);
+  transition: filter 0.3s ease, border 0.3s ease;
+}
+
+.image-previews img:hover {
+  border: 2px solid #f00;
+}
+
+.image-previews img.active {
+  filter: saturate(100%) brightness(1);
+}

@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Creator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Team Creator</h1>
+        <form id="playerForm">
+            <div class="player-inputs">
+                <!-- Player Name Columns -->
+                <div class="column">
+                    <div class="input-group"><label for="player1"> Player  1:</label><input type="text" id="player1"  name="player1"  placeholder="Player 1"></div>
+                    <div class="input-group"><label for="player2"> Player  2:</label><input type="text" id="player2"  name="player2"  placeholder="Player 2"></div>
+                    <div class="input-group"><label for="player3"> Player  3:</label><input type="text" id="player3"  name="player3"  placeholder="Player 3"></div>
+                    <div class="input-group"><label for="player4"> Player  4:</label><input type="text" id="player4"  name="player4"  placeholder="Player 4"></div>
+                    <div class="input-group"><label for="player5"> Player  5:</label><input type="text" id="player5"  name="player5"  placeholder="Player 5"></div>
+                    <div class="input-group"><label for="player6"> Player  6:</label><input type="text" id="player6"  name="player6"  placeholder="Player 6"></div>
+                    <div class="input-group"><label for="player7"> Player  7:</label><input type="text" id="player7"  name="player7"  placeholder="Player 7"></div>
+                    <div class="input-group"><label for="player8"> Player  8:</label><input type="text" id="player8"  name="player8"  placeholder="Player 8"></div>
+                    <div class="input-group"><label for="player9"> Player  9:</label><input type="text" id="player9"  name="player9"  placeholder="Player 9"></div>
+                    <div class="input-group"><label for="player10">Player 10:</label><input type="text" id="player10" name="player10" placeholder="Player 10"></div>
+                </div>
+                <!-- ELO Columns -->
+                <div class="column">
+                    <div class="input-group"><label for="elo1"> Player  1 ELO:</label><input type="number" id="elo1"  name="elo1"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo2"> Player  2 ELO:</label><input type="number" id="elo2"  name="elo2"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo3"> Player  3 ELO:</label><input type="number" id="elo3"  name="elo3"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo4"> Player  4 ELO:</label><input type="number" id="elo4"  name="elo4"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo5"> Player  5 ELO:</label><input type="number" id="elo5"  name="elo5"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo6"> Player  6 ELO:</label><input type="number" id="elo6"  name="elo6"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo7"> Player  7 ELO:</label><input type="number" id="elo7"  name="elo7"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo8"> Player  8 ELO:</label><input type="number" id="elo8"  name="elo8"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo9"> Player  9 ELO:</label><input type="number" id="elo9"  name="elo9"  placeholder="ELO"></div>
+                    <div class="input-group"><label for="elo10">Player 10 ELO:</label><input type="number" id="elo10" name="elo10" placeholder="ELO"></div>
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="button" id="randomize">Randomize Teams</button>
+                <button type="button" id="balance">Balance Teams</button>
+            </div>
+        </form>
+        <div class="teams">
+            <div class="team" id="teamBlue">
+                <h2>Team One <span class="elo-total" id="eloBlue">0</span></h2>
+                <div class="player-list" id="playerlistBlue"></div>
+            </div>
+            <div class="team" id="teamBeige">
+                <h2>Team Two <span class="elo-total" id="eloBeige">0</span></h2>
+                <div class="player-list" id="playerlistBeige"></div>
+            </div>
+        </div>
+        <div class="elo-difference">
+            <span>ELO Difference: <span id="eloDifference">0</span></span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
