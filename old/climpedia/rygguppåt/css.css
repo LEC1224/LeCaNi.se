@@ -1,0 +1,143 @@
+/*------------------*/
+/*-----Body---------*/
+/*------------------*/
+body {
+	margin: 0px;
+	padding: 0px;
+}
+#wrapper {
+	margin: 0px;
+	padding: 0px;
+	width: inherit;
+}
+/*------------------*/
+/*-----Header-------*/
+/*------------------*/
+#header {
+	height: 170px;
+	width: inherit;
+	background-image: url("img/headbg.jpg");
+	background-size: cover;
+	background-position: center;
+	margin: 0px;
+}
+#header a {
+	position: relative;
+	left: 100px;
+	top: 50px;
+}
+#menu {
+	height: 40px;
+	background-color: #ccc;
+	border-top-color: #ddd;
+	border-top-style: solid;
+	border-bottom-color: #bbb;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-left-style: none;
+	border-width: 1px;
+}
+#menu a, #menu span {
+	text-decoration: none;
+	color: #000;
+	display: block;
+	width: 70px;
+	height: 20px;
+	float: left;
+	position: center;
+	padding: 10px;
+	text-align: center;
+	margin: 0px;
+}
+#menu a:hover, span:hover {
+	background-color: #ddd;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #eee;
+	margin-top: 40px;
+	width: contain;
+	height: contain;
+}
+/*
+#menu ul {
+	list-style: none;
+	text-decoration: none;
+	text-align: left;
+	float: left;
+	padding: 0px;
+}
+#menu li {
+	position: center;
+}
+*/
+.sub_menu_click {
+	width: 100px !important;
+	height: 20px !important;
+	text-align: left !important;
+	border-top-style: none;
+	border-bottom-color: #ccc;
+	border-bottom-style: solid;
+	border-right-style: none;
+	border-left-style: none;
+	border-width: 1px;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown-content:hover {
+	background-color: #eee;
+}
+/*------------------*/
+/*------Page--------*/
+/*------------------*/
+#page {
+	position: relative;
+	width: 100%;
+}
+.content {
+	float: left;
+	width: 80%;
+	background-color: #f9f9f9;
+	border: solid #eee 2px;
+	border-right: 1px !important;
+	box-sizing: border-box;		
+	margin-top: 0px !important;
+}
+.content h1, p {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.content div {
+	background-color: #fff;
+	padding: 0px;
+	margin: 0px;
+	border: solid #eee 1px;
+}
+#twitter {
+	border-left: 1px #eee solid !important;
+	border-top: 2px solid #eee !important;
+	border-style: none;
+	box-sizing: border-box;
+	width: 20%;
+	height: 100%;
+	float: right;
+}
+#welcome {
+	text-align: center;
+}
+#welcome {
+	border-top: 0px !important;
+}
+.twitter-timeline {
+	height: 100%;
+}
+.twitter-timeline #footer {
+}

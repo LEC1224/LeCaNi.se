@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	background-color:#009;
+	text-align:center;
+	background-image:url(Bilder/BG.png);
+	background-size:620px;
+	background-repeat:repeat-y;
+	background-position:center;
+	width:580px;
+	margin:auto;	
+}
+#header {
+	width:700px;
+	text-align:center;
+	position:relative;
+	right:60px;
+	margin-bottom:20pX;
+}
+#logo {
+	background-image:url(Bilder/BG%201.png);
+	background-size:contain;
+	background-repeat:repeat-x;
+	border-style:solid;
+	border-color:#00F;
+	border-width:5px;
+	border-radius:4px;
+	margin-bottom:10px;
+}
+#page , #city , #info {
+	font-size:18px;
+}
+#page p {
+	padding:15px;
+	margin:5px;
+	background-color:#FFF;
+	border-style:solid;
+	border-width:3px;
+	border-radius:3px;
+}
+#page h2 {
+	background-image:url(Bilder/HeaderBG.png);
+	background-size:contain;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-repeat:no-repeat;
+	margin:5px;
+	background-position:center;
+}
+#info h2 {
+	background-image:url(Bilder/HeaderBG.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	margin:5px;
+	margin-top:2px;
+	background-position:bottom;
+}
+#page h3 {
+	background-image:url(Bilder/HeaderBG.png);
+	background-size:contain;
+	padding-top:5px;
+	padding-bottom:5px;
+	background-repeat:no-repeat;
+	margin:5px;
+	background-position:center;
+}
+#city p {
+	padding:15px;
+	margin:5px;
+	background-color:#FFF;
+	border-style:solid;
+	border-width:3px;
+	border-radius:3px;
+	float:left;
+	width:534px;
+}
+#city img {
+	width:250px;
+	height:150px;
+	border-style:solid;
+	border-width:2px;
+	border-color:#00F;
+	float:right;
+}
+#city h2 {
+	background-image:url(Bilder/HeaderBG.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	margin:5px;
+	margin-top:2px;
+}
+#link {
+	background-image:url(Bilder/HeadermenuBG.png);
+	background-size:100x50px;
+	background-repeat:repeat-x;
+	font-size:24px;
+	padding:10px;
+	border-style:solid;
+	border-radius:2px;
+	border-width:2px;
+	color:#DDD;
+	text-align:center;
+	text-decoration:none;
+}
+#link:hover {
+	background-image:url(Bilder/HeadermenuBG1.png);
+	background-size:100x50px;
+	background-repeat:repeat-x;
+	font-size:24px;
+	padding:10px;
+	border-style:solid;
+	border-radius:2px;
+	border-width:2px;
+	color:#FFF;
+	text-align:center;
+	text-decoration:none;
+}
+#info a {
+	background:#0064FF;
+	background-size:564px 30px;
+	background-position:top;
+	border-style:solid;
+	border-width:2px;
+	border-bottom-color:#333;
+	border-right-color:#333;
+	border-top-color:#FFF;
+	border-left-color:#FFF;
+	float:right;
+	width:564px;
+	height:22px;
+	text-align:center;
+	padding-bottom:4px;
+	padding-top:3px;
+	margin-bottom:4px;
+	text-decoration:none;
+	font-size:20px;
+	font-weight:bold;
+	position:relative;
+	color:#FFF;
+	right:6px;
+}
+#info a:hover {
+	background:#008FFF;
+	background-size:564px 30px;
+	position:relative;
+}
+#info li {
+	list-style:none;
+	color:000;
+}
+#texture {
+	border:#03D;
+	border-width:4px;
+	border-style:solid;
+	border-radius:3px;
+	margin-bottom:10px;
+}
+#dl a {
+	color:#000;
+	text-decoration:underline;
+	font-size:18px;
+}
+#dl a:hover {
+	color:#000;
+	text-decoration:none;
+	font-size:18px;
+}
+#ansok {
+	text-align:left;
+}
+#stats {
+	text-align:left;
+}
+samp {
+	font-size:16px;
+}

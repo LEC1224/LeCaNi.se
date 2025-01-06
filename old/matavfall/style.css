@@ -1,0 +1,154 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ---------------------- */
+/* -- Body And Wrapper -- */
+/* ---------------------- */
+
+body {
+	background:#FFF;
+	background-image:url("img/line2.png");
+	background-repeat:repeat-y;
+	background-position:center;
+	width:1100px;
+	position:center;
+	margin-top:10px;
+	margin-left:auto;	
+	margin-right:auto;
+}
+#wrapper {
+	width:1000px;
+	padding-top:10px;
+	padding-bottom:10px;
+	margin:auto;	
+	font-family:"Century Gothic";
+}
+h1, h2, h3 {
+	color:blue;
+	font-family:"Calibri";
+}
+
+/* ---------------------- */
+/* ------- Header ------- */
+/* ---------------------- */
+
+#header {
+	background-size:contain;
+	background-image:url("img/line.png");
+	border-style:solid;
+	border-color:#AAA;
+	border-width:5px;
+	border-radius:4px;
+	text-align:center;
+}
+
+#header img {
+	position:relative;
+	width:150;
+	height:150;
+	margin:20px;
+	margin-bottom:0px;
+}
+
+/* ---------------------- */
+/* ----- Valkommen ------ */
+/* ---------------------- */
+
+#valkommen {
+	font-size:15px;
+	text-align:center;
+	margin-top:10px;
+	width:475px;
+	float:left;
+	border-style:solid;
+	border-color:#000;
+	border-width:3px;
+	border-radius:4px;
+	background-color:#FFF;
+}
+#valkommen h2 {
+	background-size:contain;
+	background-image:url("img/line.png");
+	margin-top:0px;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-size:30px;
+	border-bottom-style:solid;
+	border-color:black;
+	background-color:#DFDFDF;
+	
+}
+#valkommen h3 {
+	padding-top:5px;
+	font-size:20px;
+	margin-bottom:0px;
+	border-top-style:solid;
+	border-color:black;
+}
+#valkommen img {
+	border-style:solid;
+	border-color:#000;
+	border-width:2px;
+	border-radius:2px;
+}
+#valkommen p {
+	padding-left:5px;
+	padding-right:5px;
+}
+#kretslopp img {
+	width:230px;
+	border-style:none;
+}
+
+/* ---------------------- */
+/* ------- Page --------- */
+/* ---------------------- */
+
+#page {
+	background-color:#FFF;
+	margin-left:10px;
+	margin-top:10px;
+	padding:5px;
+	padding-top:0px;
+	float:left;
+	width:495px;
+	border-style:solid;
+	border-color:#000;
+	border-width:2px;
+	border-radius:2px;
+}
+#page p {
+	text-algin:left;
+}
+#page img {
+	margin-bottom:5px;
+	margin-left:3px;
+	margin-right:10px;
+}
+.mat1 {
+	margin-bottom:0px;
+	float:left;
+}
+.mat2 {
+	margin-bottom:0px;
+	float:right;
+	border-style:none;
+}
+
+/* ---------------------- */
+/* ------- Footer ------- */
+/* ---------------------- */
+
+#footer {
+	background-color:#FFF;
+	margin-left:10px;
+	margin-top:12px;
+	padding:10px;
+	float:left;
+	width:485px;
+	border-style:solid;
+	border-color:#000;
+	border-width:2px;
+	border-radius:2px;
+	font-family:"Times New Roman";
+}
