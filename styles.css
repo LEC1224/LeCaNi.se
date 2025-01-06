@@ -224,6 +224,9 @@ p img {
 #player-class-all {
 	background-color: lightgreen;
 }
+#player-class-active {
+	background-color: gold;
+}
 #player-class-ops {
 	background-color: lightblue;
 }
