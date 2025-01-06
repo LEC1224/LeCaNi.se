@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LeckT Quotes</title>
+	<link rel="stylesheet" type="text/css" href="quote.css">
+	<link rel="icon" href="../img/icon.png">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://smtpjs.com/v3/smtp.js"></script>
+	<script src="quote.js"></script>
+</head>
+<body onload="load()">
+  <div id="wrapper">
+	<h1>LeckT Quote Randomizer</h1>
+	<h3 id="subtitle"></h3>
+	<h5 id="subsubtitle"></h5>
+	<div class="page">
+		<div id="quoteText">"Quotes will appear here, hopefully."<br>― LeckT</div><br>
+		<button onclick="generate()">Generate</button>
+		<button onclick="copy()">Copy Quote</button>
+	</div>
+	<div class="page">
+		<p>Sometimes live at <a href="https://twitch.tv/LEC1224">TTV/LEC1224</a></p>
+		<p>If you want to suggest a quote, or just say something, I'm LEC#0126 on Discord, or mail to info@lecani.se</p>
+		<!--<textarea class="input" id="suggestion"></textarea><br>
+		<button onclick="submitText()">Submit</button>-->
+	</div>
+  </div>
+</body>
+</html>
