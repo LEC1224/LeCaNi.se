@@ -1,0 +1,110 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0faff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #2080a0;
+    margin-top: 30px;
+    font-size: 3em;
+    text-align: center;
+}
+
+#taskInput {
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid #2080a0;
+    width: 95%;
+    max-width: 800px;
+    font-size: 2em;
+}
+
+#addTaskButton {
+    padding: 15px;
+    margin: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #2080a0;
+    color: white;
+    width: 95%;
+    max-width: 900px;
+    cursor: pointer;
+    font-size: 2em;
+}
+
+#addTaskButton:hover {
+    background-color: #1a6580;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    width: 95%;
+    max-width: 900px;
+}
+
+li {
+    margin: 10px 0;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #2080a0;
+    font-size: 2em;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #BBB;
+}
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    margin-left: 10px;
+}
+
+#clearCompletedButton {
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ff8080; /* Pale red */
+    color: white;
+    width: 90%;
+    max-width: 900px;
+    cursor: pointer;
+    align-self: center;
+    font-size: 2em;
+}
+
+#clearCompletedButton:hover {
+    background-color: #cc6666; /* Darker pale red for hover effect */
+}
+
+/* Small devices (landscape phones, less than 576px) */
+@media (max-width: 575.98px) { 
+    h1, #taskInput, #addTaskButton, li {
+        font-size: 1.5em;
+    }
+    input[type=checkbox] {
+        transform: scale(2);
+    }
+}
+
+/* Medium devices (tablets, less than 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    h1, #taskInput, #addTaskButton, li {
+        font-size: 2em;
+    }
+    input[type=checkbox] {
+        transform: scale(2.5);
+    }
+}
