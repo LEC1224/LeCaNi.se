@@ -405,23 +405,51 @@
   
   
   <section class="content-section" id="section-rules">
-	<div class="content-container">
+    <div class="content-container">
       <h1>Regler</h1>
-		<p>Varje spelare har rätt till att gå in i spectator-läge så länge denne inte använder spelläget för bekväm transport.</p>
-		
-    <p>Varje spelare har rätt till att få sin spelardata tillbakadragen och på så sätt återfå sina saker om denne dött och förlorat sina saker på grund av bugg eller lagg.</p>
-		
-    <p>Varje spelare har rätt att grunda en egen stad och även bestämma över sin stad till den grad att det inte överskrider LeCaNis principer.</p>
-		
-    <p>Varje spelare måste få alla sina resurser genom metoder som finns tillgängliga i multiplayer survival minecraft.</p>
-		
-    <p>Varje spelare ansvarar för att behålla naturen vacker om denne är inom 500 block från en stad (med undantag för avsedda resurstillgångar så som stenbrott, sandbrott, farmer).</p>
-		
-    <p>Varje spelare måste bemöta andra spelare med respekt.</p>
-
-    <p>Varje spelare ansvarar för att ingen utomstående har tillgång till dennes konto. Om t.ex. ett syskon eller kompis loggar in på LeCaNi genom ditt Minecraft-konto kommer alla handlingar denne gör vara på ditt ansvar.</p>
-		
-    <p>Varje spelare måste ha admins eller ägande spelares tillåtelse för att förändra andra spelares byggen och ta resurser från andra spelares ägor.</p>
+      <div class="accordion">
+  
+        <button class="accordion-header">Användning av Spectator-läge är tillåtet – men inte som transportmedel</button>
+        <div class="accordion-body">
+          Spectator-läget får användas av alla spelare, exempelvis för att fota byggen eller göra timelapses. Det får dock inte användas för att transport eller för att undvika hinder eller faror.
+        </div>
+  
+        <button class="accordion-header">Återställning av förlorade saker vid bugg eller lagg</button>
+        <div class="accordion-body">
+          Om du förlorar föremål på grund av en uppenbar bugg eller lagg (exempelvis serverkrasch eller rubberbanding) har du rätt att få tillbaka dina saker. Kontakta en admin och beskriv vad som hänt så noggrant du kan. Viss bevisning kan efterfrågas.
+        </div>
+  
+        <button class="accordion-header">Alla spelare har rätt att grunda egna städer</button>
+        <div class="accordion-body">
+          Du har rätt att grunda en egen stad var du vill, så länge du följer LeCaNis grundprinciper om respekt och survival. Som stadsgrundare får du bestämma regler inom din stad, exempelvis krav på stil, bygglov eller att staden är privat. En stadsägare har rätten att bannlysa spelare från sin stad.
+        </div>
+  
+        <button class="accordion-header">Fusk och kreativa metoder är förbjudet</button>
+        <div class="accordion-body">
+          Alla resurser som används i byggen eller handel på LeCaNi måste vara insamlade i survival-läge. Att få tag i resurser genom mods, kommandon eller externa program är förbjudet och leder till omedelbar ban.
+        </div>
+  
+        <button class="accordion-header">Skydda naturen nära städer – gräv snyggt</button>
+        <div class="accordion-body">
+          Inom 500 block från en stad förväntas du undvika att lämna fula spår i naturen, som flytande träd, Creeper-hål eller förstörda stränder. Undantag gäller på särskilda resurs-samlarplatser som etablerade farmer, sten- eller sandbrott.
+        </div>
+  
+        <button class="accordion-header">Visa respekt mot andra spelare</button>
+        <div class="accordion-body">
+          Du måste alltid behandla andra med respekt. Inget mobbande, trakasserier, förlöjligande eller härskartekniker. Ha kul, men inte på andras bekostnad. Gemensamt överenskommet skämtsamt dödande och bus är tillåtet, men varje spelare ansvarar för att alla inblandade är med i leken.
+        </div>
+  
+        <button class="accordion-header">Du ansvarar för ditt konto</button>
+        <div class="accordion-body">
+          Det är alltid du som är ansvarig för vad som händer via ditt Minecraft-konto. Om ett syskon eller en kompis gör något regelvidrigt från din dator är det fortfarande du som måste ta konsekvenserna.
+        </div>
+  
+        <button class="accordion-header">Stöld och griefing är förbjudet</button>
+        <div class="accordion-body">
+          Du måste ha tillstånd av en admin eller ägaren för att ta saker från eller bygga på någon annans marker, inklusive hus, kistor och farmar. Det gäller även “övergivna” byggnader om de inte är tydligt markerade som fria att ta från.
+        </div>
+  
+      </div>
 		
 		<h2>Buggar och externa verktyg</h2>
 		<p>Minecraft har alltid haft buggar som gjort att saker som inte borde funka i Survival Mode ändå blivit möjliga. T.ex. sand- och TNT-duplicering. Dessutom finns massor av externa verktyg (i form av mods, plugins och program) som kan ge spelare förmåner i spelet som Vanilla Minecraft inte erbjuder. LeCaNis spelare har gemensamt skapat ett ramverk för var gränserna ska gå.</p>
@@ -818,6 +846,8 @@
   <script src="script/images.js"></script>
   <script src="script/citydata.js"></script>
   <script src="script/copytext.js"></script>
+  <script src="script/accordion.js"></script>
+
   
   <script>fetchCityData('fabulania');</script>
   <script>fetchCityData('therike');</script>
