@@ -1,13 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const headers = document.querySelectorAll('.accordion-header');
-    headers.forEach(header => {
-      header.addEventListener('click', () => {
-        const body = header.nextElementSibling;
-        const isOpen = body.style.display === 'block';
-  
-        document.querySelectorAll('.accordion-body').forEach(el => el.style.display = 'none');
-        if (!isOpen) body.style.display = 'block';
-      });
+  const ruleTitles = document.querySelectorAll('.rule-title');
+  ruleTitles.forEach(title => {
+    title.addEventListener('click', () => {
+      const description = title.nextElementSibling;
+      const isOpen = description.style.display === 'block';
+
+      description.style.display = isOpen ? 'none' : 'block';
+      title.classList.toggle('open', !isOpen);
     });
   });
-  
+});

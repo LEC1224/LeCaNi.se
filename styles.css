@@ -241,32 +241,41 @@ p img {
 /* ---------- Rules ----------- */
 /* ---------------------------- */
 
-.accordion button.accordion-header {
-    background-color: #333;
-    color: white;
-    padding: 1rem;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    transition: background 0.2s ease;
-    font-size: 1.1rem;
-    margin-top: 0.5rem;
-    border-radius: 0.3rem;
+.rule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-    .accordion button.accordion-header:hover {
-        background-color: #444;
-    }
+.rule-item {
+  border-bottom: 1px solid #555;
+  padding: 0.5rem 0;
+}
 
-.accordion .accordion-body {
-    background-color: #222;
-    color: #ccc;
-    padding: 1rem;
-    display: none;
-    overflow: hidden;
-    border-radius: 0 0 0.3rem 0.3rem;
+.rule-title {
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.rule-title .arrow {
+  display: inline-block;
+  width: 1.2em;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.rule-title.open .arrow {
+  transform: rotate(90deg);
+}
+
+.rule-description {
+  display: none;
+  margin-top: 0.3rem;
+  padding-left: 1.7em;
+  color: #ccc;
 }
 
 /* ---------------------------- */
