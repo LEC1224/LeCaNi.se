@@ -69,6 +69,7 @@ loadSlideshowImages("vildtmarken-slideshow", "city/vildtmarken");
 loadSlideshowImages("darkrune-slideshow", "city/darkrune");
 loadSlideshowImages("alfheim-slideshow", "city/alfheim");
 loadSlideshowImages("ldngruvorna-slideshow", "city/ldngruvorna");
+loadSlideshowImages("thelady-slideshow", "city/thelady");
 
 //Other slideshows
 loadSlideshowImages("project-slideshow", "project");

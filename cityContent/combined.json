@@ -1,0 +1,200 @@
+﻿[
+    {
+        "name":  "Alfheim",
+        "founder":  "WCarlsson, kvickrot, Esskkil",
+        "yearFounded":  "Maj 2024",
+        "size":  "By",
+        "biome":  "Old Growth Taiga",
+        "coast":  "Nej",
+        "wall":  "Stripped Spruce Logs (Klar)",
+        "coords":  "-4200; -3100",
+        "description":  "Alfheim saknar beskrivning i nulÃ¤get."
+    },
+    {
+        "name":  "Antares",
+        "founder":  "David",
+        "yearFounded":  "April 2014",
+        "size":  "By",
+        "biome":  "Plains, Extreme Hills",
+        "coast":  "Nordkust",
+        "wall":  "Cobble, Stonebrick, Glas, 4 torn (Klar)",
+        "coords":  "1200; 1860",
+        "description":  "Antares var frÃ¥n bÃ¶rjan ett glashus David byggde nÃ¥gra hundra block ifrÃ¥n Yocadax precis brevid en NPC-village. Efter lite tipsande frÃ¥n Carl frÃ¥gade David nÃ¥gra vÃ¤nner om de ville bygga liknade glashus dÃ¤r. Samuel och Carl gjorde detta och sen dess har en stad primÃ¤rt gjord i glas vÃ¤xt fram, lÃ¤nge under namnet \u0027Glasstaden\u0027. FÃ¶r att fÃ¥ mer plats rev David ner nÃ¤stan alla NPC-hus och nu finns bara en halvt sprÃ¤ngd kyrka kvar. DÃ¤rifrÃ¥n namnet Antares, vilket var en raket som sprÃ¤ngdes under uppskjutning vid samma tid som staden skulle dÃ¶pas. \nUnder LAN har Josef, Carl, David och Axel byggt upp staden med nya hus, mur och hamn."
+    },
+    {
+        "name":  "Arboria",
+        "founder":  "Carl, Josef, David",
+        "yearFounded":  "2014",
+        "size":  "Stad",
+        "biome":  "Jungle",
+        "coast":  "Nej",
+        "wall":  "Nej",
+        "coords":  "4900; 3150",
+        "description":  "TÃ¤nk dig att du vandrar i djungeln, lÃ¥ngt frÃ¥n all civilisation, och ser en trÃ¤koja skymta mellan trÃ¤dtopparna. NÃ¤r du kollar noga ser du en till bakom grenverken, och en till. PlÃ¶tsligt inser du att du stÃ¥r under en hel stad, uppspÃ¤nd av de tjocka djungeltrÃ¤den: Arboria!\nArboria grundades av Carl, Josef och David under deras LAN precis som Yocadax och Antares. I mitten av staden vÃ¤xer ett enormt trÃ¤d ur en damm, i vilket man kan gÃ¥ in och utforsak de rum som kronan och grenverket gÃ¶r upp."
+    },
+    {
+        "name":  "Bergavik",
+        "founder":  "Carl, Nicke",
+        "yearFounded":  "November 2013",
+        "size":  "Vanlig Stad",
+        "biome":  "Extreme Hills",
+        "coast":  "Ã–stkust",
+        "wall":  "Stonebricks, Dark Oak, 6 torn (Klar)",
+        "coords":  "1650; -4000",
+        "description":  "Bergavik skiljer sig frÃ¥n alla andra stÃ¤der dÃ¥ den Ã¤r byggd under tvÃ¥ massiva berg. Stadens fÃ¶rsta byggnader var Carls fiskestuga och Nickes Dojo en bit frÃ¥n New Earth dÃ¤r de kunde vara sjÃ¤lva men nÃ¤ra till civilisationen. Efter att spelat dÃ¤r nÃ¥gra veckor sÃ¥ fick de idÃ©n att bygga ett stort ihÃ¥ligt berg dÃ¤r de kunde bygga en stad. Den 24 November 2013 bÃ¶rjade de bygga berget och blev klara redan dagen dÃ¤rpÃ¥ men lyckades Ã¤ven ta slut pÃ¥ all sten de hade samt all sten Malle125 hade.\nSen dess har grottstaden vuxit. Ett till berg har byggts och det fÃ¶rsta har byggts ut och blivit nÃ¤ra dubbelt sÃ¥ stort (Plains-dalen lÃ¥g frÃ¥n bÃ¶rjan utanfÃ¶r). TvÃ¥ uppbyggda drakar bor i Huvudberget, och deras huvuden agerar portar till Carls och Nickes baser i staden."
+    },
+    {
+        "name":  "By Dela By",
+        "founder":  "Hugo, Olof",
+        "yearFounded":  "Augusti 2019",
+        "size":  "By",
+        "biome":  "Oak Forest",
+        "coast":  "Ã–stkust",
+        "wall":  "Cobble, Oakwood, Spruce-planks, 1 torn (Oklar?)",
+        "coords":  "-840; 760",
+        "description":  "By Dela By saknar stadsbeskrivning i nulÃ¤get."
+    },
+    {
+        "name":  "Dark Rune ",
+        "founder":  "LadyDeathaly",
+        "yearFounded":  "April 2024",
+        "size":  "By",
+        "biome":  "Plains, Cherry Blossoms, Savana",
+        "coast":  "Nej",
+        "wall":  "Cooble, Spruce Logs, Deepslate Cobble (Oklar)",
+        "coords":  "4100; 15500",
+        "description":  "Dark Rune Ã¤r en sista bastion fÃ¶r DÃ¶dsgudinnan Deathaly och det sista fÃ¶rsvaret till hennes huvudtempel The LD Towers. Dark Rune grundades av Deathaly sjÃ¤lv som en elementÃ¤r stad. DÃ¥ Gudakriget utbrÃ¶t sÃ¥ blev Dark Rune-stad och keep en befÃ¤stning som fÃ¶rsvarar Deathalys land frÃ¥n onda krafter.  Dark Rune befinner sig pÃ¥ 2 berg och en dalgÃ¥ng. BÃ¥da bergen fÃ¶rbinds dmed LD-bron som byggdes nÃ¤r Dark Rune blev en befÃ¤stning fÃ¶r att enklare fÃ¶ra trupper mellan bergen. Idag har krigets rop fÃ¶rsvunnit och invÃ¥narna har Ã¥tervÃ¤nt fÃ¶r att dyrka Deathaly igen och Ã¥tervÃ¤nda till sina hem. (Dark rune Ã¤r vÃ¤ldigt mycket RPG inspirerat.)"
+    },
+    {
+        "name":  "Fabulania",
+        "founder":  "Andreas, Carl-Johan",
+        "yearFounded":  "Mars 2013",
+        "size":  "Storstad",
+        "biome":  "Plains, Jungle, Extreme Hills",
+        "coast":  "VÃ¤stkust",
+        "wall":  "Stonebricks, Oakplanks, 8 torn (Klar)",
+        "coords":  "0; -900",
+        "description":  "Fabulania Ã¤r serverns huvudstad och den stÃ¶rsta staden som funnits i LeCaNis historia. Den grundades i Mars 2013 av xxSlaktarn och LilleAndrew. DÃ¤rfÃ¶r Ã¤r detta den enda staden som funnits med unte hela LeCaNis tid (den hÃ¤r vÃ¤rlden). Den har vukit mycket, fÃ¶r det mesta i trÃ¤byggen men Ã¤ven ett och annat stenhus tittar fram.\nFabulanias Mur pÃ¥bÃ¶rjades i Maj 2013 av Andreas och Carl och stod nÃ¤stan helt klar i Februari 2018. Det drÃ¶jde dock till Januari 2021 innan det sista blocket sattes ut av samma personer som pÃ¥bÃ¶rjade bygget Ã¥tta Ã¥r tidigare.\nI December 2021 genomgick Fabulania ett stort renoveringsprojekt av Carl som bland annat Ã¥terstÃ¤llde fÃ¶rstÃ¶rda hus, och terraformade stadens natur."
+    },
+    {
+        "name":  "Hydropolis",
+        "founder":  "Carl, Viktor",
+        "yearFounded":  "Januari, 2020",
+        "size":  "By",
+        "biome":  "Deep Ocean",
+        "coast":  "Ã–VERALLT",
+        "wall":  "Nej",
+        "coords":  "-3000; -1870",
+        "description":  "Hydropolis, dÃ¶pt 2023 (tidigare Undervattenstaden), bestÃ¥r av en uppsÃ¤ttning glaskupoler pÃ¥ botten av en Deep Ocean-biom och grundades strax efter The Aquatic Update, nÃ¤r conduits lades till. UtÃ¶ver glasrum besitter ocksÃ¥ Hydropolis en stor diamantgruva, en Guardianfarm och en grÃ¶nskande grotta skapad med TNT."
+    },
+    {
+        "name":  "LDN-Gruvorna",
+        "founder":  "LadyDeathaly, SimonWi",
+        "yearFounded":  "Juli 2024",
+        "size":  "By",
+        "biome":  "Plains",
+        "coast":  "Nej",
+        "wall":  "Blandade stenar, Spruce, Leaves (Oklar)",
+        "coords":  "5000; 17200",
+        "description":  "LDN-Gruvorna Ã¤r ett mÃ¶rkt och dystert gruvsamhÃ¤lle som fÃ¶rser LD-Nationen med byggmaterial. SamhÃ¤llet bestÃ¥r av cirka 14 hus, varav tvÃ¥ radhusomrÃ¥den och en butik (LKAB Raketer AB). OmrÃ¥det domineras av Gruv-HQ som styrs av en high priestess, ett gruvgille och en stor masugn. Staden fÃ¶ljer samma regler som Dark Rune och resten av LDN, med fokus pÃ¥ slumomrÃ¥de och gruvverksamhet som byggtema."
+    },
+    {
+        "name":  "Meidera",
+        "founder":  "Carl",
+        "yearFounded":  "Maj, 2014",
+        "size":  "Vanlig stad",
+        "biome":  "Plains, Oak Forest",
+        "coast":  "InsjÃ¶ i mitten av staden",
+        "wall":  "Nej",
+        "coords":  "4000; -2100",
+        "description":  "Meidera grundades av Carl (dÃ¥ MinerC1224, nu LEC1224) efter att NethervÃ¤gen till New Earth byggts. MÃ¥let var att ha en fin trÃ¤by runt en fin insjÃ¶. MÃ¥nga av serverns invÃ¥nade byggde varsitt hus hÃ¤r och byn blev snabbt en stad. Meidera stod orÃ¶rd under mÃ¥nga Ã¥r, men i Februari 2021 Ã¥tervÃ¤nde Carl och Nicke till staden och byggde en stor svÃ¤vande Ã¶ lite norrut. Tanken Ã¤r att Ã¶n ska ha en mystisk borg belÃ¤gen pÃ¥ sig, men det projektet har inte byggts vidare pÃ¥."
+    },
+    {
+        "name":  "New Earth",
+        "founder":  "Carl, Puntuz, Zimon, Johan, Emil, Jacob (lansite), Erik",
+        "yearFounded":  "November 2013",
+        "size":  "Vanlig Stad",
+        "biome":  "Forest, Roofed Forest",
+        "coast":  "Nej",
+        "wall":  "Cobble, Oakplanks, Stonebrick (Oklar, sen riven)",
+        "coords":  "1860; -3500",
+        "description":  "New Earth var ett sÃ¤tt att vÃ¤cka aktivitet pÃ¥ LeCaNi och lyckades. I ett par mÃ¥nader spelade mÃ¥nga pÃ¥ servern och alla bodde ihop. AffÃ¤rer Ã¶ppnades och gemenskapen stÃ¤rktes pÃ¥ ett sÃ¤tt LeCaNi inte varit med om under lÃ¥ng tid tillbaka. Efter nÃ¥gra mÃ¥nader griefades en stor del av staden och nu stÃ¥r bara runt hÃ¤lften av husen kvar och tillsammans med ruinerna av andra hus bildar de en mystisk spÃ¶kstad bÃ¤randes pÃ¥ mÃ¥nga, korta minnen i en av LeCaNis mÃ¥nga skogar."
+    },
+    {
+        "name":  "OdÃ¶pta Fortet",
+        "founder":  "Oskar, Carl, Nicke",
+        "yearFounded":  "2014",
+        "size":  "Vanlig Stad",
+        "biome":  "Ice Plains, Ice Plain Hills",
+        "coast":  "Nordkust",
+        "wall":  "Cobble, Stone, Stonebricks, 22 torn (Klar)",
+        "coords":  "900; -2550",
+        "description":  "OdÃ¶pta Fortet Ã¤r en befÃ¤stning byggd i nordpolen, en stor glaciÃ¤r mellan Fabulania och New Earth. Borgen byggdes av Oskar (stimpe), Carl (MinerC1224) och Nicke (nicke1224) under ett LAN hos Oskar och efter nÃ¥gra expansioner bÃ¶rjade Ã¤ven en by vÃ¤xa fram runt omkring. Byn Ã¤r skyddad av fortet sÃ¥ vÃ¤l som av en av LeCaNis lÃ¤ngsta murar som slingrar sig runt borgen, till skillnad frÃ¥n mÃ¥nga andra stÃ¤ders rektangulÃ¤ra murar. Dess stora vÃ¤ggar, anvancerade inkrÃ¤ktssytem samt dess isolerade placering i en snÃ¶tÃ¤ckt Ã¶ken gÃ¶r det odÃ¶pta fortet till en av LeCaNis mest skyddade platser."
+    },
+    {
+        "name":  "Old City",
+        "founder":  "AndrÃ©, Gustav",
+        "yearFounded":  "Februari 2017",
+        "size":  "Vanlig Stad",
+        "biome":  "Forest, Roofed Forest, Swampland, Ocean",
+        "coast":  "SydvÃ¤stkust",
+        "wall":  "Nej",
+        "coords":  "Choords: 2900; -1100",
+        "description":  "Old City grundades som ett projekt av MajaGustav, AndrÃ© och Freddan och har sedan dess vÃ¤xt till att bli en av LeCaNis stÃ¶rsta stÃ¤der. Stadsbilden Ã¤r lÃ¤tt igenkÃ¤nnbar genom deras ikonska skruvade skyskrapor och flitigt anvÃ¤ndande av facklor fÃ¶r beslysning bÃ¥de lÃ¤ngs vÃ¤garna och i skogen. Trots sitt namn fÃ¶ljer inte Old City ett uniformt byggtema men har olika stadsdelar med olika teman. Centrum Ã¤r beklÃ¤tt i trÃ¤hus och grÃ¥a ullgÃ¥ngar, till norr ligger en medeltida befÃ¤stning av sten med innergÃ¥rd och till Ã¶st ligger ett kvarter med moderna hus."
+    },
+    {
+        "name":  "Swamp Side Village",
+        "founder":  "Wsen, Wowtres",
+        "yearFounded":  "2013",
+        "size":  "By",
+        "biome":  "Jungle",
+        "coast":  "Nej",
+        "wall":  "Nej",
+        "coords":  "-60; -1550",
+        "description":  "Swamp Side Village bestÃ¥r av nÃ¥gra mysigt beladga hyddor av Stone Bricks och Spruce Planks i djungeln norr om Fabulania, Ã¶st om The Rike."
+    },
+    {
+        "name":  "The Lady",
+        "founder":  "LadyDeathaly",
+        "yearFounded":  "Juli 2025",
+        "size":  "Stad",
+        "biome":  "Djungel, Coral Reef",
+        "coast":  "VÃ¤stkust",
+        "wall":  "Flera murar",
+        "coords":  "3600; 16000",
+        "description":  "The Lady Ã¤r huvudstaden av LDN och har mÃ¥nga hus. LDN plaza Ã¤r en del av The Lady och Lake Deathaly. Staden Ã¤r privat, och folk kan kÃ¶pa fÃ¤rdiga hus eller tomter vid bygglov. Staden har ett gothics-death-tema och en arkitektur liknande LD-Tornen."
+    },
+    {
+        "name":  "The Rike",
+        "founder":  "Carl",
+        "yearFounded":  "April 2013",
+        "size":  "By",
+        "biome":  "Forest, Taiga, Jungle",
+        "coast":  "Nordkust",
+        "wall":  "Cobblestone, Stonebricks, 4 torn (Klar)",
+        "coords":  "-200; -1550",
+        "description":  "The Rike grundades i tidig historia av Carl, som ett hus fÃ¶r gruvarbete en bit ifrÃ¥n Fabulania fÃ¶r att slippa stÃ¶ta pÃ¥ gamla gruvgÃ¥ngar. Efterhand bÃ¶rjade Carl Ã¤ven skaffa ved till Fabulanias invÃ¥nare och skogen det tidiga The Rike var belagd i blev till en grÃ¤splatÃ¥ pÃ¥ kort tid. Sakta vÃ¤xte staden fram och nu Ã¤r det den mysiga trÃ¤by ingen trodde det skulle bli och har nu Ã¤ven utvÃ¤klats till ett stÃ¤lle fÃ¶r Team 1224, en av LeCaNis crews, dÃ¤rbland Nicke, Carl och Oskar. The Rike blev Ã¤ven den fÃ¶rsta staden med fulla murar. Efter Ã¶ver ett Ã¥r av aktivitet i staden blev varenda lilla trÃ¤hus uppbrÃ¤nt i ett grief och Carl, som hade byggt upp staden, flyttade till Bergavik fÃ¶r att fortsÃ¤tta livet pÃ¥ LeCaNi. Med honom fÃ¶ljde bÃ¥de Nicke och Oskar och The Rike lÃ¤mnades griefad i en lÃ¥ng tid.\nEfter mÃ¥nga lÃ¥nga mÃ¥nader i damm kom Carl tillbaka till staden i Juni 2015 och reparerade mÃ¥nga av husen, inte fÃ¶r att flytta dit men fÃ¶r minnens skull. Under sent 2010-tal flyttade Andreas in i The Rike och byggde upp ett stÃ¥tligt Sandstone-Bone-hus"
+    },
+    {
+        "name":  "Vildtmarken",
+        "founder":  "Carl, Josef",
+        "yearFounded":  "November 2022",
+        "size":  "Vanlig stad",
+        "biome":  "Plains, Oak forest, Dark forest, Hills",
+        "coast":  "Nej",
+        "wall":  "Deepslate Bricks, Stone, Sprucewood, 0/4 hÃ¶rntorn (Oklar)",
+        "coords":  "8000; -9000",
+        "description":  "Vildtmarken skapades i syfte att nÃ¥ nygenererad terrÃ¤ng som uppkommit bÃ¥de i Overworld och Nether. Carl bÃ¶rjade bygga en vÃ¤g i Nether som gick tusen block i vardera axel, och sÃ¥ledes gÃ¥tt en bit in i nygenererad netherterrÃ¤ng. DÃ¤r byggde han och Josef en portal och utforskade terrÃ¤ngen de nÃ¥dde. De bÃ¥da var mycket nÃ¶jda med naturutbudet och grundade en ny stad dÃ¤r.\nNamnet pÃ¥ staden syftar till den mer glesbebyggda stadsform Vildtmarken tagit, dÃ¤r spelare valt att bygga hus lÃ¤ngre ifrÃ¥n varandra och skapa mer utrymme fÃ¶r tomter, stigar och skog emellan husen. Denna byggstil skiljer sig frÃ¥n t.ex. Fabulanias mer begrÃ¤nsade utrymme inom sina murar, dÃ¤r ett tydligt centrum och vissa tÃ¤tbebyggda stadsdelar vÃ¤xt fram. Namnet myntades i discord av Carl, Martin och SpX nÃ¤r staden var mycket ung.\nI April 2023 pÃ¥bÃ¶rjades bygget av Vildtmarkens mur med ambitionen att bli Minecraft-Sveriges stÃ¶rsta survival-mur med 6000 blocks lÃ¤ngd och 33 blocks hÃ¶jd. I skrivande stund (September 2023) stÃ¥r sen sÃ¶dra sidan klar, medan de andra sidorna Ã¤r opÃ¥bÃ¶rjade."
+    },
+    {
+        "name":  "Yocadax",
+        "founder":  "Carl, Josef, David",
+        "yearFounded":  "Oktober 2013",
+        "size":  "By",
+        "biome":  "Forest, Extreme Hills",
+        "coast":  "Nej",
+        "wall":  "Cobblestone, 2 torn (Klar)",
+        "coords":  "1800; 2130",
+        "description":  "Yocadax Ã¤r en liten by lÃ¥ngt, lÃ¥ngt bort frÃ¥n nÃ¤rmsta civilisation. LÃ¥ngt mycket lÃ¤ngre Ã¤n vad som egentligen Ã¤r tillÃ¥tet. Staden grundades under ett LAN hos MinerC med Josef (som spelade pÃ¥ Nicke1224s konto), MinerD och Aggebah. Namnet Ã¤r en fÃ¶rÃ¤dling av de tvÃ¥ fÃ¶rsta bokstÃ¤verna i invÃ¥narnas namn: Josef, Carl, David, Axel =\u003e Jo-Ca-Da-Ax =\u003e Jocadaax = Yocadax."
+    }
+]

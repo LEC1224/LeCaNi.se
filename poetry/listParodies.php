@@ -19,4 +19,5 @@
 	<li><a href="?n=Carlupus_Lecs">Carlupus Lecs</a></li>
 	<li><a href="?n=Lupus_Vivifica">Lupus Vivifica</a></li>
 	<li><a href="?n=Motion_Från_Gustaf">Motion från Gustaf</a></li>
+<li><a href="?n=Himlen_Var_Oskyldigt_Bla">Himlen Var Oskyldigt Bla</a></li>
 </ul>

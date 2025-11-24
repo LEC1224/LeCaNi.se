@@ -242,6 +242,7 @@ p img {
 /* ---------------------------- */
 
 .rule-list {
+  margin: auto;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -273,9 +274,11 @@ p img {
 
 .rule-description {
   display: none;
+  font-size: 1.25em;
+  font-family: Arial, sans-serif;
   margin-top: 0.3rem;
   padding-left: 1.7em;
-  color: #ccc;
+  color: #FFF;
 }
 
 /* ---------------------------- */
