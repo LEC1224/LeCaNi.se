@@ -113,6 +113,8 @@ nav a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	max-width: 1280px;
   width: 90%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 h1, h2, h3, h4, h5, h6 {
 	color: white;
@@ -304,34 +306,180 @@ p img {
 
 .city-container {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   clear: both;
   text-align: left;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   border-top-style: solid;
   border-width: 2px;
   border-color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 1em;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
-.city-container h2 {
+
+.city-title {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-size: 1.5rem;
+  display: block;
+}
+
+/* When collapsed, show title left-aligned */
+.city-collapsed-state .city-title {
+  text-align: left;
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+
+/* When expanded, center and enlarge the title */
+.city-expanded-state .city-title {
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1em;
 }
 
-.city-container ul {
-  position: relative;
-  font-size: 1.25em;
-  list-style-position: inside;
-  left: -20px;
+/* Collapsed state */
+.city-collapsed {
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
+  padding: 0.5em 0;
 }
 
-.city-container .slideshow-container {
-  margin-left: 10px;
+.city-collapsed-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Remove h2 from collapsed-info since it's now in city-title */
+
+.city-collapsed-attributes {
+  font-size: 1em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.city-collapsed-attributes li {
+  margin: 0.3em 0;
+  padding: 0;
+}
+
+.city-thumbnail {
+  flex-shrink: 0;
+  width: 250px;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.city-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hide collapsed state when expanded */
+.city-expanded-state .city-collapsed {
+  display: none;
+}
+
+/* Expanded state */
+.city-expanded {
+  display: none;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.city-expanded-content {
+  padding-top: 1em;
+}
+
+.city-expanded .slideshow-container {
+  margin-bottom: 1.5em;
   z-index: 10;
 }
 
-@media only screen and (min-width: 1280px) {
-  #section-cities .slideshow-container {
-    float: right;
-    width: 50%;
-    height: auto;
+.city-expanded-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+.city-expanded-attributes {
+  font-size: 1.1em;
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+.city-expanded-description {
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.city-expanded-description p {
+  margin-bottom: 1em;
+}
+
+/* Toggle button */
+.city-toggle-btn {
+  width: 100%;
+  padding: 0.75em;
+  margin-top: 1em;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  color: white;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.city-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.city-appendix {
+  margin-top: 1em;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+/* Responsive */
+@media only screen and (max-width: 1280px) {
+  .city-collapsed {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .city-thumbnail {
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    align-self: center;
+    box-sizing: border-box;
+  }
+  
+  .city-expanded-layout {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+  
+  .city-expanded .slideshow-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 }
 /* ---------------------------- */

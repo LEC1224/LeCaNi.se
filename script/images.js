@@ -71,6 +71,12 @@ async function loadSlideshowImages(slideshowId, folder) {
         // Initialize the slideshow
         window.slideshows[slideshowId] = new Slideshow(slideshowId, imageArray, hiresImageArray);
         
+        // Set thumbnail for collapsed state (first image)
+        if (imageArray.length > 0) {
+          const cityName = slideshowId.replace('-slideshow', '');
+          setCityThumbnail(cityName, imageArray[0]);
+        }
+        
     } catch (error) {
         console.error(`Error loading slideshow ${slideshowId}:`, error);
     }
@@ -95,6 +101,18 @@ loadSlideshowImages("darkrune-slideshow", "city/darkrune");
 loadSlideshowImages("alfheim-slideshow", "city/alfheim");
 loadSlideshowImages("ldngruvorna-slideshow", "city/ldngruvorna");
 loadSlideshowImages("thelady-slideshow", "city/thelady");
+
+// Function to set thumbnail image for collapsed state
+function setCityThumbnail(cityName, imagePath) {
+  const container = document.getElementById(`city-${cityName}`);
+  if (!container) return;
+  
+  const thumbnail = container.querySelector('.city-thumbnail img');
+  if (thumbnail) {
+    thumbnail.src = imagePath;
+    thumbnail.alt = cityName;
+  }
+}
 
 //Other slideshows
 loadSlideshowImages("project-slideshow", "project");
