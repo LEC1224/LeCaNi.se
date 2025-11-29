@@ -5,51 +5,76 @@ class Slideshow {
         this.hiresImages = hiresImages;
         this.currentImageIndex = 0;
         
-        this.container.querySelector('.prev').addEventListener('click', () => this.changeImage(-1));
-        this.container.querySelector('.next').addEventListener('click', () => this.changeImage(1));
+        if (!this.container) {
+            console.warn(`Slideshow container not found: ${containerId}`);
+            return;
+        }
+        
+        const prevBtn = this.container.querySelector('.prev');
+        const nextBtn = this.container.querySelector('.next');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', () => this.changeImage(-1));
+        }
+        if (nextBtn) {
+            nextBtn.addEventListener('click', () => this.changeImage(1));
+        }
     }
     
     changeImage(step) {
-      console.log("Calling changeImage");
+        if (this.images.length === 0) return;
+        
         this.currentImageIndex += step;
         if (this.currentImageIndex >= this.images.length) this.currentImageIndex = 0;
         if (this.currentImageIndex < 0) this.currentImageIndex = this.images.length - 1;
 
-        this.container.querySelector('.main-image img').src = this.images[this.currentImageIndex];
-        this.container.querySelector('.main-image a').href = this.hiresImages[this.currentImageIndex];
+        const imgElement = this.container.querySelector('.main-image img');
+        const linkElement = this.container.querySelector('.main-image a');
+        
+        if (imgElement) {
+            imgElement.src = this.images[this.currentImageIndex];
+        }
+        if (linkElement) {
+            linkElement.href = this.hiresImages[this.currentImageIndex];
+        }
     }
-}
-
-const MAX_IMAGES = 10;
-
-function loadSlideshowImages(slideshowId, folder) {
-    const imageArray = [];
-    const hiresImageArray = [];
-
-    for (let i = 1; i <= MAX_IMAGES; i++) {
-        const imagePath = 'img/' + folder + '/' + i + '.jpg';
-        const hiresImagePath = 'img/' + folder + '/' + i + '.jpg';
-
-        const img = new Image();
-        img.src = imagePath;
-        img.onload = function() {
-            imageArray.push(imagePath);
-            hiresImageArray.push(hiresImagePath);
-        };
-        img.onerror = function() {
-            const index = imageArray.indexOf(imagePath);
-            if (index > -1) {
-                imageArray.splice(index, 1);
-            }
-        };
-    }
-    // Delay the slideshow initialization to give images a chance to load
-    setTimeout(() => {
-      window.slideshows[slideshowId] = new Slideshow(slideshowId, imageArray, hiresImageArray);
-    }, 1000);  // Adjust the delay as needed
 }
 
 window.slideshows = {};
+
+async function loadSlideshowImages(slideshowId, folder) {
+    try {
+        // Fetch the list of images from PHP
+        const response = await fetch(`list-images.php?folder=${encodeURIComponent(folder)}`);
+        const data = await response.json();
+        
+        if (data.error) {
+            console.error(`Error loading images for ${slideshowId}:`, data.error);
+            return;
+        }
+        
+        if (!data.images || data.images.length === 0) {
+            console.warn(`No images found for ${slideshowId} in folder ${folder}`);
+            return;
+        }
+        
+        const imageArray = [];
+        const hiresImageArray = [];
+        
+        // Process each image pair
+        data.images.forEach(imagePair => {
+            // Use thumbnail for display, full-size for link
+            imageArray.push(imagePair.thumbnail);
+            hiresImageArray.push(imagePair.fullsize);
+        });
+        
+        // Initialize the slideshow
+        window.slideshows[slideshowId] = new Slideshow(slideshowId, imageArray, hiresImageArray);
+        
+    } catch (error) {
+        console.error(`Error loading slideshow ${slideshowId}:`, error);
+    }
+}
 
 //City slideshows
 loadSlideshowImages("fabulania-slideshow", "city/fabulania");
