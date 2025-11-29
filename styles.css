@@ -405,7 +405,13 @@ p img {
 
 .city-expanded .slideshow-container {
   margin-bottom: 1.5em;
+  margin-left: 0;
+  margin-right: 0;
   z-index: 10;
+  max-width: 100% !important;
+  width: 100% !important;
+  position: relative;
+  box-sizing: border-box;
 }
 
 .city-expanded-layout {
@@ -643,7 +649,9 @@ footer {
   position: relative;
   max-width: 750px;
   margin: auto;
+  box-sizing: border-box;
 }
+
 
 .main-image img {
   width: 100%;

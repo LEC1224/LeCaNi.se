@@ -63,18 +63,18 @@ async function loadSlideshowImages(slideshowId, folder) {
         
         // Process each image pair
         data.images.forEach(imagePair => {
-            // Use thumbnail for display, full-size for link
-            imageArray.push(imagePair.thumbnail);
+            // Use full-size for display in expanded slideshow, thumbnail only for collapsed state
+            imageArray.push(imagePair.fullsize);
             hiresImageArray.push(imagePair.fullsize);
         });
         
         // Initialize the slideshow
         window.slideshows[slideshowId] = new Slideshow(slideshowId, imageArray, hiresImageArray);
         
-        // Set thumbnail for collapsed state (first image)
-        if (imageArray.length > 0) {
+        // Set thumbnail for collapsed state (first image - use thumbnail version)
+        if (data.images.length > 0) {
           const cityName = slideshowId.replace('-slideshow', '');
-          setCityThumbnail(cityName, imageArray[0]);
+          setCityThumbnail(cityName, data.images[0].thumbnail);
         }
         
     } catch (error) {
