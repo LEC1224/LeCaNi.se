@@ -1,14 +1,21 @@
-// City Accordion functionality
+// Accordion functionality for Cities and Monuments
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all city accordions
+  // Initialize all accordions (cities and monuments use the same structure)
   const cityContainers = document.querySelectorAll('.city-container');
   
-  // Function to collapse a city
+  // Function to collapse an item (city or monument)
   function collapseCity(container) {
     const toggleBtn = container.querySelector('.city-toggle-btn');
     const expandedContent = container.querySelector('.city-expanded');
+    const collapsedInfo = container.querySelector('.city-collapsed-info');
+    const attributesList = container.querySelector('.city-attributes');
     
     if (!toggleBtn || !expandedContent) return;
+    
+    // Move attributes list back to collapsed-info
+    if (attributesList && collapsedInfo) {
+      collapsedInfo.appendChild(attributesList);
+    }
     
     container.classList.remove('city-expanded-state');
     container.classList.add('city-collapsed-state');
@@ -23,12 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   }
   
-  // Function to expand a city
+  // Function to expand an item (city or monument)
   function expandCity(container) {
     const toggleBtn = container.querySelector('.city-toggle-btn');
     const expandedContent = container.querySelector('.city-expanded');
+    const attributesList = container.querySelector('.city-attributes');
+    const expandedAttributesContainer = expandedContent?.querySelector('.city-expanded-attributes-container');
     
     if (!toggleBtn || !expandedContent) return;
+    
+    // Move attributes list to expanded layout
+    if (attributesList && expandedAttributesContainer) {
+      expandedAttributesContainer.appendChild(attributesList);
+    }
     
     container.classList.remove('city-collapsed-state');
     container.classList.add('city-expanded-state');
@@ -47,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleBtn.innerHTML = 'Minimera &#9650;';
   }
   
-  // Collapse all other cities except the one being expanded
+  // Collapse all other items except the one being expanded
   function collapseAllExcept(exceptContainer) {
     cityContainers.forEach(container => {
       if (container !== exceptContainer && container.classList.contains('city-expanded-state')) {
@@ -60,8 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = container.querySelector('.city-toggle-btn');
     const collapsedContent = container.querySelector('.city-collapsed');
     const expandedContent = container.querySelector('.city-expanded');
+    const attributesList = container.querySelector('.city-attributes');
+    const collapsedInfo = collapsedContent?.querySelector('.city-collapsed-info');
+    const expandedAttributesContainer = expandedContent?.querySelector('.city-expanded-attributes-container');
     
     if (!toggleBtn || !collapsedContent || !expandedContent) return;
+    
+    // Move attributes list to collapsed-info initially
+    if (attributesList && collapsedInfo) {
+      collapsedInfo.appendChild(attributesList);
+    }
     
     // Set initial state (collapsed)
     container.classList.add('city-collapsed-state');

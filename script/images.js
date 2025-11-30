@@ -73,8 +73,8 @@ async function loadSlideshowImages(slideshowId, folder) {
         
         // Set thumbnail for collapsed state (first image - use thumbnail version)
         if (data.images.length > 0) {
-          const cityName = slideshowId.replace('-slideshow', '');
-          setCityThumbnail(cityName, data.images[0].thumbnail);
+          const itemName = slideshowId.replace('-slideshow', '');
+          setItemThumbnail(itemName, data.images[0].thumbnail);
         }
         
     } catch (error) {
@@ -101,16 +101,23 @@ loadSlideshowImages("darkrune-slideshow", "city/darkrune");
 loadSlideshowImages("alfheim-slideshow", "city/alfheim");
 loadSlideshowImages("ldngruvorna-slideshow", "city/ldngruvorna");
 loadSlideshowImages("thelady-slideshow", "city/thelady");
+loadSlideshowImages("faburania-slideshow", "city/faburania");
 
-// Function to set thumbnail image for collapsed state
-function setCityThumbnail(cityName, imagePath) {
-  const container = document.getElementById(`city-${cityName}`);
+// Function to set thumbnail image for collapsed state (works for both cities and monuments)
+function setItemThumbnail(itemName, imagePath) {
+  // Try city- prefix first
+  let container = document.getElementById(`city-${itemName}`);
+  // If not found, try monument- prefix
+  if (!container) {
+    container = document.getElementById(`monument-${itemName}`);
+  }
+  
   if (!container) return;
   
   const thumbnail = container.querySelector('.city-thumbnail img');
   if (thumbnail) {
     thumbnail.src = imagePath;
-    thumbnail.alt = cityName;
+    thumbnail.alt = itemName;
   }
 }
 
