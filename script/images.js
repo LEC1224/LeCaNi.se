@@ -121,6 +121,13 @@ function setItemThumbnail(itemName, imagePath) {
   }
 }
 
+//Monument slideshows
+loadSlideshowImages("doptafortet-slideshow", "monument/doptafortet");
+loadSlideshowImages("xmines-slideshow", "monument/xmines");
+loadSlideshowImages("ldtornen-slideshow", "monument/ldtornen");
+loadSlideshowImages("ldnkryptorna-slideshow", "monument/ldnkryptorna");
+loadSlideshowImages("ottohallen-slideshow", "monument/ottohallen");
+
 //Other slideshows
 loadSlideshowImages("project-slideshow", "project");
 // Add more slideshows as needed by repeating the above line with different IDs and folders.
