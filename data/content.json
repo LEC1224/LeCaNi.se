@@ -1,0 +1,802 @@
+{
+    "cities": [
+        {
+            "id": "fabulania",
+            "title": "Fabulania",
+            "attributes": [
+                "Grundare: Andreas, Carl-Johan",
+                "Grundades: Mars 2013",
+                "Storlek: Storstad",
+                "Biom: Plains, Jungle, Extreme Hills",
+                "Kust: Västkust",
+                "Mur: Stonebricks, Oakplanks, 8 torn (Klar)",
+                "Koordinater: 0; -900"
+            ],
+            "imageFolder": "city/fabulania",
+            "thumbnail": "img/city/fabulania/1.jpg",
+            "descriptionHtml": "<p>Fabulania är serverns huvudstad och den största staden som funnits i LeCaNis historia. Den grundades i Mars 2013 av xxSlaktarn och LilleAndrew. Därför är detta den enda staden som funnits med unte hela LeCaNis tid (den här världen). Den har vukit mycket, för det mesta i träbyggen men även ett och annat stenhus tittar fram.</p>\n<p>Fabulanias Mur påbörjades i Maj 2013 av Andreas och Carl och stod nästan helt klar i Februari 2018. Det dröjde dock till Januari 2021 innan det sista blocket sattes ut av samma personer som påbörjade bygget åtta år tidigare.</p>\n<p>I December 2021 genomgick Fabulania ett stort renoveringsprojekt av Carl som bland annat återställde förstörda hus, och terraformade stadens natur.</p>\n<p class=\"city-appendix\">Du kan se murens färdigställande <a href=\"https://youtu.be/3uVjg0QkV3E?si=PEV9UfilLzSLrNVw&t=321\">här</a>.<br />\r\n              Du kan se Carls renoveringsprojekt <a href=\"https://youtu.be/4N4LaLo0BjI?si=QAHoidhqq3Ov-ry0\">här</a>.</p>",
+            "enabled": true
+        },
+        {
+            "id": "therike",
+            "title": "The Rike",
+            "attributes": [
+                "Grundare: Carl",
+                "Grundades: April 2013",
+                "Storlek: By",
+                "Biom: Forest, Taiga, Jungle",
+                "Kust: Nordkust",
+                "Mur: Cobblestone, Stonebricks, 4 torn (Klar)",
+                "Koordinater: -200; -1550"
+            ],
+            "imageFolder": "city/therike",
+            "thumbnail": "img/city/therike/1.jpg",
+            "descriptionHtml": "<p>The Rike grundades i tidig historia av Carl, som ett hus för gruvarbete en bit ifrån Fabulania för att slippa stöta på gamla gruvgångar. Efterhand började Carl även skaffa ved till Fabulanias invånare och skogen det tidiga The Rike var belagd i blev till en gräsplatå på kort tid. Sakta växte staden fram och nu är det den mysiga träby ingen trodde det skulle bli och har nu även utväklats till ett ställe för Team 1224, en av LeCaNis crews, därbland Nicke, Carl och Oskar. The Rike blev även den första staden med fulla murar. Efter över ett år av aktivitet i staden blev varenda lilla trähus uppbränt i ett grief och Carl, som hade byggt upp staden, flyttade till Bergavik för att fortsätta livet på LeCaNi. Med honom följde både Nicke och Oskar och The Rike lämnades griefad i en lång tid.</p>\n<p>Efter många långa månader i damm kom Carl tillbaka till staden i Juni 2015 och reparerade många av husen, inte för att flytta dit men för minnens skull. Under sent 2010-tal flyttade Andreas in i The Rike och byggde upp ett ståtligt Sandstone-Bone-hus</p>",
+            "enabled": true
+        },
+        {
+            "id": "swampside",
+            "title": "Swamp Side Village",
+            "attributes": [
+                "Grundare: Wsen, Wowtres",
+                "Grundades: 2013",
+                "Storlek: By",
+                "Biom: Jungle",
+                "Kust: Nej",
+                "Mur: Nej",
+                "Koordinater: -60; -1550"
+            ],
+            "imageFolder": "city/swampside",
+            "thumbnail": "img/city/swampside/1.jpg",
+            "descriptionHtml": "<p>Swamp Side Village består av några mysigt beladga hyddor av Stone Bricks och Spruce Planks i djungeln norr om Fabulania, öst om The Rike.</p>",
+            "enabled": true
+        },
+        {
+            "id": "newearth",
+            "title": "New Earth",
+            "attributes": [
+                "Grundare: Carl, Puntuz, Zimon, Johan, Emil, Jacob (lansite), Erik",
+                "Grundades: November 2013",
+                "Storlek: Vanlig Stad",
+                "Biom: Forest, Roofed Forest",
+                "Kust: Nej",
+                "Mur: Cobble, Oakplanks, Stonebrick (Oklar, sen riven)",
+                "Koordinater: 1860; -3500"
+            ],
+            "imageFolder": "city/newearth",
+            "thumbnail": "img/city/newearth/1.jpg",
+            "descriptionHtml": "<p>New Earth var ett sätt att väcka aktivitet på LeCaNi och lyckades. I ett par månader spelade många på servern och alla bodde ihop. Affärer öppnades och gemenskapen stärktes på ett sätt LeCaNi inte varit med om under lång tid tillbaka. Efter några månader griefades en stor del av staden och nu står bara runt hälften av husen kvar och tillsammans med ruinerna av andra hus bildar de en mystisk spökstad bärandes på många, korta minnen i en av LeCaNis många skogar.</p>",
+            "enabled": true
+        },
+        {
+            "id": "bergavik",
+            "title": "Bergavik",
+            "attributes": [
+                "Grundare: Carl, Nicke",
+                "Grundades: November 2013",
+                "Storlek: Vanlig Stad",
+                "Biom: Extreme Hills",
+                "Kust: Östkust",
+                "Mur: Stonebricks, Dark Oak, 6 torn (Klar)",
+                "Koordinater: 1650; -4000"
+            ],
+            "imageFolder": "city/bergavik",
+            "thumbnail": "img/city/bergavik/1.jpg",
+            "descriptionHtml": "<p>Bergavik skiljer sig från alla andra städer då den är byggd under två massiva berg. Stadens första byggnader var Carls fiskestuga och Nickes Dojo en bit från New Earth där de kunde vara själva men nära till civilisationen. Efter att spelat där några veckor så fick de idén att bygga ett stort ihåligt berg där de kunde bygga en stad. Den 24 November 2013 började de bygga berget och blev klara redan dagen därpå men lyckades även ta slut på all sten de hade samt all sten Malle125 hade.</p>\n<p>Sen dess har grottstaden vuxit. Ett till berg har byggts och det första har byggts ut och blivit nära dubbelt så stort (Plains-dalen låg från början utanför). Två uppbyggda drakar bor i Huvudberget, och deras huvuden agerar portar till Carls och Nickes baser i staden.</p>",
+            "enabled": true
+        },
+        {
+            "id": "meidera",
+            "title": "Meidera",
+            "attributes": [
+                "Grundare: Carl",
+                "Grundades: Maj, 2014",
+                "Storlek: Vanlig stad",
+                "Biom: Plains, Oak Forest",
+                "Kust: Insjö i mitten av staden",
+                "Mur: Nej",
+                "Koordinater: 4000; -2100"
+            ],
+            "imageFolder": "city/meidera",
+            "thumbnail": "img/city/meidera/1.jpg",
+            "descriptionHtml": "<p>Meidera grundades av Carl (då MinerC1224, nu LEC1224) efter att Nethervägen till New Earth byggts. Målet var att ha en fin träby runt en fin insjö. Många av serverns invånade byggde varsitt hus här och byn blev snabbt en stad. Meidera stod orörd under många år, men i Februari 2021 återvände Carl och Nicke till staden och byggde en stor svävande ö lite norrut. Tanken är att ön ska ha en mystisk borg belägen på sig, men det projektet har inte byggts vidare på.</p>",
+            "enabled": true
+        },
+        {
+            "id": "odoptafortet",
+            "title": "Odöpta Fortet",
+            "attributes": [
+                "Grundare: Oskar, Carl, Nicke",
+                "Grundades: 2014",
+                "Storlek: Vanlig Stad",
+                "Biom: Ice Plains, Ice Plain Hills",
+                "Kust: Nordkust",
+                "Mur: Cobble, Stone, Stonebricks, 22 torn (Klar)",
+                "Koordinater: 900; -2550"
+            ],
+            "imageFolder": "city/odoptafortet",
+            "thumbnail": "img/city/odoptafortet/1.jpg",
+            "descriptionHtml": "<p>Odöpta Fortet är en befästning byggd i nordpolen, en stor glaciär mellan Fabulania och New Earth. Borgen byggdes av Oskar (stimpe), Carl (MinerC1224) och Nicke (nicke1224) under ett LAN hos Oskar och efter några expansioner började även en by växa fram runt omkring. Byn är skyddad av fortet så väl som av en av LeCaNis längsta murar som slingrar sig runt borgen, till skillnad från många andra städers rektangulära murar. Dess stora väggar, anvancerade inkräktssytem samt dess isolerade placering i en snötäckt öken gör det odöpta fortet till en av LeCaNis mest skyddade platser.</p>",
+            "enabled": true
+        },
+        {
+            "id": "yocadax",
+            "title": "Yocadax",
+            "attributes": [
+                "Grundare: Carl, Josef, David",
+                "Grundades: Oktober 2013",
+                "Storlek: By",
+                "Biom: Forest, Extreme Hills",
+                "Kust: Nej",
+                "Mur: Cobblestone, 2 torn (Klar)",
+                "Koordinater: 1800; 2130"
+            ],
+            "imageFolder": "city/yocadax",
+            "thumbnail": "img/city/yocadax/1.jpg",
+            "descriptionHtml": "<p>Yocadax är en liten by långt, långt bort från närmsta civilisation. Långt mycket längre än vad som egentligen är tillåtet. Staden grundades under ett LAN hos MinerC med Josef (som spelade på Nicke1224s konto), MinerD och Aggebah. Namnet är en förädling av de två första bokstäverna i invånarnas namn: Josef, Carl, David, Axel => Jo-Ca-Da-Ax => Jocadaax = Yocadax.</p>",
+            "enabled": true
+        },
+        {
+            "id": "antares",
+            "title": "Antares",
+            "attributes": [
+                "Grundare: David",
+                "Grundades: April 2014",
+                "Storlek: By",
+                "Biom: Plains, Extreme Hills",
+                "Kust: Nordkust",
+                "Mur: Cobble, Stonebrick, Glas, 4 torn (Klar)",
+                "Koordinater: 1200; 1860"
+            ],
+            "imageFolder": "city/antares",
+            "thumbnail": "img/city/antares/1.jpg",
+            "descriptionHtml": "<p>Antares var från början ett glashus David byggde några hundra block ifrån Yocadax precis brevid en NPC-village. Efter lite tipsande från Carl frågade David några vänner om de ville bygga liknade glashus där. Samuel och Carl gjorde detta och sen dess har en stad primärt gjord i glas växt fram, länge under namnet 'Glasstaden'. För att få mer plats rev David ner nästan alla NPC-hus och nu finns bara en halvt sprängd kyrka kvar. Därifrån namnet Antares, vilket var en raket som sprängdes under uppskjutning vid samma tid som staden skulle döpas.</p>\n<p>Under LAN har Josef, Carl, David och Axel byggt upp staden med nya hus, mur och hamn.</p>",
+            "enabled": true
+        },
+        {
+            "id": "arboria",
+            "title": "Arboria",
+            "attributes": [
+                "Grundare: Carl, Josef, David",
+                "Grundades: 2014",
+                "Storlek: Stad",
+                "Biom: Jungle",
+                "Kust: Nej",
+                "Mur: Nej",
+                "Koordinater: 4900; 3150"
+            ],
+            "imageFolder": "city/arboria",
+            "thumbnail": "img/city/arboria/1.jpg",
+            "descriptionHtml": "<p>Tänk dig att du vandrar i djungeln, långt från all civilisation, och ser en träkoja skymta mellan trädtopparna. När du kollar noga ser du en till bakom grenverken, och en till. Plötsligt inser du att du står under en hel stad, uppspänd av de tjocka djungelträden: Arboria!</p>\n<p>Arboria grundades av Carl, Josef och David under deras LAN precis som Yocadax och Antares. I mitten av staden växer ett enormt träd ur en damm, i vilket man kan gå in och utforsak de rum som kronan och grenverket gör upp.</p>",
+            "enabled": true
+        },
+        {
+            "id": "oldcity",
+            "title": "Old City",
+            "attributes": [
+                "Grundare: André, Gustav",
+                "Grundades: Februari 2017",
+                "Storlek: Vanlig Stad",
+                "Biom: Forest, Roofed Forest, Swampland, Ocean",
+                "Kust: Sydvästkust",
+                "Mur: Nej",
+                "Koordinater: Choords: 2900; -1100"
+            ],
+            "imageFolder": "city/oldcity",
+            "thumbnail": "img/city/oldcity/1.jpg",
+            "descriptionHtml": "<p>Old City grundades som ett projekt av MajaGustav, André och Freddan och har sedan dess växt till att bli en av LeCaNis största städer. Stadsbilden är lätt igenkännbar genom deras ikonska skruvade skyskrapor och flitigt användande av facklor för beslysning både längs vägarna och i skogen. Trots sitt namn följer inte Old City ett uniformt byggtema men har olika stadsdelar med olika teman. Centrum är beklätt i trähus och gråa ullgångar, till norr ligger en medeltida befästning av sten med innergård och till öst ligger ett kvarter med moderna hus.</p>",
+            "enabled": true
+        },
+        {
+            "id": "bydelaby",
+            "title": "By Dela By",
+            "attributes": [
+                "Grundare: Hugo, Olof",
+                "Grundades: Augusti 2019",
+                "Storlek: By",
+                "Biom: Oak Forest",
+                "Kust: Östkust",
+                "Mur: Cobble, Oakwood, Spruce-planks, 1 torn (Oklar?)",
+                "Koordinater: -840; 760"
+            ],
+            "imageFolder": "city/bydelaby",
+            "thumbnail": "img/city/bydelaby/1.jpg",
+            "descriptionHtml": "<p>By Dela By saknar stadsbeskrivning i nuläget.</p>",
+            "enabled": true
+        },
+        {
+            "id": "hydropolis",
+            "title": "Hydropolis",
+            "attributes": [
+                "Grundare: Carl, Viktor",
+                "Grundades: Januari, 2020",
+                "Storlek: By",
+                "Biom: Deep Ocean",
+                "Kust: ÖVERALLT",
+                "Mur: Nej",
+                "Koordinater: -3000; -1870"
+            ],
+            "imageFolder": "city/hydropolis",
+            "thumbnail": "img/city/hydropolis/1.jpg",
+            "descriptionHtml": "<p>Hydropolis, döpt 2023 (tidigare Undervattenstaden), består av en uppsättning glaskupoler på botten av en Deep Ocean-biom och grundades strax efter The Aquatic Update, när conduits lades till. Utöver glasrum besitter också Hydropolis en stor diamantgruva, en Guardianfarm och en grönskande grotta skapad med TNT.</p>",
+            "enabled": true
+        },
+        {
+            "id": "vildtmarken",
+            "title": "Vildtmarken",
+            "attributes": [
+                "Grundare: Carl, Josef",
+                "Grundades: November 2022",
+                "Storlek: Vanlig stad",
+                "Biom: Plains, Oak forest, Dark forest, Hills",
+                "Kust: Nej",
+                "Mur: Deepslate Bricks, Stone, Sprucewood, 0/4 hörntorn (Oklar)",
+                "Koordinater: 8000; -9000"
+            ],
+            "imageFolder": "city/vildtmarken",
+            "thumbnail": "img/city/vildtmarken/1.jpg",
+            "descriptionHtml": "<p>Vildtmarken skapades i syfte att nå nygenererad terräng som uppkommit både i Overworld och Nether. Carl började bygga en väg i Nether som gick tusen block i vardera axel, och således gått en bit in i nygenererad netherterräng. Där byggde han och Josef en portal och utforskade terrängen de nådde. De båda var mycket nöjda med naturutbudet och grundade en ny stad där.</p>\n<p>Namnet på staden syftar till den mer glesbebyggda stadsform Vildtmarken tagit, där spelare valt att bygga hus längre ifrån varandra och skapa mer utrymme för tomter, stigar och skog emellan husen. Denna byggstil skiljer sig från t.ex. Fabulanias mer begränsade utrymme inom sina murar, där ett tydligt centrum och vissa tätbebyggda stadsdelar växt fram. Namnet myntades i discord av Carl, Martin och SpX när staden var mycket ung.</p>\n<p>I April 2023 påbörjades bygget av Vildtmarkens mur med ambitionen att bli Minecraft-Sveriges största survival-mur med 6000 blocks längd och 33 blocks höjd. I skrivande stund (September 2023) står sen södra sidan klar, medan de andra sidorna är opåbörjade.</p>",
+            "enabled": true
+        },
+        {
+            "id": "darkrune",
+            "title": "Dark Rune",
+            "attributes": [
+                "Grundare: LadyDeathaly",
+                "Grundades: April 2024",
+                "Storlek: By",
+                "Biom: Plains, Cherry Blossoms, Savana",
+                "Kust: Nej",
+                "Mur: Cooble, Spruce Logs, Deepslate Cobble (Oklar)",
+                "Koordinater: 4100; 15500"
+            ],
+            "imageFolder": "city/darkrune",
+            "thumbnail": "img/city/darkrune/1.jpg",
+            "descriptionHtml": "<p>Dark Rune är en sista bastion för Dödsgudinnan Deathaly och det sista försvaret till hennes huvudtempel The LD Towers. Dark Rune grundades av Deathaly själv som en elementär stad. Då Gudakriget utbröt så blev Dark Rune-stad och keep en befästning som försvarar Deathalys land från onda krafter.  Dark Rune befinner sig på 2 berg och en dalgång. Båda bergen förbinds dmed LD-bron som byggdes när Dark Rune blev en befästning för att enklare föra trupper mellan bergen. Idag har krigets rop försvunnit och invånarna har återvänt för att dyrka Deathaly igen och återvända till sina hem. (Dark rune är väldigt mycket RPG inspirerat.)</p>",
+            "enabled": true
+        },
+        {
+            "id": "alfheim",
+            "title": "Alfheim",
+            "attributes": [
+                "Grundare: WCarlsson, kvickrot, Esskkil",
+                "Grundades: Maj 2024",
+                "Storlek: By",
+                "Biom: Old Growth Taiga",
+                "Kust: Nej",
+                "Mur: Stripped Spruce Logs (Klar)",
+                "Koordinater: -4200; -3100"
+            ],
+            "imageFolder": "city/alfheim",
+            "thumbnail": "img/city/alfheim/1.jpg",
+            "descriptionHtml": "<p>Alfheim saknar beskrivning i nuläget.</p>",
+            "enabled": true
+        },
+        {
+            "id": "ldngruvorna",
+            "title": "LDN-Gruvorna",
+            "attributes": [
+                "Grundare: LadyDeathaly, SimonWi",
+                "Grundades: Juli 2024",
+                "Storlek: By",
+                "Biom: Plains",
+                "Kust: Nej",
+                "Mur: Blandade stenar, Spruce, Leaves (Oklar)",
+                "Koordinater: 5000; 17200"
+            ],
+            "imageFolder": "city/ldngruvorna",
+            "thumbnail": "img/city/ldngruvorna/1.jpg",
+            "descriptionHtml": "<p>LDN-Gruvorna är ett mörkt och dystert gruvsamhälle som förser LD-Nationen med byggmaterial. Samhället består av cirka 14 hus, varav två radhusområden och en butik (LKAB Raketer AB). Området domineras av Gruv-HQ som styrs av en high priestess, ett gruvgille och en stor masugn. Staden följer samma regler som Dark Rune och resten av LDN, med fokus på slumområde och gruvverksamhet som byggtema.</p>",
+            "enabled": true
+        },
+        {
+            "id": "lkabfarmab",
+            "title": "LKAB Farm AB",
+            "attributes": [
+                "Grundare: Mr_Kalsong, LadyDeathaly",
+                "Grundades: December 2024",
+                "Storlek: By",
+                "Biom: Plains, Swamp, Extreme Hills",
+                "Kust: Nej",
+                "Mur: Stonebricks, Cobblestone, Spruce Planks (Oklar)",
+                "Koordinater: 5000; 17600"
+            ],
+            "imageFolder": "city/lkabfarmab",
+            "thumbnail": "img/city/lkabfarmab/1.jpg",
+            "descriptionHtml": "<p>LKAB Farm AB grundades i December 2024 av Oskar_spelar11 (Nu: Mr_Kalsong) och LadyDeathaly, och kommer att byggas ihop med LDN-Gruvorna. Staden har ett diversifierat byggtema. Staden är privat och en del av LDN-nationen, vilket innebär att alla byggen behöver godkännande från Mr_Kalsong och ibland även från LadyDeathaly. Staden ligger precis innanför den södraste sträckan av LDNs nationsmur.</p>\n<p>Ett 4x4-stadsvapen kan komma att skaffas i framtiden.</p>",
+            "enabled": true
+        },
+        {
+            "id": "hiroshima",
+            "title": "Hiroshima",
+            "attributes": [
+                "Grundare: BrikkenMC",
+                "Grundades: Februari 2025",
+                "Storlek: By",
+                "Biom: Birch Forest, Plains",
+                "Kust: Nej",
+                "Mur: Stone, Stone Bricks, Andesite",
+                "Koordinater: 2800; 14300"
+            ],
+            "imageFolder": "city/hiroshima",
+            "thumbnail": "img/city/hiroshima/1.jpg",
+            "descriptionHtml": "<p>Hiroshima grundades i Februari 2025 av BrikkenMC som en stad i japansk stil. Stadens kärna utgörs av en stor slottsbas, runt vilken staden kommer att växa. För närvarande planeras det att plotta ut 6 marker, och grundaren kommer att bygga några hus själv. Spelare kommer att kunna köpa färdiga hus som grundaren bygger, eller köpa tomma marker för att bygga sina egna hus.</p>\n<p>Endast stadskärnan kommer att ha mur runt sig, medan marken utanför kommer att vara öppen men väl upplyst för att förhindra mobspawning. Staden har för närvarande inga planer på att skaffa en järnvägsstation.</p>",
+            "enabled": true
+        },
+        {
+            "id": "thelady",
+            "title": "The Lady",
+            "attributes": [
+                "Grundare: LadyDeathaly",
+                "Grundades: Juli 2025",
+                "Storlek: Stad",
+                "Biom: Djungel, Coral Reef",
+                "Kust: Västkust",
+                "Mur: Flera murar",
+                "Koordinater: 3600; 16000"
+            ],
+            "imageFolder": "city/thelady",
+            "thumbnail": "img/city/thelady/1.jpg",
+            "descriptionHtml": "<p>The Lady är huvudstaden av LDN och har många hus. LDN plaza är en del av The Lady och Lake Deathaly. Staden är privat, och folk kan köpa färdiga hus eller tomter vid bygglov. Staden har ett gothics-death-tema och en arkitektur liknande LD-Tornen.</p>",
+            "enabled": true
+        },
+        {
+            "id": "faburania",
+            "title": "Faburania",
+            "attributes": [
+                "Grundare: w1sburgaren, OsKRAKAE, Hillbomarn",
+                "Grundades: Oktober, 2025",
+                "Storlek: By",
+                "Biom: Jungle, Extreme Hills, Oak Forest",
+                "Kust: Nej",
+                "Mur: Nej",
+                "Koordinater: 5600; 7600"
+            ],
+            "imageFolder": "city/faburania",
+            "thumbnail": "img/city/faburania/1.jpg",
+            "descriptionHtml": "<p>Faburania är en fristad som räknar med att ha 12 hus. Staden är byggd mycket i cherry-trä men har inget direkt tema. Byggen är fritt fram och staden har för närvarande ingen tanke på en stadsmur. Ett 4x4 emblem är på gång.</p>",
+            "enabled": true
+        }
+    ],
+    "monuments": [
+        {
+            "id": "xmines",
+            "title": "X-Mines",
+            "attributes": [
+                "Skapare: Carl, Andreas",
+                "Påbörjad: Maj, 2013",
+                "Avslutad: Augusti, 2016[1] / Ej avslutad",
+                "Typ: Stenbrott",
+                "Koordinater: -300; -1300"
+            ],
+            "imageFolder": "monument/xmines",
+            "thumbnail": "img/monument/xmines/1.jpg",
+            "descriptionHtml": "<p>X-Mines är ett 160x160 block dagbrott öppnat av MinerC1224 (nu LEC) och LilleAndrew (nu OPTIMiST) tidigt i LeCaNis historia för att skaffa sten till bland annat byggandet av Fabulania-muren.</p>\n<p>Efter tre år av gruvdrift nåddes bedrock och samma två spelare som öppnade brottet grävde tillsammans ut de sista blocken[1]. När dagbrottet stod klart utvecklades flera farmer i hålet, bland annat en portal-baserad guldfarm, en pumpa-odling, sockerrörsfarm och en Iron Foundary som sedan dess avvecklats.</p>\n<p>När Caves and Cliffs-uppdateringen släpptes i Oktober 2021 expanderades även älkdre chunks ner till Y=-64 och X-Mines bedrock byttes ut mot deepslate. Till en början avfärdade LEC att återuppta gruvdriften eftersom deepslate inte gung att insta-minea, men efter några månader beslöt LEC trots allt att återuppta gruvdriften och detta skedde i December 2021. Sedan dess har LEC, Player610 med flera sakta jobbat sig ner till det nya lagret bedrock. X-Mines förväntas dock inte bli färdigutgrävt förrän flera år framöver.</p>\n<p>Se sista blocket av första utgrävningen grävas ut <a href=\"https://youtu.be/1tSm2Glkocc?si=wmFr2jNnmv2XR4D4\">här</a>.</p>\n<p>Se LEC återuppta gruvdriften <a href=\"https://youtu.be/HVXG9hTYqM8?si=P2uCc09Wxu-ghUtk\">här</a>.</p>",
+            "enabled": true
+        },
+        {
+            "id": "doptafortet",
+            "title": "Döpta Fortet",
+            "attributes": [
+                "Skapare: Carl",
+                "Påbörjad: Februari 2018",
+                "Avslutad: Ej avslutad",
+                "Typ: Fästning",
+                "Koordinater: 1600; -1100"
+            ],
+            "imageFolder": "monument/doptafortet",
+            "thumbnail": "img/monument/doptafortet/1.jpg",
+            "descriptionHtml": "<p>Döpta Fortet är en fästning byggd i södra nordpolen några år efter Odöpta Fortet. Den påbörjades av LEC tidigt 2018 och ficl i sin initiella uppbyggnad stöd från nicke1224 och olof2b men är i skrivande stund (December 2025) ännu inte avklarad.</p>\n<p>Med båda forten belägna i nordpolen kan Fabulanias rike få god överblick över glaciären för att försvara huvudstaden. Fortet utmärks av sina symmetriska klvadratiska form av Cobblestone och Stonebrick-fönster samt stora Glowstone-detaljer.</p>",
+            "enabled": true
+        },
+        {
+            "id": "ottohallen",
+            "title": "Ottohàllen",
+            "attributes": [
+                "Skapare: Carl",
+                "Påbörjad: Juli, 2019",
+                "Avslutad: Februari, 2021",
+                "Typ: Tempel",
+                "Koordinater: 500; -1500"
+            ],
+            "imageFolder": "monument/ottohallen",
+            "thumbnail": "img/monument/ottohallen/1.jpg",
+            "descriptionHtml": "<p>Ottohàllen är ett istempel beläget i Nordpolen, byggt av LEC, olof_2b och nicke1224. Templet innehåller en isfarm och är döpt i hyllning till den gamla spelaren Mrotto1's istempel på en föregående värld, samt för att spela på glaciären Ahtohallan i Frozen 2.</p>\n<p>Templet har en gammal grekisk design men med stora kyrkliga fönster, vilket ger det en unik arkitektonisk karaktär som kombinerar antik grekisk stil med gotiska inslag. Ottohàllen är LeCaNis största enskilda byggnad sett till volym, om än inte alls sett till blockantal.</p>",
+            "enabled": true
+        },
+        {
+            "id": "ldtornen",
+            "title": "LD-Tornen",
+            "attributes": [
+                "Skapare: LadyDeathaly",
+                "Påbörjad: Maj, 2024",
+                "Avslutad: Ej avslutad",
+                "Typ: Tempel",
+                "Koordinater: 4900; 15000"
+            ],
+            "imageFolder": "monument/ldtornen",
+            "thumbnail": "img/monument/ldtornen/1.jpg",
+            "descriptionHtml": "<p>LD-Tornen (Lady Deathaly-Tornen) är den viktigaste byggnaden i Lady Deathaly Nation. Det är den byggnad som Deathaly har som sitt hem och den byggnad som har hennes huvudaltare. Det är en helig plats. Om LD-Tornen skulle falla i krig så tappar Deathaly sin kontroll över hennes nation.</p>\n<p>Byggnaden fungerar som ett eget slott i sig med ringmur och ett mindre citadell i borggården. Undeads guild har också sitt HQ i tornens djupaste våningar. Tornet har 3 yttertorn och ett kron-torn i mitten som når upp till Minecrafts byggnadshöjd.</p>\n<p>Längs en av toppspirorna av LD-Tornen slingrar sig en svart-lila drake som SimonWi fick bygga till tornen som en gåva till Deathaly.</p>\n<p>I December 2025 fick ytskicktet av LD-Tornen ett nytt utseende: Blackstone med röd betong och endstone-ringar i en benstruktur för att ge tornet en mer gotisk design som speglar Deathaly's färger.</p>",
+            "enabled": true
+        },
+        {
+            "id": "ldnkryptorna",
+            "title": "LDN-Kryptorna",
+            "attributes": [
+                "Skapare: LadyDeathaly, MR_kalsong, BRIKKEN_MC",
+                "Påbörjad: Maj, 2024",
+                "Avslutad: Ej avslutad",
+                "Typ: Transportsystem",
+                "Koordinater: 500; 2000 (Nether)"
+            ],
+            "imageFolder": "monument/ldnkryptorna",
+            "thumbnail": "img/monument/ldnkryptorna/1.jpg",
+            "descriptionHtml": "<p>LDN-Kryptorna är LDN:s undercraft och byggt under nationen. Det fungerar som begravningsplats och transportvägar i nationen. Gångarna sträcker sig över hela LDN och är det första man ser när man kommer in i LDN från Fabulania.</p>\n<p>Bygget sträcker sig över både Nether och Overworlden, vart Deathaly's Lair finns, och fungerar som en afterlife-portal där folk vid livet kan besöka the underworld. Också här jobbar Deathaly.</p>\n<p>Kryptorna varierar i arkitektur beroende på plats. Till exempel har den i LDN-gruvorna en mer industriell och steampunk-design.</p>",
+            "enabled": true
+        }
+    ],
+    "emblems": [
+        {
+            "id": "leontanias-stadsvapen",
+            "title": "Leontanias Stadsvapen",
+            "image": "img/flag/leontania.png",
+            "descriptionHtml": "<p>Leontanias stadsvapen, bestående av två 'L', ett spegelvänt horizontellt och ett vertikalt, uppstod 2011 på en av LeCaNis tidigare världar. Då tillhörande huvudstaden Leontania, döpt efter Leonta, döpt efter Leo. Detta var LeCaNis första stadsvapen och inspirerat av 90gQs Nirethia-märke. Efter några år har detta märket omformats från att bara vara ett stadsvapen till att vara en ikon för LeCaNi och de två L-en har inofficiellt bytt betydelse från förkortning av Leontania till LeCaNi. Detta märket kan man bland annat hitta på server-ikonen när man loggar in på LeCaNi, i texturepack-ikonen och i webbläsarfliken för lecani.se!</p>\n<p>Trots att märket inte längre bara är ett stadsvapen betyder det inte att vi inte använder det som stadsvapen ändå. I nuläget är huvudstaden Fabulania tilldelad märket som sitt stadsvapen och går att hitta i guld vid murens portar och i trä på hörntornen.</p>",
+            "enabled": true
+        },
+        {
+            "id": "castle-towns-stadsvapen",
+            "title": "Castle Towns Stadsvapen",
+            "image": "img/flag/castle.png",
+            "descriptionHtml": "<p>Näst älds är Castle Towns stadsvapen. Detta märke gjorde sin deput på samma gamla värld som Leontanias märke men i staden Castle Town, grundad av Carl. Märket ska symbolisera just ett slott, eller snarare mur, med de två övre prickarna som skyttegluggar, och de två nedre hålen som fönster, med andra pixelraden helt tom för att göra märket lite luftigare. I nuläget är märket stadsvapen till The Rike, en liten by nord-väst om Fabulania grundad även den av Carl.</p>",
+            "enabled": true
+        },
+        {
+            "id": "odopta-fortets-stadsvapen",
+            "title": "Odöpta Fortets Stadsvapen",
+            "image": "img/flag/fortet.png",
+            "descriptionHtml": "<p>Odöpta Fortets stadsmärke uppkom betydligt senare än de tidigare nämna, nämligen 2014 som stadsvapen för just Odöpta Fortet, på nuvarande värld. Detta märket bär alltså inte på någon längre historia. Vapnet är format efter det matematiskt signifikanta talet pi.</p>",
+            "enabled": true
+        },
+        {
+            "id": "dopta-fortets-stadsvapen",
+            "title": "Döpta Fortets Stadsvapen",
+            "image": "img/flag/castle2.png",
+            "descriptionHtml": "<p>Döpta Fortets stadsvapen är ett relativt ungt märke, först uppenbarat i Februari 2018 som märke för Odöpta Fortets \"elake tvillingbror\", Döpta Fortet. Till skillnad från de ovanstående stadsvapnen har detta ingen betydelsefull symbolik i sitt utseense. Utan är helt enkelt Leontanias märke där man tagit pixelbiten från plats (4,3) och lagt på (3,1).</p>",
+            "enabled": true
+        },
+        {
+            "id": "vildtmarkens-stadsvapen",
+            "title": "Vildtmarkens Stadsvapen",
+            "image": "img/flag/vildtmarken.png",
+            "descriptionHtml": "<p>Vildtmarkens stadsvapen skapades i samband med Vildtmarkens murport och visar en kompass riktad mot nordost, Vildtmarkens riktning med utgång från Fabulania och närliggande städer. Kompassen kan ses som att Vildtmarken ligger markant längre bort från många äldre städer, och således kan behöva vägledning för att hitta till.</p>",
+            "enabled": true
+        },
+        {
+            "id": "dark-runes-stadsvapen",
+            "title": "Dark Runes Stadsvapen",
+            "image": "img/flag/darkrune.png",
+            "descriptionHtml": "<p>Dark Runes stadsvapen bildades för staden Dark Rune i Maj 2024 av LadyDeathaly, och ska efterlikna en döskalle, som symbol för Dödsgudinnan Deathaly, som stadens invånare dyrkar. Märkets representation har sedan dess expanderat till att innefatta hela Lady Deathaly Nation, och används runt om i riket.</p>",
+            "enabled": true
+        }
+    ],
+    "news": {
+        "introHtml": "<p>Vill du skicka in en nyhet? Skicka mail till info@lecani.se med ämnesrad \"Nyheter\". Inkludera önskad titel och innehåll!</p>",
+        "items": [
+            {
+                "id": "19-aug-2024-ny-serverdator-dedikerad-for-lecani",
+                "title": "Ny serverdator dedikerad för LeCaNi",
+                "date": "19 aug. 2024",
+                "images": [
+                    "img/news/server.jpg"
+                ],
+                "bodyHtml": "<p>Efter att i många år hostat på sin egen speldator har LEC nu köpt en dedikerad serverdator för LeCaNi Minecraft Server, lecani.se och andra server-projekt.\r\n\t\tEfter att först provat med en Raspberry Pi 5 bytte LEC till en HP ProDesk 400 G3 Mini, uppgraderad med 1TB NVMe-SSD och 24GB RAM.\r\n\t\tNu står LeCaNi-datorn tryggt bland modellraketer i Carls Rocket garden!</p>",
+                "enabled": true
+            },
+            {
+                "id": "17-aug-2024-ldn-coloseum-paborjad-byggnation",
+                "title": "LDN Coloseum påbörjad byggnation",
+                "date": "17 aug. 2024",
+                "images": [
+                    "img/news/colloseum.png"
+                ],
+                "bodyHtml": "<p>Nu har byggandet av LeCaNis största PvP-arena, LDN Colosseum, påbörjats. Grundarbetet, såsom Nether-portalen och hubben, är igång. <a href=\"https://www.youtube.com/watch?v=CH699Y9H8yc\">Här är en video på portalbygget!</a></p>",
+                "enabled": true
+            },
+            {
+                "id": "24-maj-2024-dods-gudinnans-heliga-palats-under-uppbyggnad",
+                "title": "Döds gudinnans heliga palats under uppbyggnad",
+                "date": "24 maj 2024",
+                "images": [
+                    "img/news/ldtorn.png",
+                    "img/news/ldportal.png"
+                ],
+                "bodyHtml": "<p>Nu har netherportal-plattformen blivit byggd till LD-tornen som första start på hela de masiva bygget. Tornen kommer nå upp till bygghöjdsgränsen. Så kankse tillochmed högre en Carlatornet när den är färdigbyggd. LD-tornen är den viktigaste byggnaden i Dark rune området \"Lore mässigt\".</p>",
+                "enabled": true
+            },
+            {
+                "id": "23-apr-2023-muren-paborjas",
+                "title": "Muren påbörjas",
+                "date": "23 apr. 2023",
+                "images": [
+                    "img/news/mur.png"
+                ],
+                "bodyHtml": "<p>Muren runt Vildtmarken påbörjas med en ambitiös dröm om att bli Minecraft-Sveriges största mur byggd i survival! När dess 6km långa väggar är färdiga kommer den vara ungefär dubbelt så stor som Nirethia-muren. <a href=\"https://youtu.be/uEUmRHJGIhc\">Se LeCaNiVideos avsnitt här.</a></p>",
+                "enabled": true
+            },
+            {
+                "id": "28-mar-2023-carlatornet-klart",
+                "title": "Carlatornet klart",
+                "date": "28 mar. 2023",
+                "images": [
+                    "img/news/carlatornet.png"
+                ],
+                "bodyHtml": "<p>Efter en totalt 30 timmar lång livestream-serie och över 100.000 placerade block av LEC står nu en 1:1-replika av Karlatornet klart i Vildtmarken!</p>",
+                "enabled": true
+            },
+            {
+                "id": "ca-2015-portaler",
+                "title": "Portaler",
+                "date": "ca. 2015",
+                "images": [
+                    "img/news/teleport1.png"
+                ],
+                "bodyHtml": "<p>Efter problem i en dryg månad kan man nu teleportera mellan Nya och Gamla LeCaNi! Det finns en portal i varje värld. Med sina fyr-karaktäriska röd-vita väggar är portalerna svåra att missa!</p>",
+                "enabled": true
+            },
+            {
+                "id": "ca-2015-the-endurstrial-farm",
+                "title": "The Endurstrial Farm",
+                "date": "ca. 2015",
+                "images": [
+                    "img/news/xp_eva.jpg"
+                ],
+                "bodyHtml": "<p>Efter att ha haft samma endfarm i över 1½ år så var det dags för något nytt. Den nya farmen \"The Endustrial Farm\" byggdes av Gitarren, RMW och MinerC med Gitarren som initiativtagare och projektledare. Denna byggnad producerar lite mer endermen än den förra och är dessutom mycket lägre och resursvänligare. Designen gjordes från början av <a href=\"https://youtube.com/docm77\">Docm77</a>.</p>",
+                "enabled": true
+            }
+        ]
+    },
+    "rules": {
+        "items": [
+            {
+                "id": "anvandning-av-spectator-lage-ar-tillatet-men-inte-som-transportmedel",
+                "title": "Användning av Spectator-läge är tillåtet – men inte som transportmedel",
+                "description": "Spectator-läget får användas av alla spelare, exempelvis för att fota byggen eller göra timelapses. Det får dock inte användas för att transport eller för att undvika hinder eller faror.",
+                "enabled": true
+            },
+            {
+                "id": "aterstallning-av-forlorade-saker-vid-bugg-eller-lagg",
+                "title": "Återställning av förlorade saker vid bugg eller lagg",
+                "description": "Om du förlorar föremål på grund av en uppenbar bugg eller lagg (exempelvis serverkrasch eller rubberbanding) har du rätt att få tillbaka dina saker. Kontakta en admin och beskriv vad som hänt så noggrant du kan. Viss bevisning kan efterfrågas.",
+                "enabled": true
+            },
+            {
+                "id": "alla-spelare-har-ratt-att-grunda-egna-stader",
+                "title": "Alla spelare har rätt att grunda egna städer",
+                "description": "Du har rätt att grunda en egen stad var du vill, så länge du följer LeCaNis grundprinciper om respekt och survival. Som stadsgrundare får du bestämma regler inom din stad, exempelvis krav på stil, bygglov eller att staden är privat. En stadsägare har rätten att bannlysa spelare från sin stad.",
+                "enabled": true
+            },
+            {
+                "id": "fusk-och-kreativa-metoder-ar-forbjudet",
+                "title": "Fusk och kreativa metoder är förbjudet",
+                "description": "Alla resurser som används i byggen eller handel på LeCaNi måste vara insamlade i survival-läge. Att få tag i resurser genom mods, kommandon eller externa program är förbjudet och leder till omedelbar ban.",
+                "enabled": true
+            },
+            {
+                "id": "skydda-naturen-nara-stader-grav-snyggt",
+                "title": "Skydda naturen nära städer – gräv snyggt",
+                "description": "Inom 500 block från en stad förväntas du undvika att lämna fula spår i naturen, som flytande träd, Creeper-hål eller förstörda stränder. Undantag gäller på särskilda resurs-samlarplatser som etablerade farmer, sten- eller sandbrott.",
+                "enabled": true
+            },
+            {
+                "id": "visa-respekt-mot-andra-spelare",
+                "title": "Visa respekt mot andra spelare",
+                "description": "Du måste alltid behandla andra med respekt. Inget mobbande, trakasserier, förlöjligande eller härskartekniker. Ha kul, men inte på andras bekostnad. Gemensamt överenskommet skämtsamt dödande och bus är tillåtet, men varje spelare ansvarar för att alla inblandade är med i leken.",
+                "enabled": true
+            },
+            {
+                "id": "du-ansvarar-for-ditt-konto",
+                "title": "Du ansvarar för ditt konto",
+                "description": "Det är alltid du som är ansvarig för vad som händer via ditt Minecraft-konto. Om ett syskon eller en kompis gör något regelvidrigt från din dator är det fortfarande du som måste ta konsekvenserna.",
+                "enabled": true
+            },
+            {
+                "id": "stold-och-griefing-ar-forbjudet",
+                "title": "Stöld och griefing är förbjudet",
+                "description": "Du måste ha tillstånd av en admin eller ägaren för att ta saker från eller bygga på någon annans marker, inklusive hus, kistor och farmar. Det gäller även \"övergivna\" byggnader om de inte är tydligt markerade som fria att ta från.",
+                "enabled": true
+            }
+        ],
+        "extraHtml": ""
+    },
+    "downloads": {
+        "textures": [
+            {
+                "id": "lecanis-resource-pack",
+                "title": "LeCaNis Resource Pack",
+                "image": "img/download/st.jpg",
+                "version": "1.21.10",
+                "download": "dl/LeCaNi_Resource_Pack-1.21.10.zip",
+                "description": "LeCaNi's vanliga texturpaket avviker så lite som möjligt från vanilla men framhäver viktiga traditioner från LeCaNi!",
+                "enabled": true
+            },
+            {
+                "id": "lecani-julpaket-2025",
+                "title": "LeCaNi - Julpaket 2025",
+                "image": "img/download/ct.jpg",
+                "version": "1.21.10",
+                "download": "dl/LeCaNi_Christmas_Pack-2025.zip",
+                "description": "LeCaNi's texturpaket med allt gräs och löv snötäckt, alla kistor mysiga paket och massor av mer juliga krimskrams!",
+                "enabled": true
+            },
+            {
+                "id": "lecani-hd",
+                "title": "LeCaNi - HD",
+                "image": "img/download/hd.jpg",
+                "version": "Gammalt som fan!",
+                "download": "dl/LeCaNi-HD.zip",
+                "description": "En LeCaNi-anpassad version av Faithful. 32x32 (Använd inte om din dator har under 4GB RAM)",
+                "enabled": false
+            },
+            {
+                "id": "lecani-realistic",
+                "title": "LeCaNi - Realistic",
+                "image": "img/download/lb.jpg",
+                "version": "Gammalt som fan!",
+                "download": "dl/LeCaNi-Realistic.zip",
+                "description": "En LeCaNi-anpassad version av LB Photo Realism. 64x64 (Använd inte om din dator har under 8GB RAM)",
+                "enabled": false
+            },
+            {
+                "id": "lecani-nostalgia",
+                "title": "LeCaNi - Nostalgia",
+                "image": "img/download/hd.jpg",
+                "version": "Gammalt som fan!",
+                "download": "dl/LeCaNi-Nostalgia.zip",
+                "description": "En gammal version av LeCaNis Texturepack för dig som vill känna den gamla LeCaNiandan som ligger och puttrar under dagens modernare block.",
+                "enabled": true
+            }
+        ],
+        "wallpapers": [
+            {
+                "id": "wallpaper-1",
+                "image": "img/bg/png/thumbs/odopta_fortet_norrsken.png",
+                "fullImage": "img/bg/png/odopta_fortet_norrsken.png",
+                "caption": "Odöpta Fortet i norrsken.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-2",
+                "image": "img/bg/png/thumbs/fabulania_halvmane.png",
+                "fullImage": "img/bg/png/fabulania_halvmane.png",
+                "caption": "Fabulanias kustsida i månljuset.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-3",
+                "image": "img/bg/png/thumbs/dopta_fortet_fonster.png",
+                "fullImage": "img/bg/png/dopta_fortet_fonster.png",
+                "caption": "Solen skiner genom ett av Döpta Fortets fönster.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-4",
+                "image": "img/bg/png/thumbs/carlatornet_nedanfor.png",
+                "fullImage": "img/bg/png/carlatornet_nedanfor.png",
+                "caption": "Uppåtblickande arkitekturbild av Carlatornet.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-5",
+                "image": "img/bg/png/thumbs/old_city_svartvitt.png",
+                "fullImage": "img/bg/png/old_city_svartvitt.png",
+                "caption": "Old Citys ikoniska skyline i svartvitt.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-6",
+                "image": "img/bg/png/thumbs/bergavik_utanfor.png",
+                "fullImage": "img/bg/png/bergavik_utanfor.png",
+                "caption": "Utsidan av Bergavik i solnedgången.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-7",
+                "image": "img/bg/png/thumbs/ottohallen_mansken.png",
+                "fullImage": "img/bg/png/ottohallen_mansken.png",
+                "caption": "Ottohállen en fullmånsnatt.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-8",
+                "image": "img/bg/png/thumbs/bergavik_ganghorn.png",
+                "fullImage": "img/bg/png/bergavik_ganghorn.png",
+                "caption": "Bergaviks mäktiga korridor mellan kammarna.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-9",
+                "image": "img/bg/png/thumbs/dopta_fortet_takring.png",
+                "fullImage": "img/bg/png/dopta_fortet_takring.png",
+                "caption": "Den lysande takringen i mitten av Döpta Fortet.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-10",
+                "image": "img/bg/png/thumbs/bergavik.png",
+                "fullImage": "img/bg/png/bergavik.png",
+                "caption": "Bergavik i ett varmfotografiskt porträtt-filter.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-11",
+                "image": "img/bg/png/thumbs/oakwood_town.png",
+                "fullImage": "img/bg/png/oakwood_town.png",
+                "caption": "Oakwood Town med Carlatornet i bakgrunden.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-12",
+                "image": "img/bg/png/thumbs/vildtmarken_jappoo.png",
+                "fullImage": "img/bg/png/vildtmarken_jappoo.png",
+                "caption": "Utsikten över Vildtmarken från Jappoos tempel.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-13",
+                "image": "img/bg/png/thumbs/vildtmarken_bondgard.png",
+                "fullImage": "img/bg/png/vildtmarken_bondgard.png",
+                "caption": "Vildtmarkens bondgård framför Moderna Kullen.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-14",
+                "image": "img/bg/png/thumbs/karta.png",
+                "fullImage": "img/bg/png/karta.png",
+                "caption": "Dynmap-kartan i ett mjukfotografiskt filter.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-15",
+                "image": "img/bg/thumbs/Colosseum_på_natten.jpg",
+                "fullImage": "img/bg/Colosseum_på_natten.jpg",
+                "caption": "LDNs Colosseum i månljuset.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-16",
+                "image": "img/bg/thumbs/LD-Tornen_framifrån.jpg",
+                "fullImage": "img/bg/LD-Tornen_framifrån.jpg",
+                "caption": "LD-Tornen står sig högt över landskapet.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-17",
+                "image": "img/bg/thumbs/LD-Tornens_runda_rum_tak.jpg",
+                "fullImage": "img/bg/LD-Tornens_runda_rum_tak.jpg",
+                "caption": "Det gotiska taket i LD-Tornens runda rum.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-18",
+                "image": "img/bg/thumbs/LD-Tornen_i_solnedgång.jpg",
+                "fullImage": "img/bg/LD-Tornen_i_solnedgång.jpg",
+                "caption": "LD-Tornen i solnedgång.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-19",
+                "image": "img/bg/thumbs/LD-Tornens_tronsal.jpg",
+                "fullImage": "img/bg/LD-Tornens_tronsal.jpg",
+                "caption": "Tronsalen i LD-Tornen.",
+                "enabled": true
+            },
+            {
+                "id": "wallpaper-20",
+                "image": "img/bg/thumbs/LD-Gruvornas_netherhubb_lutandes.jpg",
+                "fullImage": "img/bg/LD-Gruvornas_netherhubb_lutandes.jpg",
+                "caption": "Netherhubben till LDNs gruvdistrikt i en vinklad stil.",
+                "enabled": true
+            }
+        ]
+    }
+}

@@ -82,27 +82,6 @@ async function loadSlideshowImages(slideshowId, folder) {
     }
 }
 
-//City slideshows
-loadSlideshowImages("fabulania-slideshow", "city/fabulania");
-loadSlideshowImages("therike-slideshow", "city/therike");
-loadSlideshowImages("swampside-slideshow", "city/swampside");
-loadSlideshowImages("newearth-slideshow", "city/newearth");
-loadSlideshowImages("bergavik-slideshow", "city/bergavik");
-loadSlideshowImages("meidera-slideshow", "city/meidera");
-loadSlideshowImages("odoptafortet-slideshow", "city/odoptafortet");
-loadSlideshowImages("yocadax-slideshow", "city/yocadax");
-loadSlideshowImages("antares-slideshow", "city/antares");
-loadSlideshowImages("arboria-slideshow", "city/arboria");
-loadSlideshowImages("oldcity-slideshow", "city/oldcity");
-loadSlideshowImages("bydelaby-slideshow", "city/bydelaby");
-loadSlideshowImages("hydropolis-slideshow", "city/hydropolis");
-loadSlideshowImages("vildtmarken-slideshow", "city/vildtmarken");
-loadSlideshowImages("darkrune-slideshow", "city/darkrune");
-loadSlideshowImages("alfheim-slideshow", "city/alfheim");
-loadSlideshowImages("ldngruvorna-slideshow", "city/ldngruvorna");
-loadSlideshowImages("thelady-slideshow", "city/thelady");
-loadSlideshowImages("faburania-slideshow", "city/faburania");
-
 // Function to set thumbnail image for collapsed state (works for both cities and monuments)
 function setItemThumbnail(itemName, imagePath) {
   // Try city- prefix first
@@ -121,13 +100,6 @@ function setItemThumbnail(itemName, imagePath) {
   }
 }
 
-//Monument slideshows
-loadSlideshowImages("doptafortet-slideshow", "monument/doptafortet");
-loadSlideshowImages("xmines-slideshow", "monument/xmines");
-loadSlideshowImages("ldtornen-slideshow", "monument/ldtornen");
-loadSlideshowImages("ldnkryptorna-slideshow", "monument/ldnkryptorna");
-loadSlideshowImages("ottohallen-slideshow", "monument/ottohallen");
-
-//Other slideshows
-loadSlideshowImages("project-slideshow", "project");
-// Add more slideshows as needed by repeating the above line with different IDs and folders.
+document.querySelectorAll('.slideshow-container[data-image-folder]').forEach(container => {
+    loadSlideshowImages(container.id, container.dataset.imageFolder);
+});
