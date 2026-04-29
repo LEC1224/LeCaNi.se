@@ -552,6 +552,14 @@
                 ],
                 "bodyHtml": "<p>Efter att ha haft samma endfarm i över 1½ år så var det dags för något nytt. Den nya farmen \"The Endustrial Farm\" byggdes av Gitarren, RMW och MinerC med Gitarren som initiativtagare och projektledare. Denna byggnad producerar lite mer endermen än den förra och är dessutom mycket lägre och resursvänligare. Designen gjordes från början av <a href=\"https://youtube.com/docm77\">Docm77</a>.</p>",
                 "enabled": true
+            },
+            {
+                "id": "hemsidan-far-admin-sida",
+                "title": "Hemsidan får admin-sida",
+                "date": "28 apr. 2026",
+                "images": [],
+                "bodyHtml": "Nu kan admins redigera och publicera saker på hemsidan rakt från hemsidan själv!",
+                "enabled": true
             }
         ]
     },
@@ -614,8 +622,32 @@
                 "id": "lecanis-resource-pack",
                 "title": "LeCaNis Resource Pack",
                 "image": "img/download/st.jpg",
-                "version": "1.21.10",
-                "download": "dl/LeCaNi_Resource_Pack-1.21.10.zip",
+                "versions": [
+                    {
+                        "label": "1.21.11",
+                        "file": "dl/lecanis-resource-pack-lecani_resource_pack-1-21.zip",
+                        "sha1": "98c70a28073aa72c82ae60712d9bf503d36f3117",
+                        "enabled": true
+                    },
+                    {
+                        "label": "1.21.10",
+                        "file": "dl/LeCaNi_Resource_Pack-1.21.10.zip",
+                        "sha1": "06b0bc68b9a040a9718dfd149cafb2f437249181",
+                        "enabled": true
+                    },
+                    {
+                        "label": "1.21.4",
+                        "file": "dl/LeCaNi_Resource_Pack-1.21.4.zip",
+                        "sha1": "f92c6797bc07a4d661ce937fd045f94486535dda",
+                        "enabled": true
+                    },
+                    {
+                        "label": "Äldre",
+                        "file": "dl/LeCaNi_Resource_Pack.zip",
+                        "sha1": "0d1ea098768ab947cb3360a4dd13922e7daba938",
+                        "enabled": true
+                    }
+                ],
                 "description": "LeCaNi's vanliga texturpaket avviker så lite som möjligt från vanilla men framhäver viktiga traditioner från LeCaNi!",
                 "enabled": true
             },
@@ -623,37 +655,73 @@
                 "id": "lecani-julpaket-2025",
                 "title": "LeCaNi - Julpaket 2025",
                 "image": "img/download/ct.jpg",
-                "version": "1.21.10",
-                "download": "dl/LeCaNi_Christmas_Pack-2025.zip",
                 "description": "LeCaNi's texturpaket med allt gräs och löv snötäckt, alla kistor mysiga paket och massor av mer juliga krimskrams!",
-                "enabled": true
+                "enabled": true,
+                "versions": [
+                    {
+                        "label": "1.21.10",
+                        "file": "dl/LeCaNi_Christmas_Pack-2025.zip",
+                        "sha1": "",
+                        "enabled": true
+                    },
+                    {
+                        "label": "2022 / 1.19",
+                        "file": "dl/LeCaNi_Christmas_Pack-2022-1.19.zip",
+                        "sha1": "f4e8c4cd03f37bd3c755e61fb855835da2350746",
+                        "enabled": true
+                    },
+                    {
+                        "label": "2013",
+                        "file": "dl/LeCaNi-Christmas 2013.zip",
+                        "sha1": "08aaf900487b69070ef277c47fc662c3fe4bc0f0",
+                        "enabled": true
+                    }
+                ]
             },
             {
                 "id": "lecani-hd",
                 "title": "LeCaNi - HD",
                 "image": "img/download/hd.jpg",
-                "version": "Gammalt som fan!",
-                "download": "dl/LeCaNi-HD.zip",
+                "versions": [
+                    {
+                        "label": "Gammalt som fan!",
+                        "file": "dl/LeCaNi-HD.zip",
+                        "sha1": "019fd8d1be45b8189135cd85851dba4d4e04fc7d",
+                        "enabled": true
+                    }
+                ],
                 "description": "En LeCaNi-anpassad version av Faithful. 32x32 (Använd inte om din dator har under 4GB RAM)",
-                "enabled": false
+                "enabled": true
             },
             {
                 "id": "lecani-realistic",
                 "title": "LeCaNi - Realistic",
                 "image": "img/download/lb.jpg",
-                "version": "Gammalt som fan!",
-                "download": "dl/LeCaNi-Realistic.zip",
                 "description": "En LeCaNi-anpassad version av LB Photo Realism. 64x64 (Använd inte om din dator har under 8GB RAM)",
-                "enabled": false
+                "enabled": false,
+                "versions": [
+                    {
+                        "label": "Gammalt som fan!",
+                        "file": "dl/LeCaNi-Realistic.zip",
+                        "sha1": "1b6b947e2ef70dbd9816c2f954198170babb728a",
+                        "enabled": true
+                    }
+                ]
             },
             {
                 "id": "lecani-nostalgia",
                 "title": "LeCaNi - Nostalgia",
                 "image": "img/download/hd.jpg",
-                "version": "Gammalt som fan!",
-                "download": "dl/LeCaNi-Nostalgia.zip",
                 "description": "En gammal version av LeCaNis Texturepack för dig som vill känna den gamla LeCaNiandan som ligger och puttrar under dagens modernare block.",
-                "enabled": true
+                "enabled": true,
+                "versions": [
+                    {
+                        "label": "Gammalt som fan!",
+                        "file": "dl/LeCaNi-Nostalgia.zip",
+                        "sha1": "8c334c6d64ebc343392b76c375caac367572bebb",
+                        "enabled": true
+                    }
+                ]
             }
         ],
         "wallpapers": [

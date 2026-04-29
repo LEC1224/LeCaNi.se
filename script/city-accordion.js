@@ -48,6 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
     container.classList.add('city-expanded-state');
     expandedContent.style.display = 'block';
     expandedContent.style.maxHeight = '0';
+
+    const slideshow = expandedContent.querySelector('.slideshow-container[data-image-folder]');
+    if (slideshow && window.initializeSlideshowWhenNeeded) {
+      window.initializeSlideshowWhenNeeded(slideshow);
+    }
     
     // Force reflow to ensure transition works
     expandedContent.offsetHeight;

@@ -4,6 +4,9 @@ class Slideshow {
         this.images = images;
         this.hiresImages = hiresImages;
         this.currentImageIndex = 0;
+        this.isAnimating = false;
+        this.animationDuration = 200;
+        this.reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
         
         if (!this.container) {
             console.warn(`Slideshow container not found: ${containerId}`);
@@ -21,22 +24,72 @@ class Slideshow {
         }
     }
     
-    changeImage(step) {
-        if (this.images.length === 0) return;
-        
-        this.currentImageIndex += step;
-        if (this.currentImageIndex >= this.images.length) this.currentImageIndex = 0;
-        if (this.currentImageIndex < 0) this.currentImageIndex = this.images.length - 1;
-
+    updateImage(index) {
         const imgElement = this.container.querySelector('.main-image img');
         const linkElement = this.container.querySelector('.main-image a');
-        
+
         if (imgElement) {
-            imgElement.src = this.images[this.currentImageIndex];
+            imgElement.src = this.images[index];
         }
         if (linkElement) {
-            linkElement.href = this.hiresImages[this.currentImageIndex];
+            linkElement.href = this.hiresImages[index];
         }
+    }
+
+    changeImage(step) {
+        if (this.images.length < 2 || this.isAnimating) return;
+        
+        const imgElement = this.container.querySelector('.main-image img');
+        const mainImage = this.container.querySelector('.main-image');
+        const nextIndex = (this.currentImageIndex + step + this.images.length) % this.images.length;
+
+        if (!imgElement || !mainImage || this.reducedMotion) {
+            this.currentImageIndex = nextIndex;
+            this.updateImage(this.currentImageIndex);
+            return;
+        }
+
+        this.isAnimating = true;
+        const currentClass = step > 0 ? 'slide-current-left' : 'slide-current-right';
+        const incomingStartClass = step > 0 ? 'slide-next-from-right' : 'slide-next-from-left';
+        const incomingActiveClass = step > 0 ? 'slide-next-active-left' : 'slide-next-active-right';
+        const animationClasses = [
+            'slide-current-left',
+            'slide-current-right',
+            'slide-next-from-left',
+            'slide-next-from-right',
+            'slide-next-active-left',
+            'slide-next-active-right',
+        ];
+
+        const incomingImage = imgElement.cloneNode(false);
+        incomingImage.src = this.images[nextIndex];
+        incomingImage.alt = imgElement.alt;
+        incomingImage.removeAttribute('id');
+        incomingImage.classList.remove(...animationClasses);
+        incomingImage.classList.add('slide-image-next', incomingStartClass);
+
+        imgElement.classList.remove(...animationClasses);
+        imgElement.classList.add(currentClass);
+        mainImage.appendChild(incomingImage);
+
+        requestAnimationFrame(() => {
+            incomingImage.classList.add(incomingActiveClass);
+        });
+
+        window.setTimeout(() => {
+            this.currentImageIndex = nextIndex;
+            imgElement.classList.add('slide-no-transition');
+            this.updateImage(this.currentImageIndex);
+            imgElement.classList.remove(...animationClasses);
+            incomingImage.remove();
+
+            imgElement.offsetHeight;
+            requestAnimationFrame(() => {
+                imgElement.classList.remove('slide-no-transition');
+                this.isAnimating = false;
+            });
+        }, this.animationDuration);
     }
 }
 
@@ -70,6 +123,15 @@ async function loadSlideshowImages(slideshowId, folder) {
         
         // Initialize the slideshow
         window.slideshows[slideshowId] = new Slideshow(slideshowId, imageArray, hiresImageArray);
+
+        const imgElement = window.slideshows[slideshowId].container?.querySelector('.main-image img');
+        const linkElement = window.slideshows[slideshowId].container?.querySelector('.main-image a');
+        if (imgElement) {
+            imgElement.src = imageArray[0];
+        }
+        if (linkElement) {
+            linkElement.href = hiresImageArray[0];
+        }
         
         // Set thumbnail for collapsed state (first image - use thumbnail version)
         if (data.images.length > 0) {
@@ -100,6 +162,39 @@ function setItemThumbnail(itemName, imagePath) {
   }
 }
 
-document.querySelectorAll('.slideshow-container[data-image-folder]').forEach(container => {
+function initializeSlideshowWhenNeeded(container) {
+    if (container.dataset.slideshowLoaded === 'true') return;
+
+    container.dataset.slideshowLoaded = 'true';
     loadSlideshowImages(container.id, container.dataset.imageFolder);
+}
+
+window.initializeSlideshowWhenNeeded = initializeSlideshowWhenNeeded;
+
+const slideshowContainers = document.querySelectorAll('.slideshow-container[data-image-folder]');
+if ('IntersectionObserver' in window) {
+    const slideshowObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            initializeSlideshowWhenNeeded(entry.target);
+            slideshowObserver.unobserve(entry.target);
+        });
+    }, {
+        rootMargin: '700px 0px',
+        threshold: 0.01,
+    });
+
+    slideshowContainers.forEach(container => slideshowObserver.observe(container));
+} else {
+    slideshowContainers.forEach(initializeSlideshowWhenNeeded);
+}
+
+document.querySelectorAll('.download-version-select').forEach(select => {
+    const link = select.closest('.download-texture')?.querySelector('.download-selected-version');
+    if (!link) return;
+
+    select.addEventListener('change', () => {
+        link.href = select.value;
+    });
 });

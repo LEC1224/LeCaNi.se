@@ -5,7 +5,9 @@ require_once __DIR__ . '/../includes/content.php';
 
 const PASSWORD_FILE = __DIR__ . '/../data/admin-password.php';
 const IMAGE_ROOT = __DIR__ . '/../img';
+const DL_ROOT = __DIR__ . '/../dl';
 const UPLOAD_ROOT = 'uploads';
+const SITE_URL = 'https://lecani.se/';
 const THUMB_DIR = 'thumbs';
 const THUMB_MAX_SIZE = 480;
 
@@ -304,6 +306,104 @@ function upload_folder(string $collection, string $id): string
     return UPLOAD_ROOT . '/' . $collection . '/' . lecani_slug($id);
 }
 
+function public_url(string $path): string
+{
+    return rtrim(SITE_URL, '/') . '/' . ltrim($path, '/');
+}
+
+function upload_error_message(int $error): string
+{
+    return match ($error) {
+        UPLOAD_ERR_INI_SIZE => 'Filen stoppades av serverns upload_max_filesize. Aktuellt värde: ' . ini_get('upload_max_filesize') . '.',
+        UPLOAD_ERR_FORM_SIZE => 'Filen stoppades av formulärets storleksgräns.',
+        UPLOAD_ERR_PARTIAL => 'Filen laddades bara upp delvis.',
+        UPLOAD_ERR_NO_FILE => 'Ingen zip-fil skickades med formuläret.',
+        UPLOAD_ERR_NO_TMP_DIR => 'Servern saknar temporär uppladdningsmapp.',
+        UPLOAD_ERR_CANT_WRITE => 'Servern kunde inte skriva den uppladdade filen.',
+        UPLOAD_ERR_EXTENSION => 'En PHP-extension stoppade uppladdningen.',
+        default => 'Okänt uppladdningsfel.',
+    };
+}
+
+function upload_zip_file(array $file, string $prefix, ?string &$error = null): ?string
+{
+    $uploadError = (int) ($file['error'] ?? UPLOAD_ERR_NO_FILE);
+    if ($uploadError !== UPLOAD_ERR_OK) {
+        $error = upload_error_message($uploadError);
+        return null;
+    }
+
+    $originalName = (string) ($file['name'] ?? '');
+    if (!preg_match('/\.zip$/i', $originalName)) {
+        $error = 'Filen måste sluta på .zip.';
+        return null;
+    }
+
+    if (!is_uploaded_file((string) $file['tmp_name'])) {
+        $error = 'PHP markerade inte filen som en giltig uppladdning.';
+        return null;
+    }
+
+    if (!is_dir(DL_ROOT)) {
+        if (!mkdir(DL_ROOT, 0775, true)) {
+            $error = 'Kunde inte skapa dl-mappen.';
+            return null;
+        }
+    }
+
+    if (!is_writable(DL_ROOT)) {
+        $error = 'Servern har inte skrivrättigheter till dl-mappen.';
+        return null;
+    }
+
+    $baseName = clean_filename($prefix . '-' . pathinfo($originalName, PATHINFO_FILENAME));
+    $filename = $baseName . '.zip';
+    $counter = 2;
+    while (is_file(DL_ROOT . '/' . $filename)) {
+        $filename = $baseName . '-' . $counter . '.zip';
+        $counter++;
+    }
+
+    if (!move_uploaded_file((string) $file['tmp_name'], DL_ROOT . '/' . $filename)) {
+        $error = 'Kunde inte flytta den uppladdade filen till dl-mappen.';
+        return null;
+    }
+
+    return 'dl/' . $filename;
+}
+
+function posted_texture_versions(): array
+{
+    $labels = $_POST['version_label'] ?? [];
+    $files = $_POST['version_file'] ?? [];
+    $hashes = $_POST['version_sha1'] ?? [];
+    $enabled = $_POST['version_enabled'] ?? [];
+    $removed = array_map('strval', $_POST['remove_versions'] ?? []);
+    $versions = [];
+
+    foreach ($labels as $index => $label) {
+        $file = trim((string) ($files[$index] ?? ''));
+        if ($file === '' || in_array($file, $removed, true)) {
+            continue;
+        }
+
+        $fullPath = __DIR__ . '/../' . str_replace('/', DIRECTORY_SEPARATOR, $file);
+        $sha1 = trim((string) ($hashes[$index] ?? ''));
+        if ($sha1 === '' && is_file($fullPath)) {
+            $sha1 = sha1_file($fullPath) ?: '';
+        }
+
+        $versions[] = [
+            'label' => trim((string) $label) ?: basename($file),
+            'file' => $file,
+            'sha1' => $sha1,
+            'enabled' => isset($enabled[$index]),
+        ];
+    }
+
+    return $versions;
+}
+
 function collection_items(array $content, string $collection): array
 {
     return match ($collection) {
@@ -362,6 +462,20 @@ function apply_image_changes(string $collection, array $item, ?array $existing):
         $uploaded = upload_single('image_upload', upload_folder($collection, $id));
         if ($uploaded) {
             $item['image'] = $uploaded;
+        }
+    }
+
+    if ($collection === 'textures') {
+        $newVersionLabel = trim((string) ($_POST['new_version_label'] ?? ''));
+        $uploadError = null;
+        $uploadedZip = upload_zip_file($_FILES['texture_zip_upload'] ?? [], $id, $uploadError);
+        if ($uploadedZip) {
+            array_unshift($item['versions'], [
+                'label' => $newVersionLabel !== '' ? $newVersionLabel : basename($uploadedZip),
+                'file' => $uploadedZip,
+                'sha1' => sha1_file(__DIR__ . '/../' . $uploadedZip) ?: '',
+                'enabled' => true,
+            ]);
         }
     }
 
@@ -446,8 +560,7 @@ function build_item(string $collection, ?array $existing = null): array
             'id' => $id,
             'title' => $title,
             'image' => trim((string) ($_POST['image'] ?? '')),
-            'version' => trim((string) ($_POST['version'] ?? '')),
-            'download' => trim((string) ($_POST['download'] ?? '')),
+            'versions' => posted_texture_versions(),
             'description' => trim((string) ($_POST['description'] ?? '')),
             'enabled' => normalize_enabled(),
         ],
@@ -524,6 +637,39 @@ if (is_admin() && $requestMethod === 'POST' && isset($_POST['admin_action'])) {
         exit;
     }
 
+    if ($action === 'upload_texture_version') {
+        $items = collection_items($content, 'textures');
+        $id = (string) ($_POST['original_id'] ?? '');
+        $newVersionLabel = trim((string) ($_POST['new_version_label'] ?? ''));
+        $uploadError = null;
+        $uploadedZip = upload_zip_file($_FILES['texture_zip_upload'] ?? [], $id, $uploadError);
+
+        if ($uploadedZip) {
+            foreach ($items as $index => $item) {
+                if (($item['id'] ?? '') === $id) {
+                    $versions = admin_texture_versions($item);
+                    array_unshift($versions, [
+                        'label' => $newVersionLabel !== '' ? $newVersionLabel : basename($uploadedZip),
+                        'file' => $uploadedZip,
+                        'sha1' => sha1_file(__DIR__ . '/../' . $uploadedZip) ?: '',
+                        'enabled' => true,
+                    ]);
+                    $items[$index]['versions'] = $versions;
+                    break;
+                }
+            }
+
+            set_collection_items($content, 'textures', $items);
+            lecani_save_content($content);
+            header('Location: index.php?collection=textures&action=edit&id=' . urlencode($id) . '&saved=1');
+            exit;
+        }
+
+        $_SESSION['upload_error'] = $uploadError ?? 'Uppladdningen misslyckades.';
+        header('Location: index.php?collection=textures&action=upload-version&id=' . urlencode($id) . '&upload_error=1');
+        exit;
+    }
+
     if (array_key_exists($collection, $collections) && $collection !== 'settings') {
         $items = collection_items($content, $collection);
         $id = (string) ($_POST['original_id'] ?? '');
@@ -563,6 +709,9 @@ if (!array_key_exists($collection, $collections)) {
 $action = (string) ($_GET['action'] ?? 'list');
 $editId = (string) ($_GET['id'] ?? '');
 $items = $collection !== 'settings' ? collection_items($content, $collection) : [];
+if ($collection === 'news') {
+    $items = lecani_sorted_news_items($items);
+}
 $editing = $editId !== '' ? find_item($items, $editId) : null;
 if ($action === 'new') {
     $editing = [];
@@ -586,6 +735,21 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
     </div>
     <?php
 }
+
+function admin_texture_versions(array $texture): array
+{
+    $versions = is_array($texture['versions'] ?? null) ? $texture['versions'] : [];
+    if (!$versions && !empty($texture['download'])) {
+        $versions[] = [
+            'label' => (string) ($texture['version'] ?? 'Version'),
+            'file' => (string) $texture['download'],
+            'sha1' => '',
+            'enabled' => true,
+        ];
+    }
+
+    return $versions;
+}
 ?>
 <!DOCTYPE html>
 <html lang="sv">
@@ -608,6 +772,9 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
     textarea { min-height: 140px; }
     .short { max-width: 420px; }
     .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .inline-field { display: flex; gap: 8px; align-items: stretch; }
+    .inline-field input { flex: 1; }
+    .inline-field .button { white-space: nowrap; }
     .actions { display: flex; gap: 8px; align-items: center; }
     .notice { background: #173f23; border: 1px solid #28733b; padding: 10px; border-radius: 6px; }
     .danger { background: #672020; border-color: #9d3939; }
@@ -617,11 +784,84 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
     .image-card img { width: 100%; height: 100px; object-fit: cover; border-radius: 4px; display: block; margin-bottom: 6px; }
     .image-card label { font-weight: normal; margin: 4px 0 0; overflow-wrap: anywhere; }
     .field-note { margin: 6px 0 0; color: #bdbdbd; font-size: 0.95rem; }
+    .version-card { border: 1px solid #333; border-radius: 6px; padding: 12px; margin: 12px 0; background: #202020; }
+    .server-values code { display: block; background: #101010; border: 1px solid #444; border-radius: 4px; padding: 8px; margin-top: 6px; overflow-wrap: anywhere; }
     .login { max-width: 420px; margin: 15vh auto; background: #202020; padding: 24px; border-radius: 8px; }
     @media (max-width: 760px) { .row { grid-template-columns: 1fr; } .top { display: block; } }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const collection = document.body.dataset.collection || '';
+      const titleInput = document.getElementById('title');
+      const idInput = document.getElementById('id');
+      const imageFolderInput = document.getElementById('imageFolder');
+      const thumbnailInput = document.getElementById('thumbnail');
+      const todayButton = document.querySelector('[data-fill-today]');
+
+      const slugify = value => value
+        .toLowerCase()
+        .trim()
+        .replace(/[åä]/g, 'a')
+        .replace(/ö/g, 'o')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+
+      if (!idInput) return;
+
+      let idTouched = idInput.value.trim() !== '';
+      let folderTouched = imageFolderInput ? imageFolderInput.value.trim() !== '' : true;
+      let thumbnailTouched = thumbnailInput ? thumbnailInput.value.trim() !== '' : true;
+
+      const currentPrefix = () => {
+        if (collection === 'cities') return 'city';
+        if (collection === 'monuments') return 'monument';
+        return '';
+      };
+
+      const updateSuggestions = () => {
+        const id = slugify(idInput.value || titleInput?.value || '');
+        const prefix = currentPrefix();
+        if (!id || !prefix) return;
+
+        if (imageFolderInput && !folderTouched) {
+          imageFolderInput.value = `${prefix}/${id}`;
+        }
+        if (thumbnailInput && !thumbnailTouched) {
+          thumbnailInput.value = `img/${prefix}/${id}/1.jpg`;
+        }
+      };
+
+      titleInput?.addEventListener('input', () => {
+        if (!idTouched) {
+          idInput.value = slugify(titleInput.value);
+        }
+        updateSuggestions();
+      });
+
+      idInput.addEventListener('input', () => {
+        idTouched = true;
+        idInput.value = slugify(idInput.value);
+        updateSuggestions();
+      });
+
+      imageFolderInput?.addEventListener('input', () => { folderTouched = true; });
+      thumbnailInput?.addEventListener('input', () => { thumbnailTouched = true; });
+
+      updateSuggestions();
+
+      todayButton?.addEventListener('click', () => {
+        const target = document.getElementById(todayButton.dataset.fillToday);
+        if (!target) return;
+
+        const months = ['jan.', 'feb.', 'mar.', 'apr.', 'maj', 'jun.', 'jul.', 'aug.', 'sep.', 'okt.', 'nov.', 'dec.'];
+        const now = new Date();
+        target.value = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+        target.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+    });
+  </script>
 </head>
-<body>
+<body data-collection="<?= e($collection) ?>">
 <?php if (!is_admin()): ?>
   <main class="login">
     <h1>LeCaNi admin</h1>
@@ -670,9 +910,38 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
         <input id="new_password" name="new_password" type="password" />
         <p><button class="button primary" type="submit">Spara lösenord</button></p>
       </form>
+    <?php elseif ($collection === 'textures' && $action === 'upload-version' && $editing !== null): ?>
+      <h2>Ladda upp texturepack-version</h2>
+      <?php if (isset($_GET['upload_error'])): ?>
+        <?php $uploadMessage = (string) ($_SESSION['upload_error'] ?? 'Uppladdningen misslyckades.'); unset($_SESSION['upload_error']); ?>
+        <p class="notice danger"><?= e($uploadMessage) ?></p>
+      <?php endif; ?>
+      <p class="muted"><?= e((string) ($editing['title'] ?? '')) ?></p>
+      <p class="field-note">Servergränser: upload_max_filesize=<code><?= e((string) ini_get('upload_max_filesize')) ?></code>, post_max_size=<code><?= e((string) ini_get('post_max_size')) ?></code>.</p>
+      <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>" />
+        <input type="hidden" name="admin_action" value="upload_texture_version" />
+        <input type="hidden" name="collection" value="textures" />
+        <input type="hidden" name="original_id" value="<?= e((string) ($editing['id'] ?? '')) ?>" />
+        <div class="row">
+          <div>
+            <label for="new_version_label">Version</label>
+            <input id="new_version_label" name="new_version_label" type="text" placeholder="1.21.10" autofocus />
+          </div>
+          <div>
+            <label for="texture_zip_upload">Zip-fil</label>
+            <input id="texture_zip_upload" name="texture_zip_upload" type="file" accept=".zip,application/zip,application/x-zip-compressed" required />
+          </div>
+        </div>
+        <p class="field-note">När du sparar laddas filen upp till <code>dl/</code>, SHA-1 räknas ut automatiskt, och versionen läggs överst som senaste.</p>
+        <p class="actions">
+          <button class="button primary" type="submit">Ladda upp version</button>
+          <a class="button" href="?collection=textures&action=edit&id=<?= e((string) ($editing['id'] ?? '')) ?>">Tillbaka</a>
+        </p>
+      </form>
     <?php elseif ($action === 'new' || $editing !== null): ?>
       <h2><?= $action === 'new' ? 'Ny post' : 'Redigera post' ?></h2>
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>" />
         <input type="hidden" name="admin_action" value="save" />
         <input type="hidden" name="collection" value="<?= e($collection) ?>" />
@@ -723,7 +992,10 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
           <textarea id="descriptionHtml" name="descriptionHtml"><?= e((string) ($editing['descriptionHtml'] ?? '')) ?></textarea>
         <?php elseif ($collection === 'news'): ?>
           <label for="date">Datum</label>
-          <input id="date" name="date" type="text" value="<?= e((string) ($editing['date'] ?? '')) ?>" />
+          <div class="inline-field">
+            <input id="date" name="date" type="text" value="<?= e((string) ($editing['date'] ?? '')) ?>" />
+            <button class="button" type="button" data-fill-today="date">Idag</button>
+          </div>
           <label for="images">Bilder, en sökväg per rad</label>
           <textarea id="images" name="images"><?= e(implode("\n", $editing['images'] ?? [])) ?></textarea>
           <label for="news_uploads">Ladda upp bilder</label>
@@ -736,6 +1008,7 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
           <label for="description">Beskrivning</label>
           <textarea id="description" name="description"><?= e((string) ($editing['description'] ?? '')) ?></textarea>
         <?php elseif ($collection === 'textures'): ?>
+          <?php $textureVersions = admin_texture_versions($editing ?? []); ?>
           <div class="row">
             <div>
               <label for="image">Bild</label>
@@ -746,13 +1019,44 @@ function render_image_cards(array $images, string $checkboxName = 'remove_images
               <label for="image_upload">Ladda upp ny bild</label>
               <input id="image_upload" name="image_upload" type="file" accept="image/*" />
             </div>
-            <div>
-              <label for="version">Version</label>
-              <input id="version" name="version" type="text" value="<?= e((string) ($editing['version'] ?? '')) ?>" />
-            </div>
           </div>
-          <label for="download">Nedladdningslänk</label>
-          <input id="download" name="download" type="text" value="<?= e((string) ($editing['download'] ?? '')) ?>" />
+          <h3>Versioner</h3>
+          <?php if (!$textureVersions): ?>
+            <p class="muted">Inga versioner ännu.</p>
+          <?php endif; ?>
+          <?php if (!empty($editing['id'])): ?>
+            <p><a class="button primary" href="?collection=textures&action=upload-version&id=<?= e((string) $editing['id']) ?>">Ladda upp ny version</a></p>
+          <?php endif; ?>
+          <?php foreach ($textureVersions as $versionIndex => $version): ?>
+            <?php $versionFile = (string) ($version['file'] ?? ''); ?>
+            <?php $versionSha1 = (string) ($version['sha1'] ?? ''); ?>
+            <div class="version-card">
+              <div class="row">
+                <div>
+                  <label for="version_label_<?= e((string) $versionIndex) ?>">Version</label>
+                  <input id="version_label_<?= e((string) $versionIndex) ?>" name="version_label[]" type="text" value="<?= e((string) ($version['label'] ?? '')) ?>" />
+                </div>
+                <div>
+                  <label for="version_file_<?= e((string) $versionIndex) ?>">Nedladdningslänk</label>
+                  <input id="version_file_<?= e((string) $versionIndex) ?>" name="version_file[]" type="text" value="<?= e($versionFile) ?>" />
+                </div>
+              </div>
+              <label for="version_sha1_<?= e((string) $versionIndex) ?>">SHA-1</label>
+              <input id="version_sha1_<?= e((string) $versionIndex) ?>" name="version_sha1[]" type="text" value="<?= e($versionSha1) ?>" />
+              <label><input name="version_enabled[<?= e((string) $versionIndex) ?>]" type="checkbox" value="1" <?= lecani_enabled($version) ? 'checked' : '' ?> /> Synlig version</label>
+              <label><input name="remove_versions[]" type="checkbox" value="<?= e($versionFile) ?>" /> Ta bort versionen från listan</label>
+              <?php if ($versionFile !== ''): ?>
+                <div class="server-values">
+                  <p class="field-note">server.properties</p>
+                  <code>resource-pack=<?= e(public_url($versionFile)) ?></code>
+                  <code>resource-pack-sha1=<?= e($versionSha1) ?></code>
+                </div>
+              <?php endif; ?>
+            </div>
+          <?php endforeach; ?>
+          <?php if (empty($editing['id'])): ?>
+            <p class="field-note">Spara paketet först, öppna det igen och använd sedan “Ladda upp ny version”.</p>
+          <?php endif; ?>
           <label for="description">Beskrivning</label>
           <textarea id="description" name="description"><?= e((string) ($editing['description'] ?? '')) ?></textarea>
         <?php elseif ($collection === 'wallpapers'): ?>

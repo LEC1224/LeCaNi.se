@@ -71,6 +71,73 @@ function lecani_thumbnail_url(string $imageUrl): string
     return $imageUrl;
 }
 
+function lecani_news_timestamp(array $item): int
+{
+    $date = trim((string) ($item['date'] ?? ''));
+    if ($date === '') {
+        return 0;
+    }
+
+    $months = [
+        'jan' => 1,
+        'feb' => 2,
+        'mar' => 3,
+        'apr' => 4,
+        'maj' => 5,
+        'jun' => 6,
+        'jul' => 7,
+        'aug' => 8,
+        'sep' => 9,
+        'okt' => 10,
+        'nov' => 11,
+        'dec' => 12,
+    ];
+
+    if (preg_match('/(\d{1,2})\s+([[:alpha:]]+)\.?\s+(\d{4})/u', strtolower($date), $matches)) {
+        $monthKey = substr($matches[2], 0, 3);
+        $month = $months[$monthKey] ?? null;
+        if ($month !== null) {
+            return mktime(0, 0, 0, $month, (int) $matches[1], (int) $matches[3]);
+        }
+    }
+
+    if (preg_match('/(\d{4})/', $date, $matches)) {
+        return mktime(0, 0, 0, 1, 1, (int) $matches[1]);
+    }
+
+    return 0;
+}
+
+function lecani_sorted_news_items(array $items): array
+{
+    usort($items, static function (array $a, array $b): int {
+        return lecani_news_timestamp($b) <=> lecani_news_timestamp($a);
+    });
+
+    return $items;
+}
+
+function lecani_texture_versions(array $texture): array
+{
+    $versions = is_array($texture['versions'] ?? null) ? $texture['versions'] : [];
+    if (!$versions && !empty($texture['download'])) {
+        $versions[] = [
+            'label' => (string) ($texture['version'] ?? 'Version'),
+            'file' => (string) $texture['download'],
+            'sha1' => '',
+            'enabled' => true,
+        ];
+    }
+
+    return array_values(array_filter($versions, static fn($version) => lecani_enabled($version)));
+}
+
+function lecani_latest_texture_version(array $texture): ?array
+{
+    $versions = lecani_texture_versions($texture);
+    return $versions[0] ?? null;
+}
+
 function lecani_paragraphs(string $text): string
 {
     $text = trim($text);
@@ -112,7 +179,7 @@ function render_place_entry(array $item, string $kind): void
       <div class="city-collapsed">
         <div class="city-collapsed-info"></div>
         <div class="city-thumbnail">
-          <img src="<?= e($displayThumbnail) ?>" alt="<?= e($title) ?>" />
+          <img src="<?= e($displayThumbnail) ?>" alt="<?= e($title) ?>" loading="lazy" decoding="async" />
         </div>
       </div>
 
@@ -120,7 +187,7 @@ function render_place_entry(array $item, string $kind): void
         <div class="city-expanded-content">
           <div class="slideshow-container" id="<?= e($id . '-slideshow') ?>" data-image-folder="<?= e($folder) ?>">
             <div class="main-image">
-              <a href="<?= e($thumbnail) ?>"><img id="<?= e($id . '-slideshow_currentImage') ?>" src="<?= e($displayThumbnail) ?>" alt="<?= e($title) ?>" /></a>
+              <a href="<?= e($thumbnail) ?>"><img id="<?= e($id . '-slideshow_currentImage') ?>" src="<?= e($displayThumbnail) ?>" alt="<?= e($title) ?>" loading="lazy" decoding="async" /></a>
             </div>
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
@@ -144,7 +211,7 @@ function render_cities_section(): void
 {
     $content = lecani_content();
     ?>
-    <section class="content-section" id="section-cities">
+    <section class="content-section" id="section-cities" data-bg="img/bg/vildtmarken_jappoo.jpg">
       <div class="content-container">
         <h1>Städer</h1>
         <?php foreach (($content['cities'] ?? []) as $city): ?>
@@ -159,7 +226,7 @@ function render_monuments_section(): void
 {
     $content = lecani_content();
     ?>
-    <section class="content-section" id="section-monuments">
+    <section class="content-section" id="section-monuments" data-bg="img/bg/LD-Tornens_tronsal.jpg">
       <div class="content-container">
         <h1>Monument</h1>
         <?php foreach (($content['monuments'] ?? []) as $monument): ?>
@@ -174,7 +241,7 @@ function render_emblems_section(): void
 {
     $content = lecani_content();
     ?>
-    <section class="content-section" id="section-emblem">
+    <section class="content-section" id="section-emblem" data-bg="img/bg/dopta_fortet_takring.jpg">
       <div class="content-container">
         <h1>LeCaNis Stadsvapen</h1>
         <p>Vissa städer på LeCaNi har ett 4x4-pixlar emblem, eller ett "stadsvapen". Några av dessa märken har en längre historia än staden själv, så jag kände att de kunde få en egen sida här på hemsidan.</p>
@@ -182,7 +249,7 @@ function render_emblems_section(): void
           <?php if (!lecani_enabled($emblem)) continue; ?>
           <div class="vapen">
             <h2><?= e((string) ($emblem['title'] ?? '')) ?></h2>
-            <img class="flag" src="<?= e((string) ($emblem['image'] ?? '')) ?>" alt="<?= e((string) ($emblem['title'] ?? '')) ?>">
+            <img class="flag" src="<?= e((string) ($emblem['image'] ?? '')) ?>" alt="<?= e((string) ($emblem['title'] ?? '')) ?>" loading="lazy" decoding="async">
             <?= lecani_paragraphs((string) ($emblem['descriptionHtml'] ?? '')) ?>
           </div>
         <?php endforeach; ?>
@@ -196,17 +263,17 @@ function render_news_section(): void
     $content = lecani_content();
     $news = $content['news'] ?? [];
     ?>
-    <section class="content-section" id="section-news">
+    <section class="content-section" id="section-news" data-bg="img/bg/odopta_fortet_norrsken.jpg">
       <div class="content-container">
         <h1>Nyheter</h1>
         <div id="news">
           <?= lecani_paragraphs((string) ($news['introHtml'] ?? '')) ?>
-          <?php foreach (($news['items'] ?? []) as $item): ?>
+          <?php foreach (lecani_sorted_news_items($news['items'] ?? []) as $item): ?>
             <?php if (!lecani_enabled($item)) continue; ?>
             <h2><?= e((string) ($item['title'] ?? '')) ?></h2>
             <h3><?= e((string) ($item['date'] ?? '')) ?></h3>
             <?php foreach (($item['images'] ?? []) as $image): ?>
-              <img src="<?= e((string) $image) ?>" alt="<?= e((string) ($item['title'] ?? '')) ?>" />
+              <img src="<?= e((string) $image) ?>" alt="<?= e((string) ($item['title'] ?? '')) ?>" loading="lazy" decoding="async" />
             <?php endforeach; ?>
             <?= lecani_paragraphs((string) ($item['bodyHtml'] ?? '')) ?>
           <?php endforeach; ?>
@@ -221,7 +288,7 @@ function render_rules_section(): void
     $content = lecani_content();
     $rules = $content['rules'] ?? [];
     ?>
-    <section class="content-section" id="section-rules">
+    <section class="content-section" id="section-rules" data-bg="img/bg/dopta_fortet_fonster.jpg">
       <div class="content-container">
         <h1>Regler</h1>
         <div class="rule-list">
@@ -244,7 +311,7 @@ function render_download_section(): void
     $content = lecani_content();
     $downloads = $content['downloads'] ?? [];
     ?>
-    <section class="content-section" id="section-download">
+    <section class="content-section" id="section-download" data-bg="img/bg/bergavik.jpg">
       <div class="content-container">
         <h1>Ladda ner</h1>
         <p>Här kan du ladda ner texturpaket och annat som kan vara användbart för att spela på LeCaNi</p>
@@ -253,11 +320,28 @@ function render_download_section(): void
           <h2>Texture Packs</h2>
           <?php foreach (($downloads['textures'] ?? []) as $texture): ?>
             <?php if (!lecani_enabled($texture)) continue; ?>
+            <?php $versions = lecani_texture_versions($texture); ?>
+            <?php $latest = $versions[0] ?? null; ?>
             <div class="download-texture">
-              <img src="<?= e((string) ($texture['image'] ?? '')) ?>" alt="<?= e((string) ($texture['title'] ?? '')) ?>" />
+              <img src="<?= e((string) ($texture['image'] ?? '')) ?>" alt="<?= e((string) ($texture['title'] ?? '')) ?>" loading="lazy" decoding="async" />
               <h3><?= e((string) ($texture['title'] ?? '')) ?></h3>
-              <p>Version: <?= e((string) ($texture['version'] ?? '')) ?><br />
-              <a href="<?= e((string) ($texture['download'] ?? '')) ?>">Ladda Ner</a></p>
+              <?php if ($latest): ?>
+                <div class="download-latest">
+                  <span>Senaste version: <?= e((string) ($latest['label'] ?? '')) ?></span>
+                  <a class="download-button" href="<?= e((string) ($latest['file'] ?? '')) ?>">Ladda ner senaste</a>
+                </div>
+              <?php endif; ?>
+              <?php if (count($versions) > 1): ?>
+                <div class="download-version-picker">
+                  <label class="download-version-label" for="<?= e((string) ($texture['id'] ?? 'texture')) ?>-version">Välj version</label>
+                  <select class="download-version-select" id="<?= e((string) ($texture['id'] ?? 'texture')) ?>-version">
+                    <?php foreach ($versions as $version): ?>
+                      <option value="<?= e((string) ($version['file'] ?? '')) ?>"><?= e((string) ($version['label'] ?? '')) ?></option>
+                    <?php endforeach; ?>
+                  </select>
+                  <a class="download-selected-version download-button secondary" href="<?= e((string) ($latest['file'] ?? '#')) ?>">Ladda ner vald version</a>
+                </div>
+              <?php endif; ?>
               <p><?= e((string) ($texture['description'] ?? '')) ?></p>
             </div>
           <?php endforeach; ?>
@@ -269,7 +353,7 @@ function render_download_section(): void
           <?php foreach (($downloads['wallpapers'] ?? []) as $wallpaper): ?>
             <?php if (!lecani_enabled($wallpaper)) continue; ?>
             <div class="download-wallpaper">
-              <a href="<?= e((string) ($wallpaper['fullImage'] ?? '')) ?>"><img src="<?= e((string) ($wallpaper['image'] ?? '')) ?>" alt="<?= e((string) ($wallpaper['caption'] ?? '')) ?>" /></a>
+              <a href="<?= e((string) ($wallpaper['fullImage'] ?? '')) ?>"><img src="<?= e((string) ($wallpaper['image'] ?? '')) ?>" alt="<?= e((string) ($wallpaper['caption'] ?? '')) ?>" loading="lazy" decoding="async" /></a>
               <p><?= e((string) ($wallpaper['caption'] ?? '')) ?></p>
             </div>
           <?php endforeach; ?>
