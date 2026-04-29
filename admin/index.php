@@ -77,7 +77,8 @@ function clean_filename(string $name): string
 
 function image_extension(string $tmpName): ?string
 {
-    $type = @exif_imagetype($tmpName);
+    $info = @getimagesize($tmpName);
+    $type = is_array($info) ? ($info[2] ?? null) : null;
 
     return match ($type) {
         IMAGETYPE_JPEG => 'jpg',
