@@ -352,6 +352,43 @@ p img {
   color: #FFF;
 }
 
+.grayzone-rules {
+  margin-top: 2.5rem;
+}
+
+.grayzone-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  justify-content: center;
+  margin: 1.25rem 0;
+}
+
+.grayzone-legend span {
+  white-space: nowrap;
+}
+
+.grayzone-list {
+  list-style: none;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 0;
+  text-align: left;
+}
+
+.grayzone-list li {
+  align-items: flex-start;
+  display: flex;
+  gap: 0.65rem;
+  line-height: 1.4;
+  padding: 0.3rem 0;
+}
+
+.grayzone-status {
+  flex: 0 0 1.4em;
+  text-align: center;
+}
+
 /* ---------------------------- */
 /* ----------- Map ------------ */
 /* ---------------------------- */

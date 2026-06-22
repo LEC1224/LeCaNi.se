@@ -614,6 +614,123 @@
                 "enabled": true
             }
         ],
+        "grayzones": [
+            {
+                "id": "andra-ljusinstallningar",
+                "text": "Ändra ljusinställningar (bortom Moody och Bright)",
+                "status": "allowed"
+            },
+            {
+                "id": "dynamisk-belysning",
+                "text": "Använda mods som erbjuder dynamisk belysning (t.ex. shaders med handhållna facklor)",
+                "status": "allowed"
+            },
+            {
+                "id": "tydligare-ore-block",
+                "text": "Använda resurspaket som gör ore-block eller liknande tydligare/lysande",
+                "status": "allowed"
+            },
+            {
+                "id": "inventory-och-kistmods",
+                "text": "Använda mods som underlättar hantering av inventory och kistor",
+                "status": "allowed"
+            },
+            {
+                "id": "hitta-biomer-strukturer-och-slimechunks",
+                "text": "Använda program som kan hitta biomer, strukturer och slimechunks",
+                "status": "allowed"
+            },
+            {
+                "id": "dynmap",
+                "text": "Använda BlueMap för att hitta delar av världen",
+                "status": "allowed"
+            },
+            {
+                "id": "f3-koordinater",
+                "text": "Använda F3 eller liknande för att se koordinater",
+                "status": "allowed"
+            },
+            {
+                "id": "logga-ut-nara-doden",
+                "text": "Logga ut för att vänta på hjälp nära döden",
+                "status": "allowed"
+            },
+            {
+                "id": "ender-parlor-genom-tak-och-vaggar",
+                "text": "Använda Ender-pärlor för att ta sig igenom tak och väggar",
+                "status": "allowed"
+            },
+            {
+                "id": "afk-farming",
+                "text": "Stå AFK vid farmer",
+                "status": "allowed"
+            },
+            {
+                "id": "schematic-och-easy-placement",
+                "text": "Använda Schematic-mod och motsvarande, inklusive Easy Placement-läge",
+                "status": "allowed"
+            },
+            {
+                "id": "tnt-entity-duplikation",
+                "text": "Använda TNT-entity-duplikation (med slime blocks)",
+                "status": "allowed"
+            },
+            {
+                "id": "makron-autoklickare-och-autohotkey",
+                "text": "Använda makron, autoklickare och AutoHotKey",
+                "status": "allowed"
+            },
+            {
+                "id": "ta-bort-bedrock",
+                "text": "Utnyttja buggar som tar bort bedrock",
+                "status": "allowed"
+            },
+            {
+                "id": "itemduplikation",
+                "text": "Utnyttja itemduplikation",
+                "status": "forbidden"
+            },
+            {
+                "id": "modifiera-verktyg-och-vapen",
+                "text": "Använda buggar som modifierar verktyg och vapens egenskaper",
+                "status": "forbidden"
+            },
+            {
+                "id": "externa-program-ger-foremal",
+                "text": "Använda mods eller externa program som direkt kan ge dig föremål",
+                "status": "forbidden"
+            },
+            {
+                "id": "overnaturliga-fordelar",
+                "text": "Använda mods eller externa program som ger övernaturliga fördelar (flyga, odödlighet etc.)",
+                "status": "forbidden"
+            },
+            {
+                "id": "rontgeneffekter",
+                "text": "Använda mods eller vanilla-metoder som orsakar röntgeneffekter",
+                "status": "forbidden"
+            },
+            {
+                "id": "ta-bort-lava-och-vattendimma",
+                "text": "Använda mods eller vanilla-metoder som tar bort lava och/eller vattendimma",
+                "status": "forbidden"
+            },
+            {
+                "id": "duplicera-fallande-block",
+                "text": "Duplicera fallande block (t.ex. med endportal)",
+                "status": "forbidden"
+            },
+            {
+                "id": "duplicera-block-med-pistons",
+                "text": "Duplicera block med hjälp av pistons (t.ex. mattor, string, räls)",
+                "status": "forbidden"
+            },
+            {
+                "id": "bygga-utanfor-varldens-hojdgranser",
+                "text": "Utnyttja buggar för att bygga under y:-64 och ovan y:319",
+                "status": "forbidden"
+            }
+        ],
         "extraHtml": ""
     },
     "downloads": {

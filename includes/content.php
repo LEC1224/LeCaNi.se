@@ -300,6 +300,32 @@ function render_rules_section(): void
             </div>
           <?php endforeach; ?>
         </div>
+        <?php $grayzones = is_array($rules['grayzones'] ?? null) ? $rules['grayzones'] : []; ?>
+        <?php if ($grayzones): ?>
+          <div class="grayzone-rules">
+            <h2>Buggar och externa verktyg</h2>
+            <p>Minecraft har alltid haft buggar som gjort att saker som inte borde funka i Survival Mode ändå blivit möjliga. T.ex. sand- och TNT-duplicering. Dessutom finns massor av externa verktyg (i form av mods, plugins och program) som kan ge spelare förmåner i spelet som Vanilla Minecraft inte erbjuder. LeCaNis spelare har gemensamt skapat ett ramverk för var gränserna ska gå.</p>
+            <p class="grayzone-legend"><span>&#9989; Tillåtet</span><span>&#10060; Förbjudet</span><span>&#10062; Tillåtet men omöjligt i nuvarande version</span></p>
+            <ul class="grayzone-list">
+              <?php foreach ($grayzones as $grayzone): ?>
+                <?php
+                  $status = (string) ($grayzone['status'] ?? 'forbidden');
+                  $statusLabel = match ($status) {
+                      'allowed' => 'Tillåtet',
+                      'unavailable' => 'Tillåtet men omöjligt i nuvarande version',
+                      default => 'Förbjudet',
+                  };
+                  $statusIcon = match ($status) {
+                      'allowed' => '&#9989;',
+                      'unavailable' => '&#10062;',
+                      default => '&#10060;',
+                  };
+                ?>
+                <li><span class="grayzone-status" aria-label="<?= e($statusLabel) ?>"><?= $statusIcon ?></span><span><?= e((string) ($grayzone['text'] ?? '')) ?></span></li>
+              <?php endforeach; ?>
+            </ul>
+          </div>
+        <?php endif; ?>
         <?= (string) ($rules['extraHtml'] ?? '') ?>
       </div>
     </section>

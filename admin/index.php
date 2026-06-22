@@ -405,6 +405,48 @@ function posted_texture_versions(): array
     return $versions;
 }
 
+function posted_grayzones(): array
+{
+    $keys = is_array($_POST['grayzone_keys'] ?? null) ? $_POST['grayzone_keys'] : [];
+    $ids = is_array($_POST['grayzone_id'] ?? null) ? $_POST['grayzone_id'] : [];
+    $texts = is_array($_POST['grayzone_text'] ?? null) ? $_POST['grayzone_text'] : [];
+    $allowed = is_array($_POST['grayzone_allowed'] ?? null) ? $_POST['grayzone_allowed'] : [];
+    $unavailable = is_array($_POST['grayzone_unavailable'] ?? null) ? $_POST['grayzone_unavailable'] : [];
+    $removed = is_array($_POST['grayzone_remove'] ?? null) ? $_POST['grayzone_remove'] : [];
+    $items = [];
+    $usedIds = [];
+
+    foreach ($keys as $key) {
+        $key = (string) $key;
+        $text = trim((string) ($texts[$key] ?? ''));
+        if ($text === '' || isset($removed[$key])) {
+            continue;
+        }
+
+        $id = lecani_slug((string) ($ids[$key] ?? $text));
+        $baseId = $id;
+        $counter = 2;
+        while (isset($usedIds[$id])) {
+            $id = $baseId . '-' . $counter;
+            $counter++;
+        }
+        $usedIds[$id] = true;
+
+        $status = isset($allowed[$key]) ? 'allowed' : 'forbidden';
+        if ($status === 'allowed' && isset($unavailable[$key])) {
+            $status = 'unavailable';
+        }
+
+        $items[] = [
+            'id' => $id,
+            'text' => $text,
+            'status' => $status,
+        ];
+    }
+
+    return $items;
+}
+
 function collection_items(array $content, string $collection): array
 {
     return match ($collection) {
@@ -638,6 +680,13 @@ if (is_admin() && $requestMethod === 'POST' && isset($_POST['admin_action'])) {
         exit;
     }
 
+    if ($action === 'save_grayzones' && $collection === 'rules') {
+        $content['rules']['grayzones'] = posted_grayzones();
+        lecani_save_content($content);
+        header('Location: index.php?collection=rules&saved=1');
+        exit;
+    }
+
     if ($action === 'upload_texture_version') {
         $items = collection_items($content, 'textures');
         $id = (string) ($_POST['original_id'] ?? '');
@@ -787,8 +836,11 @@ function admin_texture_versions(array $texture): array
     .field-note { margin: 6px 0 0; color: #bdbdbd; font-size: 0.95rem; }
     .version-card { border: 1px solid #333; border-radius: 6px; padding: 12px; margin: 12px 0; background: #202020; }
     .server-values code { display: block; background: #101010; border: 1px solid #444; border-radius: 4px; padding: 8px; margin-top: 6px; overflow-wrap: anywhere; }
+    .grayzone-admin { border-top: 1px solid #444; margin-top: 32px; padding-top: 20px; }
+    .grayzone-admin-row { align-items: center; border-bottom: 1px solid #333; display: grid; gap: 12px; grid-template-columns: minmax(260px, 1fr) auto auto auto; padding: 10px 0; }
+    .grayzone-admin-row label { font-weight: normal; margin: 0; white-space: nowrap; }
     .login { max-width: 420px; margin: 15vh auto; background: #202020; padding: 24px; border-radius: 8px; }
-    @media (max-width: 760px) { .row { grid-template-columns: 1fr; } .top { display: block; } }
+    @media (max-width: 760px) { .row, .grayzone-admin-row { grid-template-columns: 1fr; } .top { display: block; } }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -798,6 +850,39 @@ function admin_texture_versions(array $texture): array
       const imageFolderInput = document.getElementById('imageFolder');
       const thumbnailInput = document.getElementById('thumbnail');
       const todayButton = document.querySelector('[data-fill-today]');
+      const grayzoneRows = document.getElementById('grayzone-rows');
+      const addGrayzoneButton = document.querySelector('[data-add-grayzone]');
+
+      addGrayzoneButton?.addEventListener('click', () => {
+        if (!grayzoneRows) return;
+
+        const key = String(Number(grayzoneRows.dataset.nextKey || '0'));
+        grayzoneRows.dataset.nextKey = String(Number(key) + 1);
+        const row = document.createElement('div');
+        row.className = 'grayzone-admin-row';
+        row.innerHTML = `
+          <input type="hidden" name="grayzone_keys[]" value="${key}" />
+          <input type="hidden" name="grayzone_id[${key}]" value="" />
+          <input name="grayzone_text[${key}]" type="text" placeholder="Beskriv gråzonen" />
+          <label><input name="grayzone_allowed[${key}]" type="checkbox" value="1" checked /> Tillåtet</label>
+          <label><input name="grayzone_unavailable[${key}]" type="checkbox" value="1" /> Omöjligt just nu</label>
+          <label><input name="grayzone_remove[${key}]" type="checkbox" value="1" /> Ta bort</label>`;
+        grayzoneRows.appendChild(row);
+        row.querySelector('input[type=text]')?.focus();
+      });
+
+      grayzoneRows?.addEventListener('change', event => {
+        const checkbox = event.target;
+        if (!(checkbox instanceof HTMLInputElement)) return;
+
+        const row = checkbox.closest('.grayzone-admin-row');
+        const allowed = row?.querySelector('input[name^="grayzone_allowed"]');
+        const unavailable = row?.querySelector('input[name^="grayzone_unavailable"]');
+        if (!(allowed instanceof HTMLInputElement) || !(unavailable instanceof HTMLInputElement)) return;
+
+        if (checkbox === unavailable && unavailable.checked) allowed.checked = true;
+        if (checkbox === allowed && !allowed.checked) unavailable.checked = false;
+      });
 
       const slugify = value => value
         .toLowerCase()
@@ -1110,6 +1195,33 @@ function admin_texture_versions(array $texture): array
           <?php endforeach; ?>
         </tbody>
       </table>
+      <?php if ($collection === 'rules'): ?>
+        <?php $grayzones = is_array($content['rules']['grayzones'] ?? null) ? $content['rules']['grayzones'] : []; ?>
+        <section class="grayzone-admin">
+          <h2>Gråzoner</h2>
+          <p class="muted">Checkboxen “Tillåtet” styr om punkten visas med grön eller röd symbol. “Omöjligt just nu” behåller det historiska tredje läget.</p>
+          <form method="post">
+            <input type="hidden" name="csrf" value="<?= e(csrf_token()) ?>" />
+            <input type="hidden" name="admin_action" value="save_grayzones" />
+            <input type="hidden" name="collection" value="rules" />
+            <div id="grayzone-rows" data-next-key="<?= e((string) count($grayzones)) ?>">
+              <?php foreach ($grayzones as $grayzoneIndex => $grayzone): ?>
+                <?php $grayzoneStatus = (string) ($grayzone['status'] ?? 'forbidden'); ?>
+                <div class="grayzone-admin-row">
+                  <input type="hidden" name="grayzone_keys[]" value="<?= e((string) $grayzoneIndex) ?>" />
+                  <input type="hidden" name="grayzone_id[<?= e((string) $grayzoneIndex) ?>]" value="<?= e((string) ($grayzone['id'] ?? '')) ?>" />
+                  <input name="grayzone_text[<?= e((string) $grayzoneIndex) ?>]" type="text" value="<?= e((string) ($grayzone['text'] ?? '')) ?>" />
+                  <label><input name="grayzone_allowed[<?= e((string) $grayzoneIndex) ?>]" type="checkbox" value="1" <?= in_array($grayzoneStatus, ['allowed', 'unavailable'], true) ? 'checked' : '' ?> /> Tillåtet</label>
+                  <label><input name="grayzone_unavailable[<?= e((string) $grayzoneIndex) ?>]" type="checkbox" value="1" <?= $grayzoneStatus === 'unavailable' ? 'checked' : '' ?> /> Omöjligt just nu</label>
+                  <label><input name="grayzone_remove[<?= e((string) $grayzoneIndex) ?>]" type="checkbox" value="1" /> Ta bort</label>
+                </div>
+              <?php endforeach; ?>
+            </div>
+            <p class="actions"><button class="button primary" type="submit">Spara gråzoner</button></p>
+            <p><button class="button" type="button" data-add-grayzone>Lägg till gråzon</button></p>
+          </form>
+        </section>
+      <?php endif; ?>
     <?php endif; ?>
   </main>
 <?php endif; ?>
