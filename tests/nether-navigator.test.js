@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { buildGraph, findFastestRoute } = require('../script/nether-navigator.js');
+const { buildGraph, coordinatesForDimension, findFastestRoute, findNearestStation } = require('../script/nether-navigator.js');
 
 const network = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/nether-network.json'), 'utf8'));
 
@@ -21,6 +21,7 @@ const inbound = findFastestRoute(network, 'the-rike', 'fabulania');
 assert.deepEqual(outbound.steps.map((step) => step.destination.id), ['fabulania', 'the-rike']);
 assert.ok(Math.abs(outbound.totalSeconds - inbound.totalSeconds) < 1e-9, 'roads must work in both directions');
 assert.equal(outbound.stationSeconds, 20, 'source and destination must each cost 10 seconds');
+assert.equal(outbound.stationPenaltySeconds, 10, 'the route must expose its per-station transfer time');
 
 const direct = findFastestRoute(network, 'fabulania', 'x-mines');
 assert.equal(direct.stationSeconds, 20, 'a direct route charges both endpoint stations');
@@ -36,5 +37,15 @@ assert.equal(new Set(destinationIds).size, destinationIds.length, 'destination I
 
 const roadIds = network.roads.map((road) => [...road.nodes].sort().join('|'));
 assert.equal(new Set(roadIds).size, roadIds.length, 'undirected roads must be unique');
+
+const overworldNearest = findNearestStation(network, 3, -904, false);
+assert.equal(overworldNearest.destination.id, 'fabulania');
+assert.equal(overworldNearest.distance, 5);
+
+const netherNearest = findNearestStation(network, 0, -112.5, true);
+assert.equal(netherNearest.destination.id, 'fabulania');
+assert.equal(netherNearest.distance, 0);
+assert.deepEqual(coordinatesForDimension(netherNearest.destination, true), { x: 0, z: -112.5 });
+assert.deepEqual(coordinatesForDimension(netherNearest.destination, false), { x: 0, z: -900 });
 
 console.log(`Nether navigator tests passed (${network.destinations.length} destinations, ${network.roads.length} undirected roads).`);

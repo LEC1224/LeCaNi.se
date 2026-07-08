@@ -399,10 +399,11 @@ p img {
   border-left: 5px solid #63d7df;
   border-radius: 8px;
   box-sizing: border-box;
-  margin: 3em auto;
-  max-width: 1050px;
+  margin: 2.5em 0;
+  max-width: none;
   padding: 1.5em;
   text-align: left;
+  width: 100%;
 }
 
 .nether-navigator-heading {
@@ -425,21 +426,81 @@ p img {
   text-transform: uppercase;
 }
 
-.nether-navigator-badge {
-  background: #ffdd57;
-  border: 2px solid #151515;
-  color: #151515;
-  flex: 0 0 auto;
-  font-weight: bold;
-  padding: 0.45em 0.7em;
+.nether-route-form {
+  margin-top: 1.5em;
 }
 
-.nether-route-form {
+.nether-origin-mode {
+  border: 0;
+  display: inline-flex;
+  gap: 0;
+  margin: 0 0 1em;
+  padding: 0;
+}
+
+.nether-origin-mode legend {
+  color: #ccc;
+  font-size: 0.88em;
+  font-weight: bold;
+  margin-bottom: 0.45em;
+}
+
+.nether-origin-mode label {
+  cursor: pointer;
+}
+
+.nether-origin-mode input {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.nether-origin-mode span {
+  background: #292929;
+  border: 1px solid #777;
+  color: #ddd;
+  display: block;
+  padding: 0.55em 1.1em;
+}
+
+.nether-origin-mode label:first-of-type span {
+  border-radius: 5px 0 0 5px;
+}
+
+.nether-origin-mode label:last-of-type span {
+  border-left: 0;
+  border-radius: 0 5px 5px 0;
+}
+
+.nether-origin-mode input:checked + span {
+  background: #63d7df;
+  border-color: #63d7df;
+  color: #111;
+}
+
+.nether-origin-mode input:focus-visible + span {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.nether-origin-mode:disabled {
+  opacity: 0.55;
+}
+
+.nether-route-fields {
   align-items: end;
   display: grid;
   gap: 0.8em;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
-  margin-top: 1.5em;
+}
+
+.nether-route-fields.coordinates-mode {
+  align-items: start;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) auto;
+}
+
+.nether-route-origin {
+  min-width: 0;
 }
 
 .nether-route-form label {
@@ -448,7 +509,8 @@ p img {
   font-weight: bold;
 }
 
-.nether-route-form select {
+.nether-route-form select,
+.nether-route-form input[type="number"] {
   background: #171717;
   border: 1px solid #999;
   border-radius: 4px;
@@ -460,6 +522,40 @@ p img {
   min-height: 2.8em;
   padding: 0.55em;
   width: 100%;
+}
+
+.nether-coordinate-origin {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid #555;
+  border-radius: 6px;
+  padding: 0.8em;
+}
+
+.nether-coordinate-fields {
+  display: grid;
+  gap: 0.7em;
+  grid-template-columns: 1fr 1fr;
+}
+
+.nether-coordinate-dimension {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 0.55em;
+  margin-top: 0.75em;
+}
+
+.nether-coordinate-dimension input {
+  accent-color: #63d7df;
+  height: 1.15em;
+  width: 1.15em;
+}
+
+.nether-nearest-station {
+  color: #63d7df;
+  font-size: 0.9em;
+  line-height: 1.35;
+  margin: 0.65em 0 0;
 }
 
 .nether-route-form button {
@@ -487,6 +583,10 @@ p img {
 .nether-route-submit {
   background: #63d7df;
   color: #111;
+}
+
+.coordinates-mode .nether-route-submit {
+  margin-top: 1.45em;
 }
 
 .nether-route-swap:hover,
@@ -546,6 +646,10 @@ p img {
   padding-bottom: 0;
 }
 
+.nether-route-steps li:last-child::before {
+  background: #79b87a;
+}
+
 .nether-route-steps li::before {
   background: #ffdd57;
   border: 3px solid #222;
@@ -572,21 +676,40 @@ p img {
   margin-top: 0.3em;
 }
 
-@media only screen and (max-width: 850px) {
-  .nether-route-form {
-    grid-template-columns: 1fr auto;
-  }
+.nether-route-steps li.nether-route-approach::before {
+  background: white;
+}
 
-  .nether-route-form label {
-    grid-column: 1 / -1;
+.nether-route-transfer {
+  color: #ffdd57;
+  display: block;
+  font-size: 0.82em;
+  margin-top: 0.3em;
+}
+
+.nether-route-station-coordinates {
+  color: #9edba4;
+  display: block;
+  font-size: 0.82em;
+  margin-top: 0.3em;
+}
+
+@media only screen and (max-width: 850px) {
+  .nether-route-fields,
+  .nether-route-fields.coordinates-mode {
+    grid-template-columns: 1fr;
   }
 
   .nether-route-swap {
     display: none;
   }
 
+  .coordinates-mode .nether-route-submit {
+    margin-top: 0;
+  }
+
   .nether-route-submit {
-    grid-column: 1 / -1;
+    width: 100%;
   }
 }
 
@@ -599,10 +722,6 @@ p img {
     display: block;
   }
 
-  .nether-navigator-badge {
-    display: inline-block;
-    margin-bottom: 0.8em;
-  }
 }
 
 .iframe-section {

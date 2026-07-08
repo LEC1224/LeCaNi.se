@@ -1,6 +1,6 @@
 <section class="content-section iframe-section" id="section-map" data-bg="img/bg/karta.jpg">
  <div class="content-container">
-    <h1>Kartor över LeCaNi</h1>
+    <h1>Kartor och navigering på LeCaNi</h1>
     <h2>BlueMap-kartan</h2>
     <p>BlueMap-kartan är en högupplöst, tre-dimensionell LOD-karta som uppdaterar sig i realtid och visar vart alla spelare befinner sig!</p>
     <div class="bluemap-frame" id="bluemap-frame">
@@ -19,45 +19,83 @@
         <p>En statisk MinedMap-karta över LeCaNi som världen såg ut 2025-01-05 kan utforskas rakt i hemsidan! Du kan även <a href="dl/minedmap_LeCaNi.zip">ladda ner</a> hela MinedMap-kartan för att köra på din egen webserver!</p>
     <iframe frameborder="0" src="minedmap_LeCaNi/index.html"></iframe>
 -->
+    <h2>Nether-navigatorn</h2>
+    <p>LeCaNis städer och intressepunkter binds samman av ett stort transportsystem i Nether. Med navigatorn väljer du var du befinner dig och vart du vill resa, så räknar den ut den snabbaste vägen och visar vilka Nether-hubbar du ska passera samt om du ska gå, åka minecart eller ta båt på is.</p>
+
     <div class="nether-navigator" id="nether-navigator">
       <div class="nether-navigator-heading">
         <div>
           <p class="nether-navigator-kicker">Reseplanerare</p>
-          <h2>Hitta snabbaste Nether-vägen</h2>
+          <h2>Planera din Nether-resa</h2>
         </div>
-        <span class="nether-navigator-badge">10 s per station</span>
       </div>
       <p>Välj var du är och vart du ska. Navigatorn väger samman gångväg, räls och isväg och visar vilka hubbar du ska passera.</p>
 
       <form class="nether-route-form" id="nether-route-form">
-        <label for="nether-route-from">
-          Nuvarande plats
-          <select id="nether-route-from" name="from" required disabled>
-            <option value="">Laddar stationer…</option>
-          </select>
-        </label>
+        <fieldset class="nether-origin-mode" disabled>
+          <legend>Välj typ av startpunkt</legend>
+          <label>
+            <input type="radio" name="origin-mode" value="station" checked>
+            <span>Station</span>
+          </label>
+          <label>
+            <input type="radio" name="origin-mode" value="coordinates">
+            <span>Koordinater</span>
+          </label>
+        </fieldset>
 
-        <button class="nether-route-swap" id="nether-route-swap" type="button" aria-label="Byt start och destination" title="Byt håll" disabled>⇄</button>
+        <div class="nether-route-fields" id="nether-route-fields">
+          <div class="nether-route-origin">
+            <label id="nether-station-origin" for="nether-route-from">
+              Nuvarande station
+              <select id="nether-route-from" name="from" required disabled>
+                <option value="">Laddar stationer…</option>
+              </select>
+            </label>
 
-        <label for="nether-route-to">
-          Destination
-          <select id="nether-route-to" name="to" required disabled>
-            <option value="">Laddar stationer…</option>
-          </select>
-        </label>
+            <div class="nether-coordinate-origin" id="nether-coordinate-origin" hidden>
+              <div class="nether-coordinate-fields">
+                <label for="nether-route-x">
+                  X
+                  <input id="nether-route-x" name="x" type="number" step="any" inputmode="decimal" placeholder="0" disabled>
+                </label>
+                <label for="nether-route-z">
+                  Z
+                  <input id="nether-route-z" name="z" type="number" step="any" inputmode="decimal" placeholder="0" disabled>
+                </label>
+              </div>
+              <label class="nether-coordinate-dimension" for="nether-route-in-nether">
+                <input id="nether-route-in-nether" name="in-nether" type="checkbox" disabled>
+                <span>I Nether</span>
+              </label>
+              <p class="nether-nearest-station" id="nether-nearest-station" aria-live="polite">Ange X och Z för att hitta närmaste station.</p>
+            </div>
+          </div>
 
-        <button class="nether-route-submit" type="submit" disabled>Visa snabbaste vägen</button>
+          <button class="nether-route-swap" id="nether-route-swap" type="button" aria-label="Byt start och destination" title="Byt håll" disabled>⇄</button>
+
+          <label for="nether-route-to">
+            Destination
+            <select id="nether-route-to" name="to" required disabled>
+              <option value="">Laddar stationer…</option>
+            </select>
+          </label>
+
+          <button class="nether-route-submit" type="submit" disabled>Visa snabbaste vägen</button>
+        </div>
       </form>
 
       <div class="nether-route-status" id="nether-route-status" role="status" aria-live="polite">Laddar linjenätet…</div>
       <div class="nether-route-result" id="nether-route-result" hidden></div>
     </div>
 
+<!-- Den äldre statiska spårkartan finns kvar som reserv.
     <h2>Nether-spårkarta</h2>
     <p>Mycket av LeCaNis transport mellan städer sker i vårt tunnelbanesystem i Nether. Många städer och intressepunkter har varsin Nether-hubb som fungerar som en centralstation, med vägar åt många olika håll. För att göra det lättare för dig att navigera på LeCaNi har vi tagit fram en spårkarta där du kan se de flesta destinationerna och vägarna emellan!</p>
     
     <p>Samma spårkarta kan du hitta som en tavla i många Nether-hubbar om du använder LeCaNis Tecturepack!</p>
-    <img width="100%" src="img/nav.png" alt="" loading="lazy" decoding="async" />
+    <img width="100%" src="img/nav.png" alt="Nether-spårkarta" loading="lazy" decoding="async" />
+-->
    </div>
 </section>
 

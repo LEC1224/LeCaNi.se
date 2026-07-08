@@ -90,7 +90,34 @@
       steps,
       totalSeconds: distances.get(destination),
       travelSeconds,
-      stationSeconds: steps.length * stationPenalty
+      stationSeconds: steps.length * stationPenalty,
+      stationPenaltySeconds: stationPenalty
+    };
+  }
+
+  function findNearestStation(network, x, z, inNether) {
+    if (!Number.isFinite(x) || !Number.isFinite(z)) return null;
+
+    const coordinateScale = inNether ? 1 / 8 : 1;
+    let nearest = null;
+
+    network.destinations.forEach((destination) => {
+      const stationX = destination.coordinates[0] * coordinateScale;
+      const stationZ = destination.coordinates[1] * coordinateScale;
+      const distance = Math.hypot(x - stationX, z - stationZ);
+      if (!nearest || distance < nearest.distance) {
+        nearest = { destination, distance };
+      }
+    });
+
+    return nearest;
+  }
+
+  function coordinatesForDimension(destination, inNether) {
+    const coordinateScale = inNether ? 1 / 8 : 1;
+    return {
+      x: destination.coordinates[0] * coordinateScale,
+      z: destination.coordinates[1] * coordinateScale
     };
   }
 
@@ -122,16 +149,39 @@
 
     const list = document.createElement('ol');
     list.className = 'nether-route-steps';
+
+    if (route.approach) {
+      const item = document.createElement('li');
+      item.className = 'nether-route-approach';
+      const title = document.createElement('span');
+      title.className = 'nether-route-step-title';
+      const dimension = route.approach.inNether ? 'Nether' : 'Overworld';
+      title.textContent = `Start: X ${route.approach.x.toLocaleString('sv-SE')}, Z ${route.approach.z.toLocaleString('sv-SE')} (${dimension})`;
+      const leg = document.createElement('span');
+      leg.className = 'nether-route-leg';
+      const unit = route.approach.inNether ? 'Nether-block' : 'Overworld-block';
+      leg.textContent = `Gå till ${route.approach.destination.name} · ${route.approach.distance.toLocaleString('sv-SE', { maximumFractionDigits: 1 })} ${unit} · ${formatDuration(route.approach.travelSeconds)}`;
+      const stationCoordinates = document.createElement('span');
+      stationCoordinates.className = 'nether-route-station-coordinates';
+      stationCoordinates.textContent = `Stationens koordinater: X ${route.approach.stationCoordinates.x.toLocaleString('sv-SE', { maximumFractionDigits: 1 })}, Z ${route.approach.stationCoordinates.z.toLocaleString('sv-SE', { maximumFractionDigits: 1 })}`;
+      item.append(title, leg, stationCoordinates);
+      list.appendChild(item);
+    }
+
     route.steps.forEach((step, index) => {
       const item = document.createElement('li');
       const title = document.createElement('span');
       title.className = 'nether-route-step-title';
-      title.textContent = index === 0
+      title.textContent = index === 0 && !route.approach
         ? `Start: ${step.destination.name}`
         : index === route.steps.length - 1
           ? `Framme: ${step.destination.name}`
           : step.destination.name;
       item.appendChild(title);
+
+      const transfer = document.createElement('span');
+      transfer.className = 'nether-route-transfer';
+      transfer.textContent = `Byte: ${formatDuration(route.stationPenaltySeconds)}`;
 
       if (step.road) {
         const leg = document.createElement('span');
@@ -140,6 +190,7 @@
         leg.textContent = `${mode} · ${step.road.distance.toLocaleString('sv-SE')} Nether-block · ${formatDuration(step.travelSeconds)}`;
         item.appendChild(leg);
       }
+      item.appendChild(transfer);
       list.appendChild(item);
     });
 
@@ -154,6 +205,15 @@
     const from = document.getElementById('nether-route-from');
     const to = document.getElementById('nether-route-to');
     const swap = document.getElementById('nether-route-swap');
+    const originModes = [...form.querySelectorAll('[name="origin-mode"]')];
+    const originModeFieldset = form.querySelector('.nether-origin-mode');
+    const stationOrigin = document.getElementById('nether-station-origin');
+    const coordinateOrigin = document.getElementById('nether-coordinate-origin');
+    const routeFields = document.getElementById('nether-route-fields');
+    const coordinateX = document.getElementById('nether-route-x');
+    const coordinateZ = document.getElementById('nether-route-z');
+    const inNether = document.getElementById('nether-route-in-nether');
+    const nearestStatus = document.getElementById('nether-nearest-station');
     const submit = form.querySelector('[type="submit"]');
     const status = document.getElementById('nether-route-status');
     const result = document.getElementById('nether-route-result');
@@ -181,7 +241,44 @@
       to.disabled = false;
       swap.disabled = false;
       submit.disabled = false;
+      originModeFieldset.disabled = false;
       status.textContent = `${network.destinations.length} stationer är redo.`;
+
+      const usesCoordinates = () => form.elements['origin-mode'].value === 'coordinates';
+
+      const updateNearestStation = () => {
+        if (!usesCoordinates()) return null;
+        if (coordinateX.value === '' || coordinateZ.value === '') {
+          nearestStatus.textContent = 'Ange X och Z för att hitta närmaste station.';
+          return null;
+        }
+
+        const nearest = findNearestStation(network, Number(coordinateX.value), Number(coordinateZ.value), inNether.checked);
+        if (!nearest) return null;
+        const unit = inNether.checked ? 'Nether-block' : 'Overworld-block';
+        nearestStatus.textContent = `Närmsta station: ${nearest.destination.name} · ${nearest.distance.toLocaleString('sv-SE', { maximumFractionDigits: 1 })} ${unit} bort`;
+        return nearest;
+      };
+
+      const updateOriginMode = () => {
+        const coordinateMode = usesCoordinates();
+        stationOrigin.hidden = coordinateMode;
+        coordinateOrigin.hidden = !coordinateMode;
+        from.disabled = coordinateMode;
+        from.required = !coordinateMode;
+        coordinateX.disabled = !coordinateMode;
+        coordinateZ.disabled = !coordinateMode;
+        inNether.disabled = !coordinateMode;
+        coordinateX.required = coordinateMode;
+        coordinateZ.required = coordinateMode;
+        swap.hidden = coordinateMode;
+        swap.disabled = coordinateMode;
+        routeFields.classList.toggle('coordinates-mode', coordinateMode);
+        if (coordinateMode) updateNearestStation();
+      };
+
+      originModes.forEach((radio) => radio.addEventListener('change', updateOriginMode));
+      [coordinateX, coordinateZ, inNether].forEach((control) => control.addEventListener('input', updateNearestStation));
 
       swap.addEventListener('click', () => {
         const oldFrom = from.value;
@@ -192,22 +289,50 @@
       form.addEventListener('submit', (event) => {
         event.preventDefault();
         result.hidden = true;
-        if (!from.value || !to.value) {
+        if (!to.value || (!usesCoordinates() && !from.value)) {
           status.textContent = 'Välj både start och destination.';
           return;
         }
-        if (from.value === to.value) {
+        if (!usesCoordinates() && from.value === to.value) {
           status.textContent = 'Du är redan framme – välj två olika stationer.';
           return;
         }
 
-        const route = findFastestRoute(network, from.value, to.value);
+        let source = from.value;
+        let approach = null;
+        if (usesCoordinates()) {
+          const nearest = updateNearestStation();
+          if (!nearest) {
+            status.textContent = 'Ange giltiga X- och Z-koordinater.';
+            return;
+          }
+          const walkingSpeed = network['travel-modes'].walk;
+          source = nearest.destination.id;
+          approach = {
+            x: Number(coordinateX.value),
+            z: Number(coordinateZ.value),
+            inNether: inNether.checked,
+            destination: nearest.destination,
+            stationCoordinates: coordinatesForDimension(nearest.destination, inNether.checked),
+            distance: nearest.distance,
+            travelSeconds: nearest.distance / walkingSpeed
+          };
+        }
+
+        const route = findFastestRoute(network, source, to.value);
         if (!route) {
           status.textContent = 'Det finns ännu ingen registrerad väg mellan stationerna.';
           return;
         }
 
-        status.textContent = `Snabbaste vägen har ${route.steps.length - 1} delsträckor.`;
+        if (approach) {
+          route.approach = approach;
+          route.totalSeconds += approach.travelSeconds;
+          route.travelSeconds += approach.travelSeconds;
+          status.textContent = `Gå först till ${approach.destination.name}, följ sedan ${route.steps.length - 1} delsträckor i Nether.`;
+        } else {
+          status.textContent = `Snabbaste vägen har ${route.steps.length - 1} delsträckor.`;
+        }
         renderRoute(result, route);
       });
     } catch (error) {
@@ -216,7 +341,7 @@
     }
   }
 
-  const api = { buildGraph, findFastestRoute, formatDuration };
+  const api = { buildGraph, coordinatesForDimension, findFastestRoute, findNearestStation, formatDuration };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   if (typeof document !== 'undefined') {
     document.addEventListener('DOMContentLoaded', initialiseNavigator);
