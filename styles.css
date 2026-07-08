@@ -680,11 +680,23 @@ p img {
   background: white;
 }
 
+.nether-route-steps li.nether-route-start::before {
+  background: white;
+}
+
 .nether-route-transfer {
   color: #ffdd57;
   display: block;
   font-size: 0.82em;
   margin-top: 0.3em;
+}
+
+.nether-route-transfer.portal-start {
+  color: white;
+}
+
+.nether-route-transfer.portal-end {
+  color: #79b87a;
 }
 
 .nether-route-station-coordinates {

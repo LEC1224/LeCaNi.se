@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { buildGraph, coordinatesForDimension, findFastestRoute, findNearestStation } = require('../script/nether-navigator.js');
+const { buildGraph, coordinatesForDimension, findFastestRoute, findNearestStation, stationTransition } = require('../script/nether-navigator.js');
 
 const network = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/nether-network.json'), 'utf8'));
 
@@ -12,8 +12,9 @@ buildGraph(network);
 const destinations = new Map(network.destinations.map((destination) => [destination.id, destination]));
 network.roads.forEach((road) => {
   const [a, b] = road.nodes.map((id) => destinations.get(id).coordinates);
-  const calculated = Math.hypot(a[0] - b[0], a[1] - b[1]) / 8;
-  assert.ok(Math.abs(calculated - road.distance) <= 0.11, `${road.nodes.join('–')} has the wrong distance`);
+  const calculated = Math.round((Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1])) / 8);
+  assert.equal(road.distance, calculated, `${road.nodes.join('–')} has the wrong distance`);
+  assert.ok(Number.isInteger(road.distance), `${road.nodes.join('–')} must use a whole-number distance`);
 });
 
 const outbound = findFastestRoute(network, 'fabulania', 'the-rike');
@@ -22,10 +23,19 @@ assert.deepEqual(outbound.steps.map((step) => step.destination.id), ['fabulania'
 assert.ok(Math.abs(outbound.totalSeconds - inbound.totalSeconds) < 1e-9, 'roads must work in both directions');
 assert.equal(outbound.stationSeconds, 20, 'source and destination must each cost 10 seconds');
 assert.equal(outbound.stationPenaltySeconds, 10, 'the route must expose its per-station transfer time');
+assert.deepEqual(stationTransition(outbound, 0), { label: 'Passera portal', type: 'portal-start' });
+assert.deepEqual(stationTransition(outbound, 1), { label: 'Passera portal', type: 'portal-end' });
+
+const throughRoute = findFastestRoute(network, 'faburania', 'colosseum');
+assert.deepEqual(stationTransition(throughRoute, 1), { label: 'Byte', type: 'transfer' });
+throughRoute.approach = { inNether: true };
+assert.deepEqual(stationTransition(throughRoute, 0), { label: 'Byte', type: 'transfer' });
+throughRoute.approach.inNether = false;
+assert.deepEqual(stationTransition(throughRoute, 0), { label: 'Passera portal', type: 'portal-start' });
 
 const direct = findFastestRoute(network, 'fabulania', 'x-mines');
 assert.equal(direct.stationSeconds, 20, 'a direct route charges both endpoint stations');
-assert.ok(Math.abs(direct.totalSeconds - (20 + (62.5 / 30))) < 1e-9);
+assert.ok(Math.abs(direct.totalSeconds - (20 + (88 / 30))) < 1e-9);
 
 network.destinations.forEach((destination) => {
   if (destination.coordinates[0] === 0 && destination.coordinates[1] === 0) return;

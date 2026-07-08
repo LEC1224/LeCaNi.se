@@ -129,6 +129,19 @@
     return `${minutes} min ${remainder} sek`;
   }
 
+  function stationTransition(route, index) {
+    if (index === route.steps.length - 1) {
+      return { label: 'Passera portal', type: 'portal-end' };
+    }
+
+    const entersNetherHere = index === 0 && (!route.approach || !route.approach.inNether);
+    if (entersNetherHere) {
+      return { label: 'Passera portal', type: 'portal-start' };
+    }
+
+    return { label: 'Byte', type: 'transfer' };
+  }
+
   function addOption(select, destination) {
     const option = document.createElement('option');
     option.value = destination.id;
@@ -170,6 +183,8 @@
 
     route.steps.forEach((step, index) => {
       const item = document.createElement('li');
+      const transition = stationTransition(route, index);
+      if (transition.type === 'portal-start') item.classList.add('nether-route-start');
       const title = document.createElement('span');
       title.className = 'nether-route-step-title';
       title.textContent = index === 0 && !route.approach
@@ -180,8 +195,8 @@
       item.appendChild(title);
 
       const transfer = document.createElement('span');
-      transfer.className = 'nether-route-transfer';
-      transfer.textContent = `Byte: ${formatDuration(route.stationPenaltySeconds)}`;
+      transfer.className = `nether-route-transfer ${transition.type}`;
+      transfer.textContent = `${transition.label}: ${formatDuration(route.stationPenaltySeconds)}`;
 
       if (step.road) {
         const leg = document.createElement('span');
@@ -341,7 +356,7 @@
     }
   }
 
-  const api = { buildGraph, coordinatesForDimension, findFastestRoute, findNearestStation, formatDuration };
+  const api = { buildGraph, coordinatesForDimension, findFastestRoute, findNearestStation, formatDuration, stationTransition };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   if (typeof document !== 'undefined') {
     document.addEventListener('DOMContentLoaded', initialiseNavigator);
