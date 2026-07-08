@@ -3,8 +3,17 @@
     <h1>Kartor över LeCaNi</h1>
     <h2>BlueMap-kartan</h2>
     <p>BlueMap-kartan är en högupplöst, tre-dimensionell LOD-karta som uppdaterar sig i realtid och visar vart alla spelare befinner sig!</p>
-    <h3><a style="color: #FFF" href="http://mc.lecani.se:8123">Se kartan i fullskärm</a></h3>
-    <br/>
+    <div class="bluemap-frame" id="bluemap-frame">
+      <iframe
+        src="https://lecani.se:8123/"
+        title="BlueMap-karta över LeCaNi"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+      <button class="bluemap-fullscreen" type="button" aria-label="Visa kartan i helskärm" title="Visa i helskärm">
+        <span aria-hidden="true">⛶</span>
+      </button>
+    </div>
 <!--
     <h2>MinedMap-kartan</h2>
         <p>En statisk MinedMap-karta över LeCaNi som världen såg ut 2025-01-05 kan utforskas rakt i hemsidan! Du kan även <a href="dl/minedmap_LeCaNi.zip">ladda ner</a> hela MinedMap-kartan för att köra på din egen webserver!</p>

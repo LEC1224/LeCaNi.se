@@ -611,11 +611,49 @@ p img {
 
 .iframe-section iframe {
   border: none;
+  display: block;
   width: 100%;
-  height: 70vh;
-	background-image: url('img/karta-unavailable.png');
-	background-size: contain;
-	background-repeat: no-repeat;
+  height: 100%;
+}
+
+.bluemap-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin: 1.5em 0 2.5em;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #101820 url('img/karta-unavailable.png') center / contain no-repeat;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.bluemap-frame:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+}
+
+.bluemap-fullscreen {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 7px;
+  color: #fff;
+  background: rgba(15, 20, 26, 0.82);
+  font: 28px/1 sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+}
+
+.bluemap-fullscreen:hover,
+.bluemap-fullscreen:focus-visible {
+  background: rgba(0, 110, 222, 0.95);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 /* ---------------------------- */
