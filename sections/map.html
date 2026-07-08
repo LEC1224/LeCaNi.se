@@ -10,6 +10,40 @@
         <p>En statisk MinedMap-karta över LeCaNi som världen såg ut 2025-01-05 kan utforskas rakt i hemsidan! Du kan även <a href="dl/minedmap_LeCaNi.zip">ladda ner</a> hela MinedMap-kartan för att köra på din egen webserver!</p>
     <iframe frameborder="0" src="minedmap_LeCaNi/index.html"></iframe>
 -->
+    <div class="nether-navigator" id="nether-navigator">
+      <div class="nether-navigator-heading">
+        <div>
+          <p class="nether-navigator-kicker">Reseplanerare</p>
+          <h2>Hitta snabbaste Nether-vägen</h2>
+        </div>
+        <span class="nether-navigator-badge">10 s per station</span>
+      </div>
+      <p>Välj var du är och vart du ska. Navigatorn väger samman gångväg, räls och isväg och visar vilka hubbar du ska passera.</p>
+
+      <form class="nether-route-form" id="nether-route-form">
+        <label for="nether-route-from">
+          Nuvarande plats
+          <select id="nether-route-from" name="from" required disabled>
+            <option value="">Laddar stationer…</option>
+          </select>
+        </label>
+
+        <button class="nether-route-swap" id="nether-route-swap" type="button" aria-label="Byt start och destination" title="Byt håll" disabled>⇄</button>
+
+        <label for="nether-route-to">
+          Destination
+          <select id="nether-route-to" name="to" required disabled>
+            <option value="">Laddar stationer…</option>
+          </select>
+        </label>
+
+        <button class="nether-route-submit" type="submit" disabled>Visa snabbaste vägen</button>
+      </form>
+
+      <div class="nether-route-status" id="nether-route-status" role="status" aria-live="polite">Laddar linjenätet…</div>
+      <div class="nether-route-result" id="nether-route-result" hidden></div>
+    </div>
+
     <h2>Nether-spårkarta</h2>
     <p>Mycket av LeCaNis transport mellan städer sker i vårt tunnelbanesystem i Nether. Många städer och intressepunkter har varsin Nether-hubb som fungerar som en centralstation, med vägar åt många olika håll. För att göra det lättare för dig att navigera på LeCaNi har vi tagit fram en spårkarta där du kan se de flesta destinationerna och vägarna emellan!</p>
     

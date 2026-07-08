@@ -393,6 +393,218 @@ p img {
 /* ----------- Map ------------ */
 /* ---------------------------- */
 
+.nether-navigator {
+  background: linear-gradient(145deg, rgba(17, 17, 17, 0.95), rgba(42, 42, 42, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 5px solid #63d7df;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin: 3em auto;
+  max-width: 1050px;
+  padding: 1.5em;
+  text-align: left;
+}
+
+.nether-navigator-heading {
+  align-items: flex-start;
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.nether-navigator-heading h2 {
+  margin: 0.1em 0 0.4em;
+}
+
+.nether-navigator-kicker {
+  color: #63d7df;
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.nether-navigator-badge {
+  background: #ffdd57;
+  border: 2px solid #151515;
+  color: #151515;
+  flex: 0 0 auto;
+  font-weight: bold;
+  padding: 0.45em 0.7em;
+}
+
+.nether-route-form {
+  align-items: end;
+  display: grid;
+  gap: 0.8em;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto;
+  margin-top: 1.5em;
+}
+
+.nether-route-form label {
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.nether-route-form select {
+  background: #171717;
+  border: 1px solid #999;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: white;
+  display: block;
+  font: inherit;
+  margin-top: 0.4em;
+  min-height: 2.8em;
+  padding: 0.55em;
+  width: 100%;
+}
+
+.nether-route-form button {
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font: inherit;
+  font-weight: bold;
+  min-height: 2.8em;
+  padding: 0.55em 0.9em;
+}
+
+.nether-route-form button:disabled,
+.nether-route-form select:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.nether-route-swap {
+  background: #555;
+  color: white;
+  font-size: 1.25em !important;
+}
+
+.nether-route-submit {
+  background: #63d7df;
+  color: #111;
+}
+
+.nether-route-swap:hover,
+.nether-route-swap:focus {
+  background: #777;
+}
+
+.nether-route-submit:hover,
+.nether-route-submit:focus {
+  background: #89eef3;
+}
+
+.nether-route-status {
+  color: #ccc;
+  margin-top: 1em;
+}
+
+.nether-route-result {
+  border-top: 1px solid #666;
+  margin-top: 1.25em;
+  padding-top: 1.25em;
+}
+
+.nether-route-summary {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em 1.5em;
+  margin-bottom: 1.2em;
+}
+
+.nether-route-summary strong {
+  color: #ffdd57;
+  font-size: 1.5em;
+}
+
+.nether-route-summary span {
+  color: #ddd;
+}
+
+.nether-route-steps {
+  counter-reset: route-step;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nether-route-steps li {
+  border-left: 3px solid #63d7df;
+  margin-left: 0.8em;
+  padding: 0 0 1.4em 1.5em;
+  position: relative;
+}
+
+.nether-route-steps li:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.nether-route-steps li::before {
+  background: #ffdd57;
+  border: 3px solid #222;
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: "";
+  height: 1.1em;
+  left: -0.57em;
+  position: absolute;
+  top: 0.15em;
+  width: 1.1em;
+}
+
+.nether-route-step-title {
+  color: white;
+  display: block;
+  font-weight: bold;
+}
+
+.nether-route-leg {
+  color: #bbb;
+  display: block;
+  font-size: 0.82em;
+  margin-top: 0.3em;
+}
+
+@media only screen and (max-width: 850px) {
+  .nether-route-form {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nether-route-form label {
+    grid-column: 1 / -1;
+  }
+
+  .nether-route-swap {
+    display: none;
+  }
+
+  .nether-route-submit {
+    grid-column: 1 / -1;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .nether-navigator {
+    padding: 1em;
+  }
+
+  .nether-navigator-heading {
+    display: block;
+  }
+
+  .nether-navigator-badge {
+    display: inline-block;
+    margin-bottom: 0.8em;
+  }
+}
+
 .iframe-section {
   overflow: hidden;
 }
